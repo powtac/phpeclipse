@@ -1,5 +1,8 @@
 # PHPEclipse Plugin for Eclipse 
-GitHub(!) Repository for the "PHPeclipse - PHP Eclipse-Plugin" ( https://sourceforge.net/p/phpeclipse/ ). Feel free to add pull requests!!! 
+GitHub(!) Repository for the "PHPeclipse - PHP Eclipse-Plugin" ( https://sourceforge.net/p/phpeclipse/ ). 
+
+## Contribute
+Feel free to add pull requests!!! 
 
 ## License 
 
