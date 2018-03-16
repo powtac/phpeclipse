@@ -1,0 +1,42 @@
+<browsers>
+  <browser name="%browserInternetExplorer" params="" executable="iexplore.exe">
+    <location>C:\Program Files\Internet Explorer\IEXPLORE.EXE</location>
+    <location>D:\Program Files\Internet Explorer\IEXPLORE.EXE</location>
+    <location>E:\Program Files\Internet Explorer\IEXPLORE.EXE</location>
+  </browser>
+  <browser name="%browserNetscape4" params="" executable="netscape.exe">
+    <location>C:\Program Files\Netscape\Communicator\Program\netscape.exe</location>
+    <location>D:\Program Files\Netscape\Communicator\Program\netscape.exe</location>
+    <location>E:\Program Files\Netscape\Communicator\Program\netscape.exe</location>
+  </browser>
+  <browser name="%browserNetscape7" params="" executable="netsc.exe">
+    <location>C:\Program Files\Netscape\Netscape\netscp.exe</location>
+    <location>D:\Program Files\Netscape\Netscape\netscp.exe</location>
+    <location>E:\Program Files\Netscape\Netscape\netscp.exe</location>
+  </browser>
+  <browser name="%browserMozilla" params="" executable="mozilla.exe">
+    <location>C:\Program Files\mozilla.org\Mozilla\mozilla.exe</location>
+    <location>D:\Program Files\mozilla.org\Mozilla\mozilla.exe</location>
+    <location>E:\Program Files\mozilla.org\Mozilla\mozilla.exe</location>
+  </browser>
+  <browser name="%browserOpera" params="" executable="opera.exe">
+    <location>C:\Program Files\Opera7\opera.exe</location>
+    <location>D:\Program Files\Opera7\opera.exe</location>
+    <location>E:\Program Files\Opera7\opera.exe</location>
+  </browser>
+
+  <browser name="%browserMozilla" params="" executable="mozilla">
+    <location>/usr/bin/mozilla</location>
+    <location>/usr/X11/bin/mozilla</location>
+  </browser>
+  <browser name="%browserNetscape" params="" executable="netscape">
+    <location>/usr/bin/netscape</location>
+    <location>/usr/X11R6/bin/netscape</location>
+  </browser>
+  <browser name="%browserKonqueror" params="" executable="konqueror">
+    <location>/opt/kde3/bin/konqueror</location>
+  </browser>
+  <browser name="%browserGaleon" params="" executable="galeon">
+    <location>/opt/usr/gnome/bin/galeon</location>
+  </browser>
+</browsers>

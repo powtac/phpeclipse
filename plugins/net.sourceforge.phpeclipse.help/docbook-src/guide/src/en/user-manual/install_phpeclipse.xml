@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.install_phpeclipse">
+  <title>Installing <application>PHPeclipse</application></title>
+  <para>
+    There are two ways to install this plugin, automated or manual.
+  </para>
+
+  <sect2 id="sec.install_phpeclipse.automated">
+    <title>Automated</title>
+    <para>
+      An automated installation of PHPEclipse is available via the Eclipse Update Manager.
+      <itemizedlist>
+        <listitem>
+          <para>
+            Click on
+              <menuchoice>
+                <guimenu>Help</guimenu>
+                <guisubmenu>Software Updates</guisubmenu>
+                <guimenuitem>Find and Install...</guimenuitem>
+              </menuchoice>
+             from the Eclipse menu bar. See <xref linkend="fig.inst_pe_auto_1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Select the radio button labeled, "search for new features to install". See <xref linkend="fig.inst_pe_auto_2"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click on the <guibutton>New Remote Site</guibutton> button (see <xref linkend="fig.inst_pe_auto_3"/>), and input the following:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Name: PHPeclipse official releases
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  URL: <ulink url="http://phpeclipse.sourceforge.net/update/releases"></ulink>
+                </para>
+              </listitem>
+            </itemizedlist>
+            If you are interested in unofficial releases you can also add a second <quote>Remote Site</quote>:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Name: PHPeclipse cvs releases
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  URL: <ulink url="http://phpeclipse.sourceforge.net/update/cvs"></ulink>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Click on <guibutton>Finish</guibutton>. &eclipse; will now look for new versions of &phpeclipse;. If the &eclipse; update manager finds something new, you can select the new version within a dialog. See <xref linkend="fig.inst_pe_auto_update_1"/>.
+          </para>
+        </listitem>
+        <listitem>
+          <para> <!-- @todo Or was it 'Finish'? -->
+            Click on <guibutton>Next</guibutton>, and the download of the selected versions begins. See <xref linkend="fig.inst_pe_auto_update_2"/>.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <note>
+      <para>
+        There may be a problem during automatic installation, if you use the <guibutton>Install All</guibutton> button during the Eclipse <quote>Find/Install</quote> feature. If the installation stops with an <quote>connection timed out</quote> message (when downloading additional files), close and restart Eclipse and use the <guibutton>Install</guibutton> button instead of the <guibutton>Install All</guibutton> button - this will require you to start the installation of the (currently) four packages manually but resolves the problem.
+      </para>
+    </note>
+
+    <figure id="fig.inst_pe_auto_1">
+      <title>Find and Install...</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_1.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_1.png" format="PNG" width="8cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.inst_pe_auto_2">
+      <title>Feature Update</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_2.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_2.png" format="PNG" width="10cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.inst_pe_auto_3">
+      <title>Update sites to visit</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_3.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_3.png" format="PNG" width="10cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.inst_pe_auto_update_1">
+      <title>Updates Search Results</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_update_1.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_update_1.png" format="PNG" width="10cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.inst_pe_auto_update_2">
+      <title>Update Manager Progress</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_update_2.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_auto_update_2.png" format="PNG" width="8cm" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      Fedora Core 4 (and above) Users:
+    </para>
+    <para>
+      If clicking on Help->Software Updates->Find/Install commands produces an error message like "Error creating feature "file:/usr/share/eclipse/features/org.eclipse.rcp.source_3.1.1/". [/usr/share/eclipse/features/org.eclipse.rcp.source_3.1.1/feature.xml (No such file or directory)]", start Eclipse as root and try again. (Once you're over this hurdle everything goes smoothly -- even as a non-root user!)
+    </para>
+  </sect2>
+
+
+
+  <sect2 id="sec.install_phpeclipse.manual">
+    <title>Manual</title>
+    <para>
+      To install &phpeclipse; manually, first download the latest version from <ulink url="http://sourceforge.net/project/showfiles.php?group_id=57621">SourceForge</ulink>
+    </para>
+    <para>
+      The &phpeclipse; zip file must be extracted in the same directory in which you installed &eclipse;. It contains two directories, <filename class="directory">plugins</filename> and <filename class="directory">features</filename>, and these must match to the plugins and features directory in your existing eclipse directory. See <xref linkend="fig.inst_pe_man_2"/>
+    </para>
+
+    <note>
+      <para>
+        &eclipse; 3.x caches all plugin.xml files into a single repository for quicker loading. If you used &eclipse; before installing &phpeclipse;, you should start &eclipse; once with the -clean option. This -clean forces &eclipse; to rebuild that repository. This applies to anything that is installed into &eclipse; by unzipping it into its plugins folder.
+      </para>
+    </note>
+
+    <para>
+      After extracting &phpeclipse;, (re)start &eclipse;. &phpeclipse; will be loaded automatically. If NOT, you should enable it manually. Open the
+      <menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Software Updates</guimenuitem>
+        <guimenuitem>Manage Configuration</guimenuitem>
+      </menuchoice>
+      menu and click the <guibutton>Show Disabled Features</guibutton> button from the toolbar if not enabled yet. See <xref linkend="fig.inst_pe_man_4"/>
+    </para>
+
+
+    <figure id="fig.inst_pe_man_2">
+      <title>Search for new features to install</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_man_2.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+
+    <figure id="fig.inst_pe_man_4">
+      <title>Enable &phpeclipse; in case it is disabled</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_install_man_4.png" format="PNG"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+  </sect2>
+
+
+  <sect2 id="sec.sec.install_phpeclipse">
+    <title>Switch between different &phpeclipse; versions</title>
+    <para>
+      <indexterm><primary>version</primary><secondary>switching</secondary></indexterm>
+      If you install a new version (with a higher version number), this version will be activated by default. But sometimes it could be necessary to switch back to an older version (maybe of buggy <quote>unofficial release</quote>).
+    </para>
+
+    <para>
+      Switching back to any other version could be done in the following way:
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            Click on
+              <menuchoice>
+                <guimenu>Help</guimenu>
+                <guisubmenu>Software Updates</guisubmenu>
+                <guimenuitem>Manage Configuration</guimenuitem>
+              </menuchoice>
+             from the Eclipse menu bar. See <xref linkend="fig.switch_versions_1"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <!-- todo: add the missing figures and text -->
+    </para>
+
+
+    <figure id="fig.switch_versions_1">
+      <title>Manage Configuration</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_switch_versions_1.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/phpeclipse_switch_versions_1.png" format="PNG" width="8cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+  </sect2>
+</sect1>

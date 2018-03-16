@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <extension-point id="urlMap" name="%extensionPointURLMap" schema="schema/urlMap.exsd"/>
+  <extension-point id="favorites" name="%extensionPointFavorites" schema="schema/favorites.exsd"/>
+
+  <extension point="org.eclipse.ui.actionSets">
+    <actionSet
+      id="net.sourceforge.phpeclipse.webbrowser.actionSet"
+      label="%actionSetWebBrowserTitle"
+      visible="false">
+      <action
+        id="net.sourceforge.phpeclipse.webbrowser.action.open"
+        toolbarPath="browser"
+        label="%actionSetOpenWebBrowser"
+        tooltip="%actionSetOpenWebBrowser"
+        icon="icons/obj16/internal_browser.gif"
+        class="net.sourceforge.phpeclipse.webbrowser.OpenBrowserWorkbenchAction"/>
+      <action
+        id="net.sourceforge.phpeclipse.webbrowser.action.switch"
+        menubarPath="window/browser"
+        label="%actionSetSwitchBrowser"
+        tooltip="%actionSetSwitchBrowser"
+        style="pulldown"
+        class="net.sourceforge.phpeclipse.webbrowser.internal.SwitchBrowserWorkbenchAction"/>
+    </actionSet>
+  </extension>
+
+  <extension point="org.eclipse.ui.preferencePages">
+    <page
+      id="net.sourceforge.phpeclipse.webbrowser.preferencePage"
+      name="%preferenceWebBrowserTitle"
+      category="net.sourceforge.phpeclipse.ui.preferencePage"
+      class="net.sourceforge.phpeclipse.webbrowser.internal.WebBrowserPreferencePage"/>
+  </extension>
+
+  <extension point="net.sourceforge.phpeclipse.webbrowser.urlMap">
+    <urlMap
+      id="net.sourceforge.phpeclipse.webbrowser.standard.urlMap"
+      class="net.sourceforge.phpeclipse.webbrowser.internal.StandardURLMap"/>
+  </extension>
+
+  <extension point="net.sourceforge.phpeclipse.webbrowser.favorites">
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="PHPEclipse"
+      url="http://www.phpeclipse.de"
+      locked="false"/>
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="Plog4U.org"
+      url="http://www.plog4u.org"
+      locked="false"/>
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="Plog4U.de"
+      url="http://www.plog4u.de"
+      locked="false"/>
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="Eclipse"
+      url="http://www.eclipse.org"
+      locked="false"/>
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="EclipseProject.de"
+      url="http://www.eclipseproject.de"
+      locked="false"/>
+    <favorite
+      id="net.sourceforge.phpeclipse.webbrowser.favorite.eclipse"
+      name="JSurfer.org"
+      url="http://www.jsurfer.org"
+      locked="false"/>
+  </extension>
+
+  <extension point="org.eclipse.ui.editors">
+    <editor id="net.sourceforge.phpeclipse.webbrowser"
+      name="%viewWebBrowserTitle"
+      icon="icons/obj16/internal_browser.gif"
+      class="net.sourceforge.phpeclipse.webbrowser.internal.WebBrowserEditor"
+      extensions="gif,jpg,jpeg,xhtml"
+      contributorClass="net.sourceforge.phpeclipse.webbrowser.internal.WebBrowserEditorActionBarContributor"/>
+  </extension>
+
+  <extension point="org.eclipse.ui.elementFactories">
+    <factory id="net.sourceforge.phpeclipse.webbrowser.elementFactory"
+       class="net.sourceforge.phpeclipse.webbrowser.WebBrowserEditorInput"/>
+  </extension>
+  <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="%viewCategoryName"
+            id="net.sourceforge.phpeclipse.views.category">
+      </category>
+      <view
+            name="%phpBrowserView"
+            icon="icons/obj16/internal_browser.gif"
+            category="net.sourceforge.phpeclipse.views.category"
+            class="net.sourceforge.phpeclipse.webbrowser.views.BrowserView"
+            id="net.sourceforge.phpeclipse.webbrowser.views">
+      </view>
+   </extension>
+</plugin>

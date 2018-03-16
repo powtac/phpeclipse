@@ -1,0 +1,17 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Watching our Script Run</title><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="start" href="index.html" title="Debugging in PHP Eclipse"><link rel="up" href="ar03.html" title="Debugging a Project Locally Using PHPEclipse and XDebug"><link rel="prev" href="ar03s04.html" title="Adding a Breakpoint"><link rel="next" href="ar03s06.html" title="Conclusion"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Watching our Script Run</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ar03s04.html">Prev</a> </td><th width="60%" align="center">Debugging a Project Locally Using PHPEclipse and XDebug</th><td width="20%" align="right"> <a accesskey="n" href="ar03s06.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="phpeclipse.debugginglocal.watchingscriptrun"></a>Watching our Script Run</h2></div></div></div><p>Now that we are familiar with the Debug Perspective, we can trace
+    the execution of our program and monitor the variables. We will do a click
+    by click run through of a few lines of our program. To trace through
+    execution of the loop, click on the 'Step Into' button.</p><div class="orderedlist"><ol type="1"><li><p>In our initial state, you will see that the blue arrow points
+          to the first line of our script. This line initializes the $output
+          variable. Since the line hasn't been executed yet, you will see both
+          $i and $output are unitialized.</p></li><li><p>After one click of the Step Into button, the blue arrow moves
+          to the first line of our for loop. Again, this line has not been
+          executed, so $i is still uninitialized, but $output has now been
+          initialized to ''.</p></li><li><p>After two more clicks, we are into our for loop. The Variables
+          window tells us that $i is 0 and $output is still ''.</p></li><li><p>After another click, $output has been assigned the value
+          'Loop0'.</p></li><li><p>After another click, $i is incremented and now has the value
+          1. The console displays the output 'Loop0', which is the result of
+          the echo statement. The blue arrow has returned to the top line of
+          the for loop, ready for another iteration.</p></li></ol></div><p>By continuing in this manner, we can see the values of
+    each variable as execution of our script progresses and we can monitor the
+    output after each line of the script..</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ar03s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ar03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ar03s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Adding a Breakpoint </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Conclusion</td></tr></table></div></body></html>

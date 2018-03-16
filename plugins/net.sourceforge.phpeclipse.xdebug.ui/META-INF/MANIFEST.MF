@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XDebug Ui Plug-in
+Bundle-SymbolicName: net.sourceforge.phpeclipse.xdebug.ui;singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: ui.jar
+Bundle-Activator: net.sourceforge.phpeclipse.xdebug.ui.XDebugUIPlugin
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.debug.ui,
+ org.eclipse.jface.text,
+ org.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.workbench.texteditor,
+ net.sourceforge.phpeclipse,
+ net.sourceforge.phpeclipse.externaltools,
+ net.sourceforge.phpeclipse.xdebug.core
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-Vendor: PHPEclipse project team

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse Manual
+Bundle-SymbolicName: net.sourceforge.phpeclipse.phpmanual; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: phpmanual.jar
+Bundle-Activator: net.sourceforge.phpeclipse.phpmanual.PHPManualUIPlugin
+Bundle-Vendor: PHPEclipse Development Team
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ net.sourceforge.phpeclipse,
+ net.sourceforge.phpeclipse.phphelp,
+ net.sourceforge.phpeclipse.phpmanual.htmlparser
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4

@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Generated-from: 1150021273000;type=2
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse UI
+Bundle-SymbolicName: net.sourceforge.phpeclipse.ui; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: ui.jar
+Bundle-Activator: net.sourceforge.phpeclipse.ui.WebUI
+Bundle-Vendor: PHPEclipse Development Team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpeclipse.ui,
+ net.sourceforge.phpeclipse.ui.editor,
+ net.sourceforge.phpeclipse.ui.internal;x-internal:=true,
+ net.sourceforge.phpeclipse.ui.overlaypages,
+ net.sourceforge.phpeclipse.ui.preferences,
+ net.sourceforge.phpeclipse.ui.templates.preferences,
+ net.sourceforge.phpeclipse.ui.templates.template,
+ net.sourceforge.phpeclipse.ui.text,
+ net.sourceforge.phpeclipse.ui.text.rules,
+ net.sourceforge.phpeclipse.ui.text.source,
+ net.sourceforge.phpeclipse.ui.views.outline,
+ net.sourceforge.phpeclipse.ui.views.util
+Require-Bundle: net.sourceforge.phpeclipse.core,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.workbench.texteditor,
+ net.sourceforge.phpeclipse.webbrowser
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Eclipse-LazyStart: true

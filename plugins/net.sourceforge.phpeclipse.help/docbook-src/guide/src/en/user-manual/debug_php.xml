@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.debug_php">
+  <title>PHP Source Level Debugging</title>
+  <para>
+    Besides the method of outputting runtime information by adding <function>echo</function> or <function>var_dump</function> functions to your code, the more sophisticated and convenient method is using a so called <quote>Source Level Debugger</quote>.
+  </para>
+
+  <para>
+    With the current release of &phpeclipse; only <application>DBG</application> is supported. <application>XDebug</application> is currently supported only by directly checking out from the &phpeclipse; CVS repository and setting it up appropriately (see <xref linkend="sec.install_xdebug"/>).
+  </para>
+
+  <para>
+    In case you havn't already installed DBG, see <xref linkend="sec.install_dbg"/>. When you are sure the DBG module is correctly installed, you can go forward.
+  </para>
+
+  <para>
+    To do debugging in &phpeclipse; you need to set up a so called <quote>Debug Configuration</quote>. The following sections describe how to set up such a <quote>Debug Configuration</quote> and how to start a debug session.
+  </para>
+
+  <sect2 id="sec.debug_php_conf">
+    <title>Setting up a Debug Configuration</title>
+    <para>
+      To set up a <quote>Debug Configuration</quote> click on
+      <menuchoice>
+        <guimenu>Run</guimenu>
+        <guisubmenu>Debug...</guisubmenu>
+      </menuchoice> (see <xref linkend="fig.debug_config_1"/>. Within the opened dialog click on <quote>PHP DBG Script</quote> and click on <guibutton>New</guibutton> (see <xref linkend="fig.debug_config_2"/>). This opens the <quote>Create, manage, and run configuration</quote> dialog.
+    </para>
+
+    <note>
+      <para>
+        The first time you open the configuration dialog, you will see an error message within this dialog, complaining about a missing interpreter setting. For entering the interpreter see <xref linkend="sec.debug_php_env_int"/>.
+      </para>
+    </note>
+
+    <figure id="fig.debug_config_1">
+      <title>Open the Debug Configuration dialog</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/debug_config_1.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/debug_config_1.png" format="PNG" width="6cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.debug_config_2">
+      <title>Debug Configuration with the <quote>Perspectives</quote> view</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/debug_config_2.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/debug_config_2.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+
+    <sect3 id="sec.debug_php_conf_name">
+      <title>Name the Debug Configuration</title>
+      <para>
+        Within the <quote>Name:</quote> text field you should change the name (which is <quote>New_configuration</quote> per default) to a more reasonable one (see <xref linkend="fig.debug_config_3"/>).
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.debug_php_conf_file">
+      <title>Configure File</title>
+      <para>
+        Within the <quote>File</quote> tab you find two entries:
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="bold">Project:</emphasis> This is the project this debug configuration belongs to.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">File:</emphasis> This is used for <quote>Non Remote Debugging</quote>. The given file is directly given the interpreter which is entered within the Interpreter tab (see <xref linkend="sec.debug_php_env_int"/>). And/or is it called when configured for using the internal browser.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+      <figure id="fig.debug_config_3">
+        <title>Set up Debug Configuration - File</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/debug_config_3.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/debug_config_3.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect3>
+
+
+    <sect3 id="sec.debug_php_arg">
+      <title>Configure Arguments</title>
+      <para>
+        These settings are used for <quote>Non Remote Debugging</quote>. If the given Interpreter is directly called by &phpeclipse; (see <xref linkend="sec.debug_cli"/>).
+      </para>
+
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis role="bold">Working Directory</emphasis>:
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Use default working directory</emphasis>:
+          </para>
+        </listitem>
+        <listitem id="sec.debug_php_arg.li.int_args">
+          <para>
+            <emphasis role="bold">Interpreter Arguments</emphasis>: Here you can specify the arguments which will passed to the interpreter (see <ulink url="http://de3.php.net/manual/en/features.commandline.php">Using PHP from the command line</ulink>).
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Program Arguments</emphasis>: Here you can specify the arguments which will be passed to your script, and can be accessed by the <varname>$argv[]</varname> - array.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect3>
+
+
+    <sect3 id="sec.debug_php_env">
+      <title>Configure Environment</title>
+      <para>
+        Within this tab you have to enter the most important settings for a successful debugging session.
+      </para>
+
+
+      <sect4 id="sec.debug_php_env_int">
+        <title>Configure Environment Interpreter</title>
+        <para>
+          Although the setting of the interpreter isn't really necessary for <quote>Remote Debugging</quote>, you have to set it up. For a default XAMPP installation this would be <filename>C:\Program Files\apachefriends\xampp\php\php.exe</filename>.
+        </para>
+
+        <para>
+          The interpreter is used when you set a <quote>Debug Configuration</quote> with <quote>Remote Debug</quote> deactivated. This is true if you want to debug a script which is started per php cli.
+        </para>
+      </sect4>
+
+
+      <sect4 id="sec.debug_php_env_remote">
+        <title>Configure Environment Remote Debug</title>
+        <para>
+          Here can you have up to five options to enter:
+          <itemizedlist>
+            <listitem>
+              <para>
+                <emphasis role="bold">Remote Debug</emphasis>: You activate this if you want to debug a script which is started from an external browser (this is in opposite of the usage of the browser which is build into &phpeclipse;). When you disable this checkbox the appropriate script is forwarded directly to the given interpreter (php.exe)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="bold">Cross Platform debugging</emphasis>: Originally used for converting the path seperator (which are different on *nix and Windows systems). As far as I can remember this isn't necessary anymore.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="bold">Open with DBGSession URL in internal Browser</emphasis>: Activate this if you don't want to use the an external browser but start a debug session in internal browser.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="bold">Remote Sourcepath</emphasis>: An incorrect setting of this path information is responsible for the most annoyances in respect of debugging problems. The <quote>Remote Sourcepath</quote> is important because it is used for translating the path informations which are exchanged between &phpeclipse; and DBG. So, if this translation is incorrect, &phpeclipse; will not find the correct file when a break occurs, nor will DBG know for which file it should set a breakpoint. More different and detailed examples are to come:
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="bold">Mapped Path</emphasis>: Although in most cases a single path mapping is sufficient, but there are situations where this isn't enough. This is when you use PHP files (e.g. phplib) which are located on a total different path. To use this option, it is necessary to leave the <quote>Remote Sourcepath</quote> field empty. More different and detailed examples are to come:
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </sect4>
+    </sect3>
+
+
+    <sect3 id="sec.debug_php_env_var">
+      <title>Configure Environment Variables</title>
+      <para>
+        Used within <quote>Non Remote Debugging</quote>. You can specify variable - value pairs which are passed to the script within the <varname>$_ENV</varname> and the <varname>$HTTP_ENV_VARS</varname> array.
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.debug_php_common">
+      <title>Configure Common</title>
+      <para>
+        Leave all as it is per default. <!-- todo: what are they for? -->
+      </para>
+    </sect3>
+
+    <sect3 id="sec.debug_php_apply">
+      <title>Save Configuration</title>
+      <para>
+        When you have done all the necessary settings click on <guibutton>Apply</guibutton> to save the configuration. You can recall this configuration by clicking on the name of the desired configuration in the <quote>Configurations pane</quote> on the left side.
+      </para>
+    </sect3>
+
+    <sect3 id="sec.debug_php_start">
+      <title>Start a Debug Configuration</title>
+      <para>
+        You can start a <quote>Debug Configuration</quote> at once within the configuration dialog via the <guibutton>Debug</guibutton>.
+      </para>
+      <para>
+
+      </para>
+    </sect3>
+  </sect2>
+
+  <sect2 id="sec.debug_remote">
+    <title>Remote Debugging</title>
+    <para>
+      It is called <quote>Remote Debugging</quote> if you want to debug php scripts which are started by web server. This is the case if you are doing so called <quote>Web Devolepment</quote>. In opposite you also can write php scripts and start them from a shell or command line (see <xref linkend="sec.debug_cli" />).
+    </para>
+
+    <para>
+
+    </para>
+
+  </sect2>
+
+
+  <sect2 id="sec.debug_cli">
+    <title>Debugging CLI</title>
+    <para>
+      In contrary to <quote>Remote Debugging</quote> where your php scripts are started by a web server, you could also write scripts and start them from command line<footnote><para>cli stands for <quote>Command Line Interface</quote></para></footnote>. For that task you have to deactivate the <quote>Remote Debug</quote> checkbox (see <xref linkend="sec.debug_php_env_remote" />), and set the appropriate php cli application. According the PHP version you use, this is:
+      <itemizedlist>
+        <listitem>
+          <para>
+            phpcli.exe for PHP 4
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            php-win.exe for PHP 5
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      The prerequiste for debugging is also that you have installed &dbg; as it is described in <xref linkend="sec.install_dbg"/>. In addition, for the breakpoints to work, you have to add the following line to the <quote>[debugger]</quote> section of your <filename>php.ini</filename>:
+      <programlisting><![CDATA[debugger.JIT_enabled=on]]></programlisting>
+      And also you need the following code at the top of your php file you want to debug. At least this code snippet should be located before the first breakpoint you want to set.
+      <programlisting><![CDATA[if (function_exists ("DebugBreak")) {
+  DebugBreak ();
+}]]></programlisting>
+    </para>
+
+    <note>
+      <para>
+        For debugging a php-cli script you need the appropriate &phpeclipse; version, which is &gt; phpeclipse-1.1.9-cvs-20060424. This is due to the fact that older &phpeclipse; versions listen on port 10001, but dbg uses the standard port 7869, and there is no way to submit a different port neither by cli nor through the <filename>php.ini</filename><footnote><para>This is true for the free &dbg; version.</para></footnote>.
+      </para>
+    </note>
+
+    <tip>
+      <para>
+        If you don't want to change the <filename>php.ini</filename> which you also do use for your web scripts, you can <quote>import</quote> the appropriate <filename>php.ini</filename> to your project, and modify this project related local copy of the <filename>php.ini</filename> file. To use this local <filename>php.ini</filename> set the <quote>Interpreter Argument</quote> (see <xref linkend="sec.debug_php_arg"/>) as follows:
+        <quote>-c your_project_name/php.ini</quote>.
+      </para>
+    </tip>
+  </sect2>
+
+  <sect2 id="sec.debug_scenarios">
+    <title>Debug Scenarios</title>
+    <para>
+      One of the most important configuration point which is responsible for successfully debugging your PHP code is the correct setting of the <quote>Remote Sourcepath</quote>. Without a correct setting, you wan't be able to run a debugging session. As the setting of the &remso; is dependent of your working environment, we will first explain why it is needed and how it works and then, we will provide some examples.
+    </para>
+
+    <sect3 id="sec.debug_scenarios_remote_sourcepath">
+      <title>How the &remso; works</title>
+      <para>
+        Why do we need a &remso; setting? All files are defined by the path relative to the current &eclipse; workspace and project. E.g our workspace is <filename>C:\Document and Settings\Robert\workspace</filename>. Within this workspace we have a PHP project called <filename>MyPHPProject</filename> and a file <filename>MyPHPFile.php</filename>. From &dbg; this file would be reported as <filename>C:\Document and Settings\Robert\workspace\MyPHPProject\MyPHPFile.php</filename>. The &remso; is now used to remove the full path, so we get a file with a relative path, which would be in this case the filename itself.
+      </para>
+
+      <para>
+        In this example the &remso; setting would be <filename>C:\Document and Settings\Robert\workspace\MyPHPProject</filename>. This is by the way the default setting of the &remso; when you create a new debug configuration. But this setting is only correct if your the webservers &docroot; is set to exactly this folder.
+      </para>
+    </sect3>
+
+    <sect3 id="sec.debug_scenario_1">
+      <title>Same Machine, Workspace is &docroot;</title>
+      <para>
+
+      </para>
+    </sect3>
+
+    <sect3 id="sec.debug_scenario_2">
+      <title>Same Machine, Workspace and &docroot; is Different</title>
+      <para>
+
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.debug_scenario_3">
+      <title>Different Machine, Workspace and &docroot; is Different</title>
+      <para>
+
+      </para>
+    </sect3>
+  </sect2>
+
+
+  <sect2 id="sec.running_debug_session">
+    <title>Running a Debug Session</title>
+    <para>
+      Open Debug perspective. Select a existing debug configuration. Or create a new one. Should see following in Debug View.
+      Internal Browser or external browser. Submit URL in external browser.
+
+    </para>
+
+    <sect3 id="sec.running_resume">
+      <title>Resume</title>
+      <para>
+
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.running_suspend">
+      <title>Suspend</title>
+      <para>
+
+      </para>
+    </sect3>
+
+    <sect3 id="sec.running_terminate">
+      <title>Terminate</title>
+      <para>
+
+      </para>
+    </sect3>
+
+    <sect3 id="sec.running_step_into">
+      <title>Step Into</title>
+      <para>
+
+      </para>
+    </sect3>
+
+    <sect3 id="sec.running_step_over">
+      <title>Step Into</title>
+      <para>
+
+      </para>
+    </sect3>
+
+    <sect3 id="sec.running_step_return">
+      <title>Step Return</title>
+      <para>
+
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.breakpoints">
+      <title>Breakpoints</title>
+      <para>
+
+      </para>
+
+
+      <figure id="fig.breakpoints_view">
+        <title>The &bpview;</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view.png" format="PNG" width="7cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.breakpoints_view_context_menu">
+        <title>The &bpview; context menu</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view_context_menu.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view_context_menu.png" format="PNG" width="7cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.breakpoints_view_icon_bar">
+        <title>The &bpview; icon bar</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view_icon_bar.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/breakpoints_view_icon_bar.png" format="PNG" width="7cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.editor_view_left_ruler_context_menu">
+        <title>The &editview; left ruler context menu</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/editor_view_left_ruler_context_menu.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/editor_view_left_ruler_context_menu.png" format="PNG" width="7cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <sect4 id="sec.breakpoint_set">
+        <title>Set Breakpoint</title>
+        <para>
+          A breakpoint can be set by the following methods:
+          <itemizedlist>
+            <listitem>
+              <para>
+                By double clicking within the left vertical ruler of the editor window
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the left vertical ruler context menu item <menuchoice><guimenu>Toggle PHP Breakpoint</guimenu></menuchoice> (see <xref linkend="fig.editor_view_left_ruler_context_menu" />)
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </sect4>
+
+
+      <sect4 id="sec.breakpoint_remove">
+        <title>Remove Breakpoint</title>
+        <para>
+          A breakpoint can be removed by the following methods:
+          <itemizedlist>
+            <listitem>
+              <para>
+                By double clicking within the left vertical ruler of the editor window
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the left vertical ruler context menu item <menuchoice><guimenu>Toggle PHP Breakpoint</guimenu></menuchoice> (see <xref linkend="fig.editor_view_left_ruler_context_menu" />).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the &bpview;, by simple typing <keycap>Del</keycap>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the &bpview; context menu item <menuchoice><guimenu>Remove</guimenu></menuchoice> (see <xref linkend="fig.breakpoints_view_context_menu"/>)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the &bpview; icon bar <quote>Remove</quote> icon (see <xref linkend="fig.breakpoints_view_icon_bar"/>).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </sect4>
+
+
+      <sect4 id="sec.breakpoint_enable">
+        <title>Enable/Disable Breakpoint</title>
+        <para>
+          A breakpoint can temporary disabled (and enabled) by the following methods:
+          <itemizedlist>
+            <listitem>
+              <para>
+                By clicking into the check box of the appropriate breakpoint within the &bpview; (see <xref linkend="fig.breakpoints_view"/>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Via the &bpview; context menu item <menuchoice><guimenu>Disable</guimenu></menuchoice> (and enabled via <menuchoice><guimenu>Enable</guimenu></menuchoice>) (see <xref linkend="fig.breakpoints_view_context_menu"/>). The context menu commands are related to all selected breakpoints.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </sect4>
+
+
+      <sect4 id="sec.breakpoint_conditional">
+        <title>Conditional Breakpoints</title>
+        <para>
+          You can assign a condition to a breakpoint via the &bpview; context menu item <menuchoice><guimenu>Properties</guimenu></menuchoice> (see <xref linkend="fig.breakpoints_view_context_menu"/>). This opens a dialog (see <xref linkend="fig.breakpoint_properties_condition"/>). Within the text field <quote>Break Condition</quote> you can set a condition. Don't forget to activate the conditional break via the check box <quote>Enable Condition</quote> at the bottom of the dialog.
+        </para>
+        <para>
+          For example, if you type <quote>$a == 12</quote> as condition, the program will break if the variable <quote>$a</quote> has the value <quote>12</quote>.
+        </para>
+
+
+        <figure id="fig.breakpoint_properties_condition">
+          <title>The breakpoint <quote>Properties</quote> dialog</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/breakpoint_properties_conditional.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/breakpoint_properties_condition.png" format="PNG" width="7cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect4>
+
+      <sect4 id="sec.breakpoint_skipcount">
+        <title>Breakpoint Skipcounts</title>
+        <para>
+          An additional feature to set for breakpoints is the <quote>Skipcounts</quote> condition. Normally the skipcounts is set to 0, which means the program breaks immediately if it scores a breakpoint. If the <quote>Skiptcounts</quote> is set to 1 it means, that the first score of a breakpoint is ignored (skipped) and the second score will lead to a break of the program.
+        </para>
+
+        <para>
+          The <quote>Skipcounts</quote> can be set via the same dialog box as the conditional breakpoints (see <xref linkend="sec.breakpoint_conditional"/>). For the <quote>Skipcounts</quote> the checkbox need not to be activated.
+        </para>
+
+        <note>
+          <para>
+            The <quote>Break Condition</quote> has precedence over the <quote>Skipcounts</quote>.
+          </para>
+        </note>
+      </sect4>
+
+    </sect3>
+
+
+    <sect3 id="sec.variables">
+      <title>Inspect Variables</title>
+      <para>
+        Within the <quote>Variables View</quote> you can see all the variables with their values.
+      </para>
+      <para>
+        To open the <quote>Variables View</quote> within the <quote>Debug Perspective</quote> go to
+        <menuchoice>
+          <guimenu>Window</guimenu>
+          <guisubmenu>Show View</guisubmenu>
+          <guisubmenu>Variables</guisubmenu>
+        </menuchoice> (see <xref linkend="fig.variables_view_open"/>).
+      </para>
+
+      <note>
+        <para>
+          Be sure that your current perspective is the <quote>Debug Perspective</quote>. Although you can open the <quote>Variable View</quote> within a different perspective, this doesn't make sense.
+        </para>
+      </note>
+
+
+      <figure id="fig.variables_view_open">
+        <title>Open the &varview;</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_open.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_open.png" format="PNG" width="8cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.variables_view_context_menu">
+        <title>The &varview; context menu</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_context_menu.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_context_menu.png" format="PNG" width="7cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+    </sect3>
+
+
+    <sect3 id="sec.variable_hover">
+      <title>Show Variable Value by Hovering</title>
+      <para>
+        Besides inspecting the value of a variable by looking into the &varview; or the &expview; a simple and quick method is to position the mouse pointer over the variable within the source code. Within a second the value and type of the variable is shown (see <xref linkend="fig.variables_view_hover"/>).
+      </para>
+
+
+      <figure id="fig.variables_view_hover">
+        <title>Show variable value by hovering</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_hover.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/variables_view_hover.png" format="PNG" width="6cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect3>
+
+
+    <sect3 id="sec.watch_expressions">
+      <title>Watch Expressions</title>
+      <para>
+        Within the &expview; you can see the result of an expression. In the simplest form, this is just a variable and the corresponding value. But of course an expression can also be more complex, e.g. a mathematical formula.
+      </para>
+      <para>
+        There are different ways to open the <quote>Expressions View</quote> and to add an expression.
+      </para>
+
+
+      <sect4 id="sec.watch_expressions_open_1">
+        <title>Open &expview; via Main Menu</title>
+        <para>
+          To open the &expview; within the <quote>Debug Perspective</quote> go to
+          <menuchoice>
+            <guimenu>Window</guimenu>
+            <guisubmenu>Show View</guisubmenu>
+            <guisubmenu>Variables</guisubmenu>
+          </menuchoice> (see <xref linkend="fig.variables_view_open_1"/>).
+        </para>
+
+        <note>
+          <para>
+            Be sure that your current perspective is the <quote>Debug Perspective</quote>. Although you can open the &expview; within a different perspective, this doesn't make sense.
+          </para>
+        </note>
+
+
+        <figure id="fig.expressions_view_open_1">
+          <title>Open the &expview; via the main menu</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/expressions_view_open_1.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/expressions_view_open_1.png" format="PNG" width="8cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect4>
+
+      <sect4 id="sec.watch_expressions_open_2">
+        <title>Open &expview; via the &varview;</title>
+        <para>
+          Right clicking on a variable within the &varview; opens the context menu. Then click on <guimenu>Create Watch Expression</guimenu>. This adds the selected variable to the &expview; and opens/activates the &expview;.
+
+          <menuchoice>
+            <guimenu>Window</guimenu>
+            <guisubmenu>Show View</guisubmenu>
+            <guisubmenu>Variables</guisubmenu>
+          </menuchoice> (see <xref linkend="fig.variables_view_open"/>)
+        </para>
+
+
+        <figure id="fig.variables_view_open_2">
+          <title>Open the &expview; via the &varview; context menu</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/expressions_view_open_2.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/expressions_view_open_2.png" format="PNG" width="8cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect4>
+
+
+      <sect4 id="sec.watch_expressions_open_3">
+        <title>Open &expview; via context menu</title>
+        <para>
+           Unfortunately, yet this isn't implemented.
+        </para>
+      </sect4>
+
+      <sect4 id="sec.watch_expressions_remove">
+        <title>Remove a watch expression</title>
+        <para>
+          An expression can be removed from the &expview; by activating the appropriate watch expression and typing <keycap>Del</keycap> or via the context menu <menuchoice><guimenuitem>Remove</guimenuitem></menuchoice>.
+        </para>
+      </sect4>
+
+
+    </sect3>
+  </sect2>
+</sect1>

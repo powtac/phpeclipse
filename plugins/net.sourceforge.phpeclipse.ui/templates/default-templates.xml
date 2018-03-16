@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+<template name="for" description="for array" id="net.sourceforge.phpdt.html.for_array" context="javascript" enabled="true"
+>for (var ${index} = 0, ${index2} = ${array}.length; ${index} &lt; ${index2}; ${index}++) {
+	${line_selection}${cursor}
+}</template>
+  <template name="xml" description="html page with head,title,body" 
+    id="net.sourceforge.phpdt.xml.templates.xml" context="xml" enabled="true"
+  >&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</template>
+
+  <template name="&lt;html" description="html page with head,title,body" 
+  id="net.sourceforge.phpdt.html.html" context="html" enabled="true"
+  >&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+	&lt;meta http-equiv="Content-Language" content="en" /&gt;
+	&lt;meta name="GENERATOR" content="PHPEclipse 1.2.0" /&gt;
+	&lt;title&gt;${title}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+${cursor}
+&lt;/body&gt;
+&lt;/html&gt;</template>  
+  <template name="&lt;html" description="xhtml page with doctype, head, title and body" 
+  id="net.sourceforge.phpdt.html.xhtml" context="html" enabled="true"
+  >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en_US&quot; xml:lang=&quot;en_US&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+	&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;en&quot; /&gt;
+	&lt;meta name=&quot;GENERATOR&quot; content=&quot;PHPEclipse 1.2.0&quot; /&gt;
+	&lt;title&gt;${title}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+${cursor}
+&lt;/body&gt;
+&lt;/html&gt;</template>
+  <template name="&lt;title" description="title" id="net.sourceforge.phpdt.html.title" context="html" enabled="true"
+  >&lt;title&gt;${title}&lt;/title&gt;</template> 
+  
+  <template name="&lt;table" description="3x3 table" id="net.sourceforge.phpdt.html.table" context="html" enabled="true"
+  >&lt;table&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t00}&lt;/td&gt;
+		&lt;td&gt;${t01}&lt;/td&gt;
+		&lt;td&gt;${t02}&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t10}&lt;/td&gt;
+		&lt;td&gt;${t11}&lt;/td&gt;
+		&lt;td&gt;${t12}&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t20}&lt;/td&gt;
+		&lt;td&gt;${t21}&lt;/td&gt;
+		&lt;td&gt;${t22}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+${cursor}</template>
+  <template name="&lt;table" description="3x3 table with header" id="net.sourceforge.phpdt.html.table_header" context="html" enabled="true"
+  >&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;${header0}&lt;/th&gt;
+		&lt;th&gt;${header1}&lt;/th&gt;
+		&lt;th&gt;${header2}&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t00}&lt;/td&gt;
+		&lt;td&gt;${t01}&lt;/td&gt;
+		&lt;td&gt;${t02}&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t10}&lt;/td&gt;
+		&lt;td&gt;${t11}&lt;/td&gt;
+		&lt;td&gt;${t12}&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;${t20}&lt;/td&gt;
+		&lt;td&gt;${t21}&lt;/td&gt;
+		&lt;td&gt;${t22}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+${cursor}</template>
+  
+  <template name="&lt;a" description="hyperlink (href)" id="net.sourceforge.phpdt.html.a" context="html" enabled="true"
+  >&lt;a href="${link}"&gt;${description}&lt;/a&gt;${cursor}</template>  
+  <template name="&lt;a" description="hyperlink image" id="net.sourceforge.phpdt.html.a_image" context="html" enabled="true"
+  >&lt;a href="${link}"&gt;&lt;img src="${image}" alt="${alt}" /&gt;&lt;/a&gt;${cursor}</template> 
+  <template name="&lt;p" description="paragraph" id="net.sourceforge.phpdt.html.p" context="html" enabled="true"
+  >&lt;p&gt;${cursor}&lt;/p&gt;</template>
+  <template name="&lt;h1" description="heading 1" id="net.sourceforge.phpdt.html.h1" context="html" enabled="true"
+  >&lt;h1&gt;${cursor}&lt;/h1&gt;</template>
+  <template name="&lt;h2" description="heading 2" id="net.sourceforge.phpdt.html.h2" context="html" enabled="true"
+  >&lt;h2&gt;${cursor}&lt;/h2&gt;</template>
+  <template name="&lt;h3" description="heading 3" id="net.sourceforge.phpdt.html.h3" context="html" enabled="true"
+  >&lt;h3&gt;${cursor}&lt;/h3&gt;</template>
+  <template name="&lt;h4" description="heading 4" id="net.sourceforge.phpdt.html.h4" context="html" enabled="true"
+  >&lt;h4&gt;${cursor}&lt;/h4&gt;</template>
+  <template name="&lt;h5" description="heading 5" id="net.sourceforge.phpdt.html.h5" context="html" enabled="true"
+  >&lt;h5&gt;${cursor}&lt;/h5&gt;</template>
+  <template name="&lt;h6" description="heading 6" id="net.sourceforge.phpdt.html.h6" context="html" enabled="true"
+  >&lt;h6&gt;${cursor}&lt;/h6&gt;</template>
+  <template name="&lt;address" description="address" id="net.sourceforge.phpdt.html.address" context="html" enabled="true"
+  >&lt;address&gt;${cursor}&lt;/address&gt;</template>
+  <template name="&lt;pre" description="preformat" id="net.sourceforge.phpdt.html.pre" context="html" enabled="true"
+  >&lt;pre&gt;${cursor}&lt;/pre&gt;</template>
+  <template name="&lt;code" description="code block" id="net.sourceforge.phpdt.html.code" context="html" enabled="true"
+  >&lt;code&gt;${cursor}&lt;/code&gt;</template>
+  <template name="&lt;blockquote" description="blockquote" id="net.sourceforge.phpdt.html.blockquote" context="html" enabled="true"
+  >&lt;blockquote&gt;
+	&lt;p&gt;${cursor}&lt;/p&gt;
+&lt;/blockquote&gt;</template>
+  <template name="&lt;hr" description="horizontal line" id="net.sourceforge.phpdt.html.hr" context="html" enabled="true"
+  >&lt;hr /&gt;</template>
+  <template name="&lt;ul" description="bulleted list" id="net.sourceforge.phpdt.html.ul" context="html" enabled="true"
+  >&lt;ul&gt;
+	&lt;li&gt;${item1}&lt;/li&gt;
+	&lt;li&gt;${item2}&lt;/li&gt;
+&lt;/ul&gt;</template>
+  <template name="&lt;ol" description="numbered list" id="net.sourceforge.phpdt.html.ol" context="html" enabled="true"
+  >&lt;ol&gt;
+	&lt;li&gt;${item1}&lt;/li&gt;
+	&lt;li&gt;${item2}&lt;/li&gt;
+&lt;/ol&gt;</template>
+  <template name="&lt;dl" description="term list" id="net.sourceforge.phpdt.html.dl_term" context="html" enabled="true"
+  >&lt;dl&gt;
+	&lt;dt&gt;${term1}&lt;/dt&gt;
+	&lt;dt&gt;${term2}&lt;/dt&gt;
+&lt;/dl&gt;</template>
+  <template name="&lt;dl" description="definition list" id="net.sourceforge.phpdt.html.dl_list" context="html" enabled="true"
+  >&lt;dl&gt;
+	&lt;dt&gt;${term1}&lt;/dt&gt;
+		&lt;dd&gt;${definition1}&lt;/dd&gt;
+	&lt;dt&gt;${term2}&lt;/dt&gt;
+		&lt;dd&gt;${definition2}&lt;/dd&gt;
+&lt;/dl&gt;</template>
+  <template name="&lt;form" description="form get" id="net.sourceforge.phpdt.html.form_get" context="html" enabled="true"
+  >&lt;form action="${link}" method="get"&gt;
+	${cursor}
+&lt;/form&gt;</template>
+  <template name="&lt;form" description="form post" id="net.sourceforge.phpdt.html.form_post1" context="html" enabled="true"
+  >&lt;form action="${link}" method="post"&gt;
+	${cursor}
+&lt;/form&gt;</template>
+  <template name="&lt;form" description="form post with enctype" id="net.sourceforge.phpdt.html.form_post2" context="html" enabled="true"
+  >&lt;form action="${link}" method="post" enctype="application/x-www-form-urlencoded"&gt;
+	${cursor}
+&lt;/form&gt;</template>
+ <template name="&lt;form" description="form upload file" id="net.sourceforge.phpdt.html.form_upload" context="html" enabled="true"
+  >&lt;form action="${link}" method="post" enctype="multipart/form-data"&gt;
+	&lt;label for="${name}"&gt;${text}&lt;/label&gt;
+	&lt;input type="file" id="${name}" name="${name}" size="50" maxlength="100000" accept="text/*" /&gt;
+	${cursor}
+	&lt;input type="submit" value="${value}" /&gt;
+&lt;/form&gt;</template>
+  <template name="&lt;input" description="input type=text (form)" id="net.sourceforge.phpdt.html.form_input_text" context="html" enabled="true"
+  >&lt;input type="text" class="text" name="${name}" value="${value}" size="${size}" maxlength="${size}" /&gt;</template>
+  <template name="&lt;input" description="input type=text (form) with id" id="net.sourceforge.phpdt.html.form_input_text2" context="html" enabled="true"
+  >&lt;input type="text" class="text" name="${name}" id="${name}" value="${value}" size="${size}" maxlength="${size}" /&gt;</template>
+  <template name="&lt;input" description="input type=password (form)" id="net.sourceforge.phpdt.html.form_input_password" context="html" enabled="true"
+  >&lt;input type="password" class="password" name="${name}" size="${size}" maxlength="${size}" /&gt;</template>
+  <template name="&lt;input" description="input type=password (form) with id" id="net.sourceforge.phpdt.html.form_input_password2" context="html" enabled="true"
+  >&lt;input type="password" class="password" name="${name}" id="${name}" size="${size}" maxlength="${size}" /&gt;</template>
+  <template name="&lt;input" description="input type=radio (form)" id="net.sourceforge.phpdt.html.form_input_radio" context="html" enabled="true"
+  >&lt;input type="radio" class="radio" name="${name}" value="${value}" /&gt;</template>
+  <template name="&lt;input" description="input type=checkbox (form)" id="net.sourceforge.phpdt.html.form_input_checkbox" context="html" enabled="true"
+  >&lt;input type="checkbox" class="checkbox" name="${name}" value="${value}" /&gt;</template>
+  <template name="&lt;input" description="input type=button (form button)" id="net.sourceforge.phpdt.html.form_input_button" context="html" enabled="true"
+  >&lt;input type="button" class="button" name="${name}" value="${value}" /&gt;</template>
+  <template name="&lt;input" description="input type=submit (form button)" id="net.sourceforge.phpdt.html.form_input_submit" context="html" enabled="true"
+  >&lt;input type="submit" class="submit button" name="${name}" value="${value}" /&gt;</template>
+  <template name="&lt;input" description="input type=reset (form button)" id="net.sourceforge.phpdt.html.form_input_reset" context="html" enabled="true"
+  >&lt;input type="reset" class="reset button" name="${name}" value="${value}" /&gt;</template>
+  <template name="&lt;textarea" description="textarea (form)" id="net.sourceforge.phpdt.html.form_input_textarea" context="html" enabled="true"
+  >&lt;textarea name="${name}" rows="10" cols="50" wrap="off"&gt;${text}&lt;/textarea&gt;</template>
+  <template name="&lt;select" description="select option (form)" id="net.sourceforge.phpdt.html.form_input_select" context="html" enabled="true"
+  >&lt;select name="${name}" size="3"&gt;
+	&lt;option value="${value1}"&gt;${option1}&lt;/option&gt;
+	&lt;option value="${value2}"&gt;${option2}&lt;/option&gt;
+	&lt;option value="${value3}"&gt;${option3}&lt;/option&gt;
+&lt;/select&gt;</template>
+  <template name="&lt;xml" description="xml version=1.0" id="net.sourceforge.phpdt.html.xml" context="html" enabled="true"
+  >&lt;?xml version="1.0"?&gt;</template>
+  <template name="&lt;xml" description="xml-stylesheet type=text/xsl" id="net.sourceforge.phpdt.html.xml_stylesheet" context="html" enabled="true"
+  >&lt;?xml-stylesheet type="text/xsl" href="${url}"?&gt;</template>
+  <template name="&lt;script" description="JavaScript inline" id="net.sourceforge.phpdt.html.javascript_inline" context="html" enabled="true"
+  >&lt;script type="text/javascript"&gt;
+${cursor}
+&lt;/script&gt;</template>
+  <template name="&lt;script" description="JavaScript file" id="net.sourceforge.phpdt.html.javascript_file" context="html" enabled="true"
+  >&lt;script type="text/javascript" src="${jsfile}.js"&gt;&lt;/script&gt;${cursor}</template>
+  <template name="&lt;style" description="style text/css" id="net.sourceforge.phpdt.html.css" context="html" enabled="true"
+  >&lt;style type="text/css"&gt;
+${cursor}
+&lt;/style&gt;</template>
+  <template name="&amp;quot" description="quot" id="net.sourceforge.phpdt.html.quot" context="html" enabled="true">&amp;quot;</template>
+  <template name="&amp;amp" description="ampersand" id="net.sourceforge.phpdt.html.ampersand" context="html" enabled="true">&amp;amp;</template>
+  <template name="&amp;lt" description="less than" id="net.sourceforge.phpdt.html.less_than" context="html" enabled="true">&amp;lt;</template>
+  <template name="&amp;gt" description="greater than" id="net.sourceforge.phpdt.html.greater" context="html" enabled="true">&amp;gt;</template>
+
+  <template name="&amp;nbsp" description="no-break space" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;nbsp;</template>
+  <template name="&amp;iexcl" description="iexcl" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;iexcl;</template>
+  <template name="&amp;cent" description="cent" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;cent;</template>
+  <template name="&amp;pound" description="pound" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;pound;</template>
+  <template name="&amp;curren" description="curren" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;curren;</template>
+  <template name="&amp;yen" description="yen" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;yen;</template>
+  <template name="&amp;brvbar" description="brvbar" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;brvbar;</template>
+  <template name="&amp;brkbar" description="brkbar" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;brkbar;</template>
+  <template name="&amp;sect" description="sect" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;sect;</template>
+  <template name="&amp;uml" description="uml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;uml;</template>
+  <template name="&amp;die" description="die" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;die;</template>
+  <template name="&amp;copy" description="copy" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;copy;</template>
+  <template name="&amp;ordf" description="ordf" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ordf;</template>
+  <template name="&amp;laquo" description="laquo" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;laquo;</template>
+  <template name="&amp;not" description="not" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;not;</template>
+  <template name="&amp;shy" description="shy" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;shy;</template>
+  <template name="&amp;reg" description="reg" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;reg;</template>
+  <template name="&amp;macr" description="macr" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;macr;</template>
+  <template name="&amp;hibar" description="hibar" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;hibar;</template>
+  <template name="&amp;deg" description="deg" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;deg;</template>
+  <template name="&amp;plusmn" description="plusmn" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;plusmn;</template>
+  <template name="&amp;sup2" description="sup2" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;sup2;</template>
+  <template name="&amp;sup3" description="sup3" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;sup3;</template>
+  <template name="&amp;acute" description="acute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;acute;</template>
+  <template name="&amp;micro" description="micro" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;micro;</template>
+  <template name="&amp;para" description="para" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;para;</template>
+  <template name="&amp;middot" description="middot" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;middot;</template>
+  <template name="&amp;cedil" description="cedil" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;cedil;</template>
+  <template name="&amp;sup1" description="sup1" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;sup1;</template>
+  <template name="&amp;ordm" description="ordm" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ordm;</template>
+  <template name="&amp;raquo" description="raquo" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;raquo;</template>
+  <template name="&amp;frac14" description="frac14" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;frac14;</template>
+  <template name="&amp;frac12" description="frac12" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;frac12;</template>
+  <template name="&amp;frac34" description="frac34" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;frac34;</template>
+  <template name="&amp;iquest" description="iquest" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;iquest;</template>
+  <template name="&amp;Agrave" description="Agrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Agrave;</template>
+  <template name="&amp;Aacute" description="Aacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Aacute;</template>
+  <template name="&amp;Acirc" description="Acirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Acirc;</template>
+  <template name="&amp;Atilde" description="Atilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Atilde;</template>
+  <template name="&amp;Auml" description="Auml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Auml;</template>
+  <template name="&amp;Aring" description="Aring" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Aring;</template>
+  <template name="&amp;AElig" description="AElig" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;AElig;</template>
+  <template name="&amp;Ccedil" description="Ccedil" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ccedil;</template>
+  <template name="&amp;Egrave" description="Egrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Egrave;</template>
+  <template name="&amp;Eacute" description="Eacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Eacute;</template>
+  <template name="&amp;Ecirc" description="Ecirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ecirc;</template>
+  <template name="&amp;Euml" description="Euml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Euml;</template>
+  <template name="&amp;lgrave" description="lgrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;lgrave;</template>
+  <template name="&amp;lacute" description="lacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;lacute;</template>
+  <template name="&amp;lcirc" description="lcirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;lcirc;</template>
+  <template name="&amp;luml" description="luml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;luml;</template>
+  <template name="&amp;ETH" description="ETH" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ETH;</template>
+  <template name="&amp;Ntilde" description="Ntilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ntilde;</template>
+  <template name="&amp;Ograve" description="Ograve" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ograve;</template>
+  <template name="&amp;Oacute" description="Oacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Oacute;</template>
+  <template name="&amp;Ocirc" description="Ocirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ocirc;</template>
+  <template name="&amp;Otilde" description="Otilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Otilde;</template>
+  <template name="&amp;Ouml" description="Ouml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ouml;</template>
+  <template name="&amp;times" description="times" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;times;</template>
+  <template name="&amp;Oslash" description="Oslash" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Oslash;</template>
+  <template name="&amp;Ugrave" description="Ugrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ugrave;</template>
+  <template name="&amp;Uacute" description="Uacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Uacute;</template>
+  <template name="&amp;Ucirc" description="Ucirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Ucirc;</template>
+  <template name="&amp;Uuml" description="Uuml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Uuml;</template>
+  <template name="&amp;Yacute" description="Yacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;Yacute;</template>
+  <template name="&amp;THORN" description="THORN" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;THORN;</template>
+  <template name="&amp;szlig" description="szlig" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;szlig;</template>
+  <template name="&amp;agrave" description="agrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;agrave;</template>
+  <template name="&amp;aacute" description="aacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;aacute;</template>
+  <template name="&amp;acirc" description="acirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;acirc;</template>
+  <template name="&amp;atilde" description="atilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;atilde;</template>
+  <template name="&amp;auml" description="auml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;auml;</template>
+  <template name="&amp;aring" description="aring" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;aring;</template>
+  <template name="&amp;aelig" description="aelig" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;aelig;</template>
+  <template name="&amp;ccedil" description="ccedil" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ccedil;</template>
+  <template name="&amp;egrave" description="egrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;egrave;</template>
+  <template name="&amp;eacute" description="eacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;eacute;</template>
+  <template name="&amp;ecirc" description="ecirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ecirc;</template>
+  <template name="&amp;euml" description="euml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;euml;</template>
+  <template name="&amp;igrave" description="igrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;igrave;</template>
+  <template name="&amp;iacute" description="iacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;iacute;</template>
+  <template name="&amp;icirc" description="icirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;icirc;</template>
+  <template name="&amp;iuml" description="iuml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;iuml;</template>
+  <template name="&amp;eth" description="eth" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;eth;</template>
+  <template name="&amp;ntilde" description="ntilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ntilde;</template>
+  <template name="&amp;ograve" description="ograve" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ograve;</template>
+  <template name="&amp;oacute" description="oacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;oacute;</template>
+  <template name="&amp;ocirc" description="ocirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ocirc;</template>
+  <template name="&amp;otilde" description="otilde" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;otilde;</template>
+  <template name="&amp;ouml" description="ouml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ouml;</template>
+  <template name="&amp;divide" description="divide" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;divide;</template>
+  <template name="&amp;oslash" description="oslash" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;oslash;</template>
+  <template name="&amp;ugrave" description="ugrave" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ugrave;</template>
+  <template name="&amp;uacute" description="uacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;uacute;</template>
+  <template name="&amp;ucirc" description="ucirc" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;ucirc;</template>
+  <template name="&amp;uuml" description="uuml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;uuml;</template>
+  <template name="&amp;yacute" description="yacute" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;yacute;</template>
+  <template name="&amp;thorn" description="thorn" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;thorn;</template>
+  <template name="&amp;yuml" description="yuml" id="net.sourceforge.phpdt.html." context="html" enabled="true">&amp;yuml;</template>
+
+  <template name="#00ffff" description="Aqua (Color Code)" id="net.sourceforge.phpdt.html.aqua" context="html" enabled="true">#00ffff</template>
+  <template name="#000000" description="Black (Color Code)" id="net.sourceforge.phpdt.html.black" context="html" enabled="true">#000000</template>
+  <template name="#0000ff" description="Blue (Color Code)" id="net.sourceforge.phpdt.html.blue" context="html" enabled="true">#0000ff</template>
+  <template name="#a52a2a" description="Brown (Color Code)" id="net.sourceforge.phpdt.html.brown" context="html" enabled="true">#a52a2a</template>
+  <template name="#00ffff" description="Cyan (Color Code)" id="net.sourceforge.phpdt.html.cyan" context="html" enabled="true">#00ffff</template>
+  <template name="#ff00ff" description="Fuchsia (Color Code)" id="net.sourceforge.phpdt.html.fuchsia" context="html" enabled="true">#ff00ff</template>
+  <template name="#ffd700" description="Gold (Color Code)" id="net.sourceforge.phpdt.html.gold" context="html" enabled="true">#ffd700</template>
+  <template name="#808080" description="Gray (Color Code)" id="net.sourceforge.phpdt.html.gray" context="html" enabled="true">#808080</template>
+  <template name="#008000" description="Green (Color Code)" id="net.sourceforge.phpdt.html.green" context="html" enabled="true">#008000</template>
+  <template name="#00ff00" description="Lime (Color Code)" id="net.sourceforge.phpdt.html.lime" context="html" enabled="true">#00ff00</template>
+  <template name="#ff00ff" description="Magenta (Color Code)" id="net.sourceforge.phpdt.html.magenta" context="html" enabled="true">#ff00ff</template>
+  <template name="#800000" description="Maroon (Color Code)" id="net.sourceforge.phpdt.html.maroon" context="html" enabled="true">#800000</template>
+  <template name="#000080" description="Navy (Color Code)" id="net.sourceforge.phpdt.html.navy" context="html" enabled="true">#000080</template>
+  <template name="#808000" description="Olive (Color Code)" id="net.sourceforge.phpdt.html.olive" context="html" enabled="true">#808000</template>
+  <template name="#ffa500" description="Orange (Color Code)" id="net.sourceforge.phpdt.html.orange" context="html" enabled="true">#ffa500</template>
+  <template name="#ffc0cb" description="Pink (Color Code)" id="net.sourceforge.phpdt.html.pink" context="html" enabled="true">#ffc0cb</template>
+  <template name="#800080" description="Purple (Color Code)" id="net.sourceforge.phpdt.html.purple" context="html" enabled="true">#800080</template>
+  <template name="#ff0000" description="Red (Color Code)" id="net.sourceforge.phpdt.html.red" context="html" enabled="true">#ff0000</template>
+  <template name="#c0c0c0" description="Silver (Color Code)" id="net.sourceforge.phpdt.html.silver" context="html" enabled="true">#c0c0c0</template>
+  <template name="#008080" description="Teal (Color Code)" id="net.sourceforge.phpdt.html.teal" context="html" enabled="true">#008080</template>
+  <template name="#ffffff" description="White (Color Code)" id="net.sourceforge.phpdt.html.white" context="html" enabled="true">#ffffff</template>
+  <template name="#ffff00" description="Yellow (Color Code)" id="net.sourceforge.phpdt.html.yellow" context="html" enabled="true">#ffff00</template>
+
+  <template name="Aqua" description="Aqua (Color Code)" id="net.sourceforge.phpdt.html.ccaqua" context="html" enabled="true">#00ffff</template>
+  <template name="Black" description="Black (Color Code)" id="net.sourceforge.phpdt.html.ccblack" context="html" enabled="true">#000000</template>
+  <template name="Blue" description="Blue (Color Code)" id="net.sourceforge.phpdt.html.ccblue" context="html" enabled="true">#0000ff</template>
+  <template name="Brown" description="Brown (Color Code)" id="net.sourceforge.phpdt.html.ccbrown" context="html" enabled="true">#a52a2a</template>
+  <template name="Cyan" description="Cyan (Color Code)" id="net.sourceforge.phpdt.html.cccyan" context="html" enabled="true">#00ffff</template>
+  <template name="Fuchsia" description="Fuchsia (Color Code)" id="net.sourceforge.phpdt.html.ccfuchsia" context="html" enabled="true">#ff00ff</template>
+  <template name="Gold" description="Gold (Color Code)" id="net.sourceforge.phpdt.html.ccgold" context="html" enabled="true">#ffd700</template>
+  <template name="Gray" description="Gray (Color Code)" id="net.sourceforge.phpdt.html.ccgray" context="html" enabled="true">#808080</template>
+  <template name="Green" description="Green (Color Code)" id="net.sourceforge.phpdt.html.ccgreen" context="html" enabled="true">#008000</template>
+  <template name="Lime" description="Lime (Color Code)" id="net.sourceforge.phpdt.html.cclime" context="html" enabled="true">#00ff00</template>
+  <template name="Magenta" description="Magenta (Color Code)" id="net.sourceforge.phpdt.html.ccmagenta" context="html" enabled="true">#ff00ff</template>
+  <template name="Maroon" description="Maroon (Color Code)" id="net.sourceforge.phpdt.html.ccmaroon" context="html" enabled="true">#800000</template>
+  <template name="Navy" description="Mavy (Color Code)" id="net.sourceforge.phpdt.html.ccnavy" context="html" enabled="true">#000080</template>
+  <template name="Olive" description="Olive (Color Code)" id="net.sourceforge.phpdt.html.ccolive" context="html" enabled="true">#808000</template>
+  <template name="Orange" description="Orange (Color Code)" id="net.sourceforge.phpdt.html.ccorange" context="html" enabled="true">#ffa500</template>
+  <template name="Pink" description="Pink (Color Code)" id="net.sourceforge.phpdt.html.ccpink" context="html" enabled="true">#ffc0cb</template>
+  <template name="Purple" description="Purple (Color Code)" id="net.sourceforge.phpdt.html.ccpurple" context="html" enabled="true">#800080</template>
+  <template name="Red" description="Red (Color Code)" id="net.sourceforge.phpdt.html.ccred" context="html" enabled="true">#ff0000</template>
+  <template name="Silver" description="Silver (Color Code)" id="net.sourceforge.phpdt.html.ccsilver" context="html" enabled="true">#c0c0c0</template>
+  <template name="Teal" description="Teal (Color Code)" id="net.sourceforge.phpdt.html.ccteal" context="html" enabled="true">#008080</template>
+  <template name="White" description="White (Color Code)" id="net.sourceforge.phpdt.html.ccwhite" context="html" enabled="true">#ffffff</template>
+  <template name="Yellow" description="Yellow (Color Code)" id="net.sourceforge.phpdt.html.ccyellow" context="html" enabled="true">#ffff00</template>
+  <template name="&lt;br&gt;" description="&lt;br&gt;" id="net.sourceforge.phpdt.html.br" context="html" enabled="true">&lt;br /&gt;${cursor}</template>
+  <template name="&lt;div&gt;" description="div block with id" id="net.sourceforge.phpdt.html.div" context="html" enabled="true">&lt;div id=&quot;${id}&quot;&gt;${cursor}&lt;/div&gt;</template>
+  <template name="&lt;strong&gt;" description="&lt;strong&gt;" id="net.sourceforge.phpdt.html.strong" context="html" enabled="true">&lt;strong&gt;${cursor}&lt;/strong&gt;</template>
+
+<!-- Smarty templates -->
+
+  <template name="{" description="{* *} (Smarty comment)" id="net.sourceforge.phpdt.html.smarty_comment" context="html" enabled="true">{* ${cursor} *}</template>
+  <template name="{assign" description="{assign var= value= } (Smarty)" id="net.sourceforge.phpdt.html.smarty_assign" context="html" enabled="true">{assign var=&quot;${name}&quot; value=&quot;${value}&quot;}</template>
+  <template name="{capture" description="{capture }{/capture} (Smarty)" id="net.sourceforge.phpdt.html.smarty_capture" context="html" enabled="true">{capture name=${name}}
+${cursor}
+{/capture}</template>
+<template name="{config_load" description="{config_load} (Smarty)" id="net.sourceforge.phpdt.html.smarty_config_load1" context="html" enabled="true">{config_load file=&quot;${file}&quot;}</template>
+<template name="{config_load" description="{config_load} with section (Smarty)" id="net.sourceforge.phpdt.html.smarty_config_load2" context="html" enabled="true">{config_load file=&quot;${file}&quot; section=&quot;${section}&quot;}</template>
+<template name="{counter" description="{counter start= skip= print= } (Smarty)" id="net.sourceforge.phpdt.html.smarty_counter1" context="html" enabled="true">{counter start=${start} skip=${skip} print=false}</template>
+<template name="{counter" description="{counter} (Smarty)" id="net.sourceforge.phpdt.html.smarty_counter2" context="html" enabled="true">{counter}</template><template name="{cycle" description="{cycle values= } (Smarty)" id="net.sourceforge.phpdt.html." context="html" enabled="true">{cycle values=&quot;${values}&quot;}</template>
+<template name="{eval" description="{eval var=#conf#} (Smarty)" id="net.sourceforge.phpdt.html.smarty_eval1" context="html" enabled="true">{eval var=#${conf}#}</template>
+<template name="{eval" description="{eval var=$var} (smarty)" id="net.sourceforge.phpdt.html.smarty_eval2" context="html" enabled="true">{eval var=$$${var}}</template>
+<template name="{fetch" description="{fetch file=} (Smarty)" id="net.sourceforge.phpdt.html.smarty_fetch" context="html" enabled="true">{fetch file=&quot;${file}&quot;}</template>
+<template name="{foreach" description="{foreach}{/foreach} (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach1" context="html" enabled="true">{foreach from=$$${from} item=${item}}
+${cursor}
+{/foreach}</template>
+<template name="{foreach" description="{foreach}{/foreach} with key (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach2" context="html" enabled="true">{foreach from=$$${from} item=${item} key=${key}}
+${cursor}
+{/foreach}</template>
+<template name="{foreach" description="{foreach}{/foreach} with name (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach3" context="html" enabled="true">{foreach from=$$${from} item=${item} name=${name}}
+${cursor}
+{/foreach}</template>
+<template name="{foreach" description="{foreach}{foreachelse}{/foreach} (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach4" context="html" enabled="true">{foreach from=$$${from} item=${item}}
+${cursor}
+{foreachelse}
+{/foreach}</template>
+<template name="{foreach" description="{foreach}{foreachelse}{/foreach} with key (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach5" context="html" enabled="true">{foreach from=$$${from} item=${item} key=${key}}
+${cursor}
+{foreachelse}
+{/foreach}</template>
+<template name="{foreach" description="{foreach}{foreachelse}{/foreach} with name (Smarty)" id="net.sourceforge.phpdt.html.smarty_foreach6" context="html" enabled="true">{foreach from=$$${from} item=${item} name=${name}}
+${cursor}
+{foreachelse}
+{/foreach}</template>
+<template name="{if" description="{if}{/if} (Smarty)" id="net.sourceforge.phpdt.html.smarty_if1" context="html" enabled="true">{if $$${var}}${cursor}{/if}</template><template name="{if" description="{if}{elseif}{/if} (Smarty)" id="net.sourceforge.phpdt.html." context="html" enabled="true">{if $$${var}}
+${cursor}
+{elseif $$${var2}}
+
+{/if}</template><template name="{if" description="{if}{elseif}{else}{/if} (Smarty)" id="net.sourceforge.phpdt.html.smarty_if2" context="html" enabled="true">{if $$${var}}
+${cursor}
+{elseif $$${var2}}
+
+{else}
+
+{/if}</template>
+<template name="{if" description="{if}{else}{/if} (Smarty)" id="net.sourceforge.phpdt.html.smarty_if3" context="html" enabled="true">{if $$${var}}
+${cursor}
+{else}
+
+{/if}</template>
+<template name="{include" description="{include file=&quot;&quot;} (Smarty)" id="net.sourceforge.phpdt.html.smarty_include1" context="html" enabled="true">{include file=&quot;${file}&quot;}</template>
+<template name="{include_php" description="{include_php file=&quot;&quot;} (Smarty)" id="net.sourceforge.phpdt.html.smarty_include2" context="html" enabled="true">{include_php file=&quot;${file}&quot;}</template>
+<template name="{ldelim}" description="{ldelim} (Smarty)" id="net.sourceforge.phpdt.html.smarty_ldelim" context="html" enabled="true">{ldelim}</template>
+<template name="{literal" description="{literal}{/literal} (Smarty)" id="net.sourceforge.phpdt.html.smarty_literal" context="html" enabled="true">{literal}
+${cursor}
+{/literal}</template>
+<template name="{rdelim}" description="{rdelim} (Smarty)" id="net.sourceforge.phpdt.html.smarty_rdelim" context="html" enabled="true">{rdelim}</template>
+<template name="{section" description="{section }{/section} (Smarty)" id="net.sourceforge.phpdt.html.smarty_section1" context="html" enabled="true">{section name=${name} loop=$$${loop}}
+${cursor}
+{/section}</template>
+<template name="{section" description="{section}{sectionelse}{/section} (Smarty)" id="net.sourceforge.phpdt.html.smarty_section2" context="html" enabled="true">{section name=${name} loop=$$${loop}}
+${cursor}
+{sectionelse}
+
+{/section}</template>
+<template name="{smarty.cookies.var}" description="{$smarty.cookies.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_cookies" context="html" enabled="true">{$$smarty.cookies.${var}}</template>
+<template name="{smarty.env.var}" description="{$smarty.env.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_env" context="html" enabled="true">{$$smarty.env.${var}}</template>
+<template name="{smarty.get.var}" description="{$smarty.get.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_get" context="html" enabled="true">{$$smarty.get.${var}}</template>
+<template name="{smarty.now|date_format}" description="{$smarty.now|date_format} (Smarty)" id="net.sourceforge.phpdt.html.smarty__now1" context="html" enabled="true">{$$smarty.now|date_format:&quot;%Y-%m-%d %H:%M:%S&quot;}</template>
+<template name="{smarty.now}" description="{$smarty.now} (Smarty)" id="net.sourceforge.phpdt.html.smarty_now2" context="html" enabled="true">{$$smarty.now}</template>
+<template name="{smarty.post.var}" description="{$smarty.post.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_post" context="html" enabled="true">{$$smarty.post.${var}}</template>
+<template name="{smarty.request.var}" description="{$smarty.request.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_request" context="html" enabled="true">{$$smarty.request.${var}}</template>
+<template name="{smarty.server.var}" description="{$smarty.server.var} (Smarty)" id="net.sourceforge.phpdt.html.smarty_server" context="html" enabled="true">{$$smarty.server.${var}}</template>
+<template name="{strip" description="{strip}{/strip} (Smarty)" id="net.sourceforge.phpdt.html.smarty_strip" context="html" enabled="true">{strip}
+${cursor}
+{/strip}</template>
+<template name="{var|capitalize}" description="{$var|capitalize} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_capitalize" context="html" enabled="true">{$$${var}|capitalize}</template>
+<template name="{var|count_characters}" description="{$var|count_characters} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_count_charcters" context="html" enabled="true">{$$${var}|count_characters}</template>
+<template name="{var|count_paragraphs}" description="{$var|count_paragraphs} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_count_Paragraphs" context="html" enabled="true">{$$${var}|count_paragraphs}</template>
+<template name="{var|count_sentences}" description="{$var|count_sentences} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_count_sentences" context="html" enabled="true">{$$${var}|count_sentences}</template>
+<template name="{var|count_words}" description="{$var|count_words} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_count_words" context="html" enabled="true">{$$${var}|count_words}</template>
+<template name="{var|date_format}" description="{$var|date_format} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_date_format" context="html" enabled="true">{$$${var}|date_format:&quot;%Y-%m-%d %H:%M:%S&quot;}</template>
+<template name="{var|default}" description="{$var|default} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_default" context="html" enabled="true">{$$${var}|default:&quot;${text}&quot;}</template>
+<template name="{var|escape:value}" description="{$var|escape:value} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_escape1" context="html" enabled="true">{$$${var}|escape:&quot;${value}&quot;}</template>
+<template name="{var|escape}" description="{$var|escape} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_escape2" context="html" enabled="true">{$$${var}|escape}</template>
+<template name="{var|indent:nr}" description="{$var|indent:nr} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_indent1" context="html" enabled="true">{$$${var}|indent:${nr}}</template>
+<template name="{var|indent}" description="{$var|indent} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_indent2" context="html" enabled="true">{$$${var}|indent}</template>
+<template name="{var|lower}" description="{$var|lower} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_lower" context="html" enabled="true">{$$${var}|lower}</template>
+<template name="{var|nl2br}" description="{$var|nl2br} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_nl2br" context="html" enabled="true">{$$${var}|nl2br}</template>
+<template name="{var|regex_replace}" description="{$var|regex_replace} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_regex_replace" context="html" enabled="true">{$$${var}|regex_replace:&quot;${regex}&quot;:&quot;${replace}&quot;}</template>
+<template name="{var|replace}" description="{$var|replace} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_replace" context="html" enabled="true">{$$${var}|replace:&quot;${find}&quot;:&quot;${replace}&quot;}</template>
+<template name="{var|spacify}" description="{$var|spacify} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_spacify" context="html" enabled="true">{$$${var}|spacify}</template>
+<template name="{var|string_format}" description="{$var|string_format} (Smarty)" id="net.sourceforge.phpdt.html.smarty_string_format" context="html" enabled="true">{$$${var}|string_format:&quot;%.2f&quot;}</template>
+<template name="{var|strip_tags}" description="{$var|strip_tags} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_strip_tags" context="html" enabled="true">{$$${var}|strip_tags}</template>
+<template name="{var|strip}" description="{$var|strip} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_strip" context="html" enabled="true">{$$${var}|strip}</template>
+<template name="{var|truncate}" description="{$var|truncate} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_truncate" context="html" enabled="true">{$$${var}|truncate:${nr}}</template>
+<template name="{var|upper}" description="{$var|upper} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_upper" context="html" enabled="true">{$$${var}|upper}</template>
+<template name="{var|wordwrap}" description="{$var|wordwrap} (Smarty)" id="net.sourceforge.phpdt.html.smarty_var_wordwrap" context="html" enabled="true">{$$${var}|wordwrap:${nr}:&quot;${sign}&quot;}</template>
+</templates>

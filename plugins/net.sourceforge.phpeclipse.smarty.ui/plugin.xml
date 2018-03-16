@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Smarty Editor"
+            icon="icons/full/obj16/smarty_16.gif"
+            extensions="tpl"
+            contributorClass="net.sourceforge.phpdt.smarty.ui.internal.editor.SmartyEditorActionContributor"
+            class="net.sourceforge.phpdt.smarty.ui.internal.editor.SmartyEditor"
+            id="net.sourceforge.phpdt.smarty.ui.editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.filebuffers.documentSetup">
+      <participant
+            extensions="tpl"
+            class="net.sourceforge.phpdt.smarty.ui.internal.editor.SmartyDocumentSetupParticipant">
+      </participant>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.documentProviders">
+      <provider
+            extensions="tpl"
+            class="net.sourceforge.phpdt.smarty.ui.internal.editor.SmartyDocumentProvider"
+            id="net.sourceforge.phpdt.smarty.ui.documentProvider">
+      </provider>
+   </extension>
+
+
+</plugin>

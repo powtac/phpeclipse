@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-Name: XDebug Core Plug-in
+Bundle-SymbolicName: net.sourceforge.phpeclipse.xdebug.core;singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: core.jar
+Bundle-Activator: net.sourceforge.phpeclipse.xdebug.core.XDebugCorePlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.core.resources,
+ net.sourceforge.phpeclipse,
+ net.sourceforge.phpeclipse.externaltools
+Provide-Package: net.sourceforge.phpeclipse.xdebug.core,
+ net.sourceforge.phpeclipse.xdebug.php.launching,
+ net.sourceforge.phpeclipse.xdebug.php.model
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Eclipse-LazyStart: true
+Bundle-ManifestVersion: 2
+Bundle-Vendor: PHPEclipse project team

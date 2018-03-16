@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.install_amp">
+  <title>Installing <application>Apache</application>/<application>MySQL</application>/<application>PHP</application>, </title>
+  <para>
+    Most PHP developers find it easiest to work with a running web server of their local machine. This allows you to test your work as you go, without having to upload it to a hosting environment. Therefore, it's suggested that at this point you install Apache, PHP, and (if you are using it), MySQL. This step is required if you plan to use the php debugger. Together this tools are often referred to as AMP (or AMPP if you include Perl as well as PHP).
+  </para>
+
+
+  <sect2 id="sec.install_xampp">
+    <title>Installing <application>XAMPP</application></title>
+    <para>
+      <application>XAMPP</application> is a software bundle which includes everything you need to install Apache/MySQL/PHP/Perl in one go. It's available for Windows, Linux and Solaris. Particularly on a Windows machine, this is definitely the fastest way to get up and running with these tools, as someone else has done the integration and configuration work for you. Under linux, it may be a quick solution to set up, but will not be as easy to automatically maintain (or integrate with other packages) as if you installed these tools separately with your distribution's package management system (such as: apt, YaST, emerge, or up2date). This is covered in the next section.
+    </para>
+
+    <para>
+      To install XAMPP, visit <ulink url="http://www.apachefriends.org/en/xampp.html">Apachefriends</ulink>. Select your operating system:
+      <itemizedlist>
+        <listitem>
+          <para>
+            <ulink url="http://www.apachefriends.org/en/xampp-windows.html">Windows</ulink>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <ulink url="http://www.apachefriends.org/en/xampp-linux.html">Linux</ulink>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <ulink url="http://www.apachefriends.org/en/xampp-solaris.html">Solaris</ulink>
+          </para>
+        </listitem>
+      </itemizedlist>
+      and then follow the simple installation instructions found on that page.
+    </para>
+
+    <para>
+      There are two different methods of installing <application>XAMPP</application> for Windows:
+      <itemizedlist>
+        <listitem>
+          <para>
+            Method A: Installation with installer
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Method B: <quote>Installation</quote> without installer
+          </para>
+        </listitem>
+      </itemizedlist>
+      The advantage of method B is, that it doesn't do anything with the Windows registry, and you can have different versions of XAMPP (and so different versions of PHP) in parallel. This can be important if you have to test your PHP files with different versions of PHP&nbsp;4 (or different versions of PHP&nbsp;5).
+    </para>
+
+    <tip>
+      <para>
+        You can switch between PHP&nbsp;4 and PHP&nbsp;5 with <filename>php-switch.bat</filename>.
+      </para>
+    </tip>
+  </sect2>
+
+  <sect2 id="sec.xampp_change_doc_root">
+    <title>Changing the Document Root</title>
+    <para>
+      Assuming that you have installed XAMPP for Windows under <filename class="directory">C:\Program Files</filename> the default path of the &docroot; is <filename class="directory">C:\Program Files\apachefriends\xampp\htdocs</filename>.
+    </para>
+
+    <para>
+      Per default this folder contains help and demo files from the XAMPP maintainers. That's what you see if you have started XAMPP and type <quote>http://localhost</quote> within your web browser.
+    </para>
+
+    <para>
+      So, when you want to write your own files (That's what we suppose, when you use &phpeclipse;), you can either delete everything what is within <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp\htdocs</filename>, or you can set the &docroot; to any other path by opening <filename>C:\Program&nbsp;Files\apachefriends\xampp\apache\conf\httpd.conf</filename> with an editor, search the line which starts with <emphasis role="bold">DocumentRoot</emphasis> and change the path to what you need.
+    </para>
+
+    <para>
+      The next section shows an additional way to point the webserver to different locations without changing the &docroot;.
+    </para>
+  </sect2>
+
+  <sect2 id="sec.xampp_add_alias">
+    <title>Adding Aliases</title>
+    <para>
+      An additional way to let the web server know where to look for files is with the help of <quote>Alias</quote>. Just open the file <filename>C:\Program&nbsp;Files\apachefriends\xampp\apache\conf\httpd.conf</filename> with an editor and append for example<footnote><para>The example shows a eclipse default workspace path (in case your user name is Robert).</para></footnote>:
+      <programlisting><![CDATA[Alias /my_php_workspace "C:/Documents and Settings/Robert/workspace"]]></programlisting>
+    </para>
+
+    <para>
+      Assuming we have PHP files within the folder <filename class="directory">C:/Documents&nbsp;and&nbsp;Settings/Robert/workspace/MyFirstPHPProject</filename> e.g. <filename>index.php</filename> the URL to access this file would be <ulink url="http://localhost/my_php_workspace/MyFirstPHPProject/index.php"></ulink>.
+    </para>
+
+    <note>
+      <para>
+        The knowledge of where the &docroot; is, or how we can change the &docroot; or add aliases is a prerequisite when we want to successfully set up and work with &phpeclipse;.
+      </para>
+    </note>
+  </sect2>
+</sect1>

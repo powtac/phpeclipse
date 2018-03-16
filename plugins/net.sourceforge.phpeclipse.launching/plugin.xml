@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+		 point="org.eclipse.debug.core.launchConfigurationTypes">
+	  <launchConfigurationType
+			name="%LaunchConfigurationTypePHPApplication.name"
+			delegate="net.sourceforge.phpdt.internal.launching.PHPLaunchConfigurationDelegate"
+			modes="run,debug"
+			id="net.sourceforge.phpdt.launching.LaunchConfigurationTypePHPApplication">
+		 <fileExtension default="true" extension="php"></fileExtension>
+		 <fileExtension default="true" extension="phpc"></fileExtension>
+		 <fileExtension default="true" extension="php3"></fileExtension>
+		 <fileExtension default="true" extension="php4"></fileExtension>
+		 <fileExtension default="true" extension="php5"></fileExtension>
+		 <fileExtension default="true" extension="phtml"></fileExtension>
+		 <fileExtension default="true" extension="phpt"></fileExtension>
+		 <fileExtension default="true" extension="htm"></fileExtension>
+		 <fileExtension default="true" extension="html"></fileExtension>
+		 <fileExtension default="true" extension="inc"></fileExtension>
+		 <fileExtension default="true" extension="ctp"></fileExtension>
+		 <fileExtension default="true" extension="module"></fileExtension>
+	  </launchConfigurationType>
+   </extension>
+
+  <extension
+		 point="org.eclipse.debug.ui.consoleLineTrackers">
+	  <consoleLineTracker
+			class="net.sourceforge.phpdt.internal.launching.ConsoleLineTracker"
+			processType="net.sourceforge.phpdt.launching.processType"
+			id="net.sourceforge.phpdt.internal.launching.ConsoleLineTracker">
+	  </consoleLineTracker>
+  </extension>
+  <extension
+		point="org.eclipse.debug.core.sourceLocators">
+	 <sourceLocator
+		   class="net.sourceforge.phpdt.internal.launching.PHPSourceLocator"
+		   id="net.sourceforge.phpeclipse.launching.PHPSourceLocator"
+		   name="PHPSourceLocator"/>
+  </extension>
+
+</plugin>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            targetID="#PHPEditorContext"
+            id="net.sourceforge.phpdt.phphelp.actions.popup.editor">
+         <action
+               definitionId="net.sourceforge.phpdt.phphelp.actions.contexthelp"
+               label="%phphelpLabel"
+               class="net.sourceforge.phpdt.phphelp.actions.PHPEclipseShowContextHelp"
+               menubarPath="additions"
+               id="net.sourceforge.phpdt.phphelp.actions.PHPEclipseShowContextHelp">
+         </action>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="net.sourceforge.phpdt.phphelp.actions"
+            targetID="net.sourceforge.phpeclipse.PHPUnitEditor">
+         <action
+               definitionId="net.sourceforge.phpdt.phphelp.actions.contexthelp"
+               label="PHP Help"
+               class="net.sourceforge.phpdt.phphelp.actions.PHPEclipseShowContextHelp"
+               id="net.sourceforge.phpdt.phphelp.actions.PHPEclipseShowContextHelp">
+         </action>
+         <action
+               definitionId="net.sourceforge.phpdt.httpquery.localhost"
+               label="Localhost"
+               class="net.sourceforge.phpdt.httpquery.LocalhostAction"
+               id="net.sourceforge.phpdt.httpquery.LocalhostAction">
+         </action>
+         <action
+		       definitionId="net.sourceforge.phpdt.httpquery.google"
+               label="Google.com"
+               class="net.sourceforge.phpdt.httpquery.GoogleAction"
+               id="net.sourceforge.phpdt.httpquery.GoogleAction">
+         </action>
+         <action
+               definitionId="net.sourceforge.phpdt.httpquery.phpmanual"
+               label="PHP Manual"
+               class="net.sourceforge.phpdt.httpquery.PHPHelpAction"
+               id="net.sourceforge.phpdt.httpquery.PHPHelpAction">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.contexts">
+      <context
+        name="%context.editingPHPSource.name"
+        description="%context.editingPHPSource.description"
+        parentId="org.eclipse.ui.textEditorScope"
+        id="net.sourceforge.phpdt.ui.phpEditorScope" />
+   </extension>
+
+
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="phphelp.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%phphelpFormat"
+            category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+            class="net.sourceforge.phpdt.phphelp.PHPHelpPreferencePage"
+            id="net.sourceforge.phpdt.phphelp.PHPHelpPreferencePage">
+      </page>
+      <page
+           name="%httpQuery"
+           category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+           class="net.sourceforge.phpdt.httpquery.preferences.ConfigurationPreferencePage"
+           id="net.sourceforge.phpdt.httpquery.preferences.configurationPreferencePage">
+      </page>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            targetID="#PHPEditorContext"
+            id="net.sourceforge.phpdt.phphelp.actions.httpquery">
+         <menu
+			id="httpqueryMenu"
+			label="%HTTPQuery.label"
+			path="rest">
+		 </menu>
+		 <action
+		       definitionId="net.sourceforge.phpdt.httpquery.koders"
+               label="Koders.com"
+               class="net.sourceforge.phpdt.httpquery.KodersAction"
+               menubarPath="httpqueryMenu/additions"
+               id="net.sourceforge.phpdt.httpquery.KodersAction">
+         </action>
+		 <action
+		       definitionId="net.sourceforge.phpdt.httpquery.google"
+               label="Google.com"
+               class="net.sourceforge.phpdt.httpquery.GoogleAction"
+               menubarPath="httpqueryMenu/additions"
+               id="net.sourceforge.phpdt.httpquery.GoogleAction">
+         </action>
+         <action
+               definitionId="net.sourceforge.phpdt.httpquery.phpmanual"
+               label="PHP Manual"
+               class="net.sourceforge.phpdt.httpquery.PHPHelpAction"
+               menubarPath="httpqueryMenu/additions"
+               id="net.sourceforge.phpdt.httpquery.PHPHelpAction">
+         </action>
+         <action
+               definitionId="net.sourceforge.phpdt.httpquery.localhost"
+               label="Localhost"
+               class="net.sourceforge.phpdt.httpquery.LocalhostAction"
+               menubarPath="httpqueryMenu/additions"
+               id="net.sourceforge.phpdt.httpquery.LocalhostAction">
+         </action>
+		 <action
+               label="HTTP Query..."
+               class="net.sourceforge.phpdt.httpquery.HTTPQueryAction"
+               menubarPath="httpqueryMenu/additions"
+               id="net.sourceforge.phpdt.httpquery.HTTPQueryAction">
+         </action>
+      </viewerContribution>
+    </extension>
+
+    <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="%category.source.name"
+            description="%category.source.description"
+            id="net.sourceforge.phpeclipse.ui.category.source">
+      </category>
+
+      <command
+            name="%ActionDefinition.contexthelp.name"
+            description="%ActionDefinition.contexthelp.description"
+            categoryId="net.sourceforge.phpeclipse.ui.category.source"
+            id="net.sourceforge.phpdt.phphelp.actions.contexthelp">
+      </command>
+      <command
+            name="Localhost"
+            description="Open localhost"
+            categoryId="net.sourceforge.phpeclipse.ui.category.source"
+            id="net.sourceforge.phpdt.httpquery.localhost">
+      </command>
+      <command
+            name="Google"
+            description="Open Google.com"
+            categoryId="net.sourceforge.phpeclipse.ui.category.source"
+            id="net.sourceforge.phpdt.httpquery.google">
+      </command>
+      <command
+            name="PHP Manual"
+            description="Open PHP Manual"
+            categoryId="net.sourceforge.phpeclipse.ui.category.source"
+            id="net.sourceforge.phpdt.httpquery.phpmanual">
+      </command>
+
+     </extension>
+
+     <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            sequence="Ctrl+Shift+H"
+            contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+            commandId="net.sourceforge.phpdt.phphelp.actions.contexthelp"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            sequence="Ctrl+F8"
+            contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+            commandId="net.sourceforge.phpdt.httpquery.localhost"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            sequence="Ctrl+Shift+G"
+            contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+            commandId="net.sourceforge.phpdt.httpquery.google"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+      <key
+            sequence="Ctrl+Shift+O"
+            contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+            commandId="net.sourceforge.phpdt.httpquery.phpmanual"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+</plugin>

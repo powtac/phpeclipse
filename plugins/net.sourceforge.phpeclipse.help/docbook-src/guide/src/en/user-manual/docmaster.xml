@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding='utf-8'?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"[
+  <!ENTITY install SYSTEM "install.xml">
+  <!ENTITY install_java SYSTEM "install_java.xml">
+  <!ENTITY install_eclipse SYSTEM "install_eclipse.xml">
+  <!ENTITY install_phpeclipse SYSTEM "install_phpeclipse.xml">
+  <!ENTITY install_xampp SYSTEM "install_xampp.xml">
+  <!ENTITY install_debugger SYSTEM "install_debugger.xml">
+  <!ENTITY project SYSTEM "project.xml">
+  <!ENTITY workspace SYSTEM "workspace.xml">
+  <!ENTITY project SYSTEM "project.xml">
+  <!ENTITY debug SYSTEM "debug.xml">
+  <!ENTITY debug_php SYSTEM "debug_php.xml">
+  <!ENTITY debug_phpeclipse SYSTEM "debug_phpeclipse.xml">
+  <!ENTITY % glossary SYSTEM "../glossary.ent">
+ %glossary;
+]>
+
+
+ <book lang="en" status="progress_30">
+  <bookinfo>
+    <title>PHPeclipse User Manual</title>
+
+    <edition>First Edition</edition>
+    <orgname>PHPeclipse Documentation Team</orgname>
+    <pubdate>2006-10-10</pubdate>
+
+    <releaseinfo>Released under the Creative Commons license</releaseinfo>
+    <legalnotice>
+      <para>
+        Released under the Creative Commons license. See <ulink url="http://creativecommons.org/">Creative Commons</ulink>
+      </para>
+    </legalnotice>
+
+    <author>
+      <firstname>Robert</firstname>
+      <surname>Kraske</surname>
+      <affiliation>
+        <orgname>PHPeclipse</orgname>
+      </affiliation>
+    </author>
+
+    <othercredit>
+      <othername>All the contributors to the &phpeclipse; wiki</othername>
+      <contrib>
+        Different info about installation, setting up etc.
+      </contrib>
+    </othercredit>
+
+    <revhistory>
+      <revision>
+        <revnumber>0.3</revnumber>
+        <date>2006-01-26</date>
+        <authorinitials></authorinitials>
+        <revdescription>
+          <para>The initial version</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>0.4</revnumber>
+        <date>2006-02-07</date>
+        <authorinitials>RK</authorinitials>
+        <revdescription>
+          <para>Added descriptions to &phpeclipse; installation.</para>
+          <para>Added some index terms.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>0.5</revnumber>
+        <date>2006-06-03</date>
+        <authorinitials>RK</authorinitials>
+        <revdescription>
+          <para>Added setting up workspace</para>
+          <para>Added creating project</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>0.6</revnumber>
+        <date>2006-06-05</date>
+        <authorinitials>RK</authorinitials>
+        <revdescription>
+          <para>Enhanced setting up workspace</para>
+          <para>Enhanced creating project</para>
+          <para>Added DBG setup</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>0.7</revnumber>
+        <date>2006-06-17</date>
+        <authorinitials>RK</authorinitials>
+        <revdescription>
+          <para>Added debugger description</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>0.8</revnumber>
+        <date>2006-09-10</date>
+        <authorinitials>RK</authorinitials>
+        <revdescription>
+          <para>Added breakpoint, variable and watch expressions</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+
+    <abstract>
+      <para></para>
+    </abstract>
+  </bookinfo>
+
+  &install;
+  &workspace;
+  &project;
+  &debug;
+
+  <index role="with_index" id="TheVeryLastPage">
+  </index>
+</book>

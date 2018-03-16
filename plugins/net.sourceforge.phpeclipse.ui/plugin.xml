@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%preferencePageName"
+            class="net.sourceforge.phpeclipse.ui.preferences.EmptyPreferencePage"
+            id="net.sourceforge.phpeclipse.ui.preferencePage">
+      </page>
+      <page
+            category="net.sourceforge.phpeclipse.ui.preferencePage"
+            name="Project Defaults"
+            class="net.sourceforge.phpeclipse.ui.preferences.PHPMiscProjectPreferences"
+            id="net.sourceforge.phpeclipse.ui.preferences.PHPMiscProjectPreferences">
+      </page>
+      <page
+            category="net.sourceforge.phpeclipse.ui.preferencePage"
+            name="Browser Preview Defaults"
+            class="net.sourceforge.phpeclipse.ui.preferences.PHPPreviewProjectPreferences"
+            id="net.sourceforge.phpeclipse.ui.preferences.PHPPreviewProjectPreferences">
+      </page>
+   </extension>
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="net.sourceforge.phpeclipse.ui.preferences.PHPMiscProjectPreferences"
+            icon="icons/full/obj16/php.png"
+            id="net.sourceforge.phpeclipse.ui.preferences.project.PHPMiscProjectPreferences"
+            name="PHP Project Settings"
+            objectClass="org.eclipse.core.resources.IProject">
+         <filter
+               name="nature"
+               value="net.sourceforge.phpeclipse.phpnature">
+         </filter>
+      </page>
+      <page
+            class="net.sourceforge.phpeclipse.ui.preferences.PHPPreviewProjectPreferences"
+            id="net.sourceforge.phpeclipse.ui.preferences.PHPPreviewProjectPreferences"
+            name="PHP Browser Preview"
+            objectClass="org.eclipse.core.resources.IFile">
+      </page>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.editors.templates">
+      <contextType
+            name="%templates.contextType.xml"
+            class="net.sourceforge.phpeclipse.ui.templates.template.XMLContextType"
+            id="xml">
+      </contextType>
+      <contextType
+            name="%templates.contextType.html"
+            class="net.sourceforge.phpeclipse.ui.templates.template.HTMLContextType"
+            id="html">
+      </contextType>
+      <contextType
+            name="%templates.contextType.javascript"
+            class="net.sourceforge.phpeclipse.ui.templates.template.JSContextType"
+            id="javascript">
+      </contextType>
+      <contextType
+            name="%templates.contextType.smarty"
+            class="net.sourceforge.phpeclipse.ui.templates.template.SmartyContextType"
+            id="smarty">
+      </contextType>
+      <include
+      		file="templates/default-templates.xml"
+      		translations="templates/default-templates.properties">
+      </include>
+   </extension>
+</plugin>

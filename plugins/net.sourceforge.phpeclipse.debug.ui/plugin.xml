@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="%PreferencePage.PHPInterpreter.name"
+            category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+            class="net.sourceforge.phpdt.internal.debug.ui.preferences.PHPInterpreterPreferencePage"
+            id="net.sourceforge.phpdt.debug.ui.preferences.PreferencePagePHPInterpreter">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            targetID="net.sourceforge.phpeclipse.PHPUnitEditor"
+            id="net.sourceforge.phpdt.internal.debug.ui.actions.BreakpointRulerActions">
+         <action
+               label="%Dummy.label"
+               class="net.sourceforge.phpdt.internal.debug.ui.actions.PHPManageBreakpointRulerActionDelegate"
+               actionID="RulerDoubleClick"
+               id="net.sourceforge.phpdt.internal.debug.ui.actions.ManageBreakpointRulerAction">
+         </action>
+      </editorContribution>
+   </extension>
+<!-- Debug Model -->
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="net.sourceforge.phpdt.internal.debug.ui.PHPDebugModelPresentation"
+            id="net.sourceforge.phpeclipse.debug.core">
+      </debugModelPresentation>
+   </extension>
+<!-- Launcher extensions -->
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            icon="icons/ctool16/run_php.gif"
+            configTypeID="net.sourceforge.phpdt.launching.LaunchConfigurationTypePHPApplication"
+            id="net.sourceforge.phpdt.debug.ui.LaunchConfigurationTypeImagePHPApplication">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            type="net.sourceforge.phpdt.launching.LaunchConfigurationTypePHPApplication"
+            class="net.sourceforge.phpdt.internal.debug.ui.launcher.PHPApplicationTabGroup"
+            id="net.sourceforge.phpdt.debug.ui.LaunchConfigurationTabGroupPHPApplication">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            label="%LaunchShortcut.PHP.label"
+            icon="icons/ctool16/run_php.gif"
+            modes="run,debug"
+            class="net.sourceforge.phpdt.internal.debug.ui.launcher.PHPLaunchShortcut"
+            id="net.sourceforge.phpdt.debug.ui.applicationshortcut.php">
+      </shortcut>
+   </extension> 
+<!-- Breakpoint Image -->
+   <extension
+         point="org.eclipse.ui.ide.markerImageProviders">
+      <imageprovider
+            markertype="net.sourceforge.phpeclipse.debug.core.phpLineBreakpointMarker"
+            icon="icons/obj16/brkp_obj.gif"
+            id="net.sourceforge.phpeclipse.debug.core.PHPLineBreakpointMarkerProvider">
+      </imageprovider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            name="%Context.Debugging.name"
+            description="%Context.Debugging.description"
+            id="net.sourceforge.phpeclipse.debug.ui.debugging"
+            parentId="org.eclipse.debug.ui.debugging">
+      </context>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelContextBindings">
+      <modelContextBinding
+            debugModelId="net.sourceforge.phpeclipse.debug.core"
+            contextId="net.sourceforge.phpeclipse.debug.ui.debugging">
+      </modelContextBinding>
+   </extension>
+   <extension
+         point="net.sourceforge.phpeclipse.phpEditorTextHovers">
+      <hover
+            label="%DebugHover.label"
+            description="%DebugHover.description"
+            class="net.sourceforge.phpdt.internal.debug.ui.PHPDebugHover"
+            id="net.sourceforge.phpdt.ui.DebugHover">
+      </hover>
+   </extension>
+   
+   	<!-- Adapters for contextual launch -->
+	<extension point="org.eclipse.core.runtime.adapters">
+         <factory 
+            class="" 
+            adaptableType="net.sourceforge.phpdt.core.IJavaElement">
+            <adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
+         </factory>
+         <factory 
+            class="" 
+            adaptableType="org.eclipse.core.resources.IResource">
+            <adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
+         </factory>         
+    </extension>
+    
+   <!-- Adapters for retargettable actions -->
+	<extension point="org.eclipse.core.runtime.adapters">
+         <factory 
+            class="net.sourceforge.phpdt.internal.debug.ui.actions.RetargettableActionAdapterFactory" 
+            adaptableType="net.sourceforge.phpeclipse.phpeditor.PHPUnitEditor">
+            <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+         </factory>
+    </extension>
+    <extension
+         point="org.eclipse.ui.popupMenus">     
+      <viewerContribution
+            targetID="#PHPRulerContext"
+            id="net.sourceforge.phpdt.ui.PHPUnitEditorPopupActions">
+         <action
+               label="%AddBreakpoint.label"
+               helpContextId="manage_breakpoint_action_context"
+               class="net.sourceforge.phpdt.internal.debug.ui.actions.PHPManageBreakpointRulerActionDelegate"
+               menubarPath="debug"
+               id="net.sourceforge.phpdt.internal.debug.ui.actions.PHPManageBreakpointRulerActionDelegate">
+         </action>
+      </viewerContribution>
+    </extension>
+    <extension
+          point="org.eclipse.ui.popupMenus">
+       <objectContribution
+             adaptable="true"
+             id="net.sourceforge.phpeclipse.debug.ui.BreakpointProperties"
+             objectClass="org.eclipse.debug.core.model.IBreakpoint">
+          <menu
+                id="net.sourceforge.phpeclipse.debug.ui.menu2"
+                label="Breakpoint properties menu">
+             <separator name="net.sourceforge.phpeclipse.debug.ui.separator1"/>
+          </menu>
+          <action
+                class="net.sourceforge.phpdt.internal.debug.ui.actions.PHPDebugBreakpointAction"
+                id="net.sourceforge.phpeclipse.debug.ui.actions.PHPDebugBreakpointAction"
+                label="Properties"/>
+       </objectContribution>
+    </extension>
+</plugin>

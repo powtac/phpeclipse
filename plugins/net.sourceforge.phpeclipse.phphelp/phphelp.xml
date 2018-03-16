@@ -1,0 +1,12 @@
+<toc label="PHPEclipse Help" topic="doc/phpeclipse/index.html">
+  <topic label="PHP Help Table of Contents" href="doc/index.html"/>
+  <topic label="I. Getting Started" href="doc/getting-started.html"/>
+  <topic label="II. Installation and Configuration" href="doc/install.html"/>
+  <topic label="III. Language Reference" href="doc/langref.html"/>
+  <topic label="IV. Security" href="doc/security.html"/>
+  <topic label="V. Features" href="doc/features.html"/>
+  <topic label="VI. Function Reference" href="doc/funcref.html"/>
+  <topic label="VII. PHP and Zend Engine Internals" href="doc/internals.html"/>
+  <topic label="VIII. FAQ: Frequently Asked Questions" href="doc/faq.html"/>
+  <topic label="IX. Appendixes" href="doc/appendixes.html"/>  
+</toc>

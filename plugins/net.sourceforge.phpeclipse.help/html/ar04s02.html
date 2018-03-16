@@ -1,0 +1,50 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Setting up the Debugger</title><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="start" href="index.html" title="Debugging in PHP Eclipse"><link rel="up" href="ar04.html" title="Debugging a Project On a Web Server Using PHPEclipse and XDebug"><link rel="prev" href="ar04.html" title="Debugging a Project On a Web Server Using PHPEclipse and XDebug"><link rel="next" href="ar04s03.html" title="Conclusion"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Setting up the Debugger</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ar04.html">Prev</a> </td><th width="60%" align="center">Debugging a Project On a Web Server Using PHPEclipse and
+  XDebug</th><td width="20%" align="right"> <a accesskey="n" href="ar04s03.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="phpeclipse.debuggingremote.setupdebugger"></a>Setting up the Debugger</h2></div></div></div><p>Before we start debugging, we have to configure a few options so
+    that PHPEclipse and XDebug know where to find various components.</p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="phpeclipse.debuggingremote.setupdebugger.interpreterpath"></a>Specifying the PHP Interpreter Path</h3></div></div></div><p>To begin, we must specify the PHP Interpreter Path. This may
+      differ depending on your system. For Windows based systems, this is a
+      path to a file called php.exe. For Linux systems, this is a path to a
+      file simply called php. For Linux systems, this is often in
+      /usr/bin/php. To specify the PHP Interpreter, select Preferences from
+      the Window drop down menu. Open up the PHPEclipse selection and click on
+      XDebug. In the settings pane on the right that appears, enter your debug
+      port and the path to your PHP interpreter. The default debug port for
+      XDebug is 9000, but your system may be setup differently. To verify that
+      9000 is the correct port, find a way to access your phpinfo() page and
+      check the value of xdebug.remote_port. The value of xdebug.remote_port
+      should match the debug port value.</p><div class="figure"><a name="phpeclipse.debuggingremote.xdebugsetup"></a><p class="title"><b>Figure 1. XDebug Configuration Pane</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="xdebugsetup.png" alt="XDebug Configuration Pane"></div></div></div></div><p><br class="figure-break">When you have entered the appropriate values, click on the OK
+      button.</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="phpeclipse.debuggingremote.setupdebugger.debugconfiguration"></a>Creating the Debug Configuration</h3></div></div></div><p>Now that we have configured XDebug, we need to create a debug
+      configuration. This will tell Eclipse how to start the debugger for your
+      project. To do this, select 'Open Debug Dialog' from the Run drop down
+      menu. You will be presented with a list of items which you can debug.
+      Double click on the entry titled 'PHP XDebug Remote Script'. This will
+      create a new configuration and allow you to specify the necessary
+      options. You can provide a name for your debug configuration, and then
+      you must specify the Ide Identification String. You can select anything
+      you want for this string. It is recommended to keep it short and
+      memorable. Ensure that you remember this value for later. In our
+      example, we will use the string firstproject.</p><div class="figure"><a name="phpeclipse.debuggingremote.debugconfigurationremote"></a><p class="title"><b>Figure 2. Debug Configuration Window</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="debugconfigurationremote.png" alt="Debug Configuration Window"></div></div></div></div><p><br class="figure-break">Once you have selected a configuration name and have chosen
+      an identification string, click on the Pathmap tab. In the pathmap tab,
+      you specify how Eclipse translates local path names to remote path
+      names. To map a path, click on the New button to create a new map. If
+      your web server is located on the same system that Eclipse is running
+      on, both of these paths will be the same. In either case, under Local
+      Path enter the path to the root of your project on the machine that
+      Eclipse is running on. In Remote Path, enter the path to the root of
+      your project on the machine the web server is running on.</p><div class="figure"><a name="phpeclipse.debuggingremote.debugconfigurationremotepathmap"></a><p class="title"><b>Figure 3. Specifying the Path Map from Local to Remote Machine</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="debugconfigurationremotepathmap.png" alt="Specifying the Path Map from Local to Remote Machine"></div></div></div></div><p><br class="figure-break">Once you have specified the proper pathmap, press the Debug
+      button to begin the debugger.</p><p>You will notice that in contrast to when we were debugging
+      locally, remote debugging will not automatically start your script. It
+      will simply start the debugging and begin listening for connections on
+      the debugging port. To begin our script, we open it up in a web
+      browser.</p><div class="figure"><a name="phpeclipse.debuggingremote.remoteexecution"></a><p class="title"><b>Figure 4. Executing our Script in the Web Browser</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="remoteexecution.png" alt="Executing our Script in the Web Browser"></div></div></div></div><p><br class="figure-break"></p><p>This doesn't actually start debugging your script. There is no
+      link at this point between your script and the Eclipse debugger. We have
+      to somehow tell PHP to look for the Eclipse debugger for processing
+      instructions. To do this, we have to add a variable to the request
+      string. This variable is called XDEBUG_SESSION_START and its value
+      should match the Ide Indentification String we specified earlier. In
+      this case, our new URL will be
+      http://127.0.0.1/myFirstProject/index.php?XDEBUG_SESSION_START=firstproject.</p><div class="figure"><a name="phpeclipse.debuggingremote.remotedebugxdebugvariable"></a><p class="title"><b>Figure 5. Adding the XDEBUG_SESSION_START onto the Query String</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="remotedebugxdebugvariable.png" alt="Adding the XDEBUG_SESSION_START onto the Query String"></div></div></div></div><p><br class="figure-break">Once you have added the variable to the URL, press enter to
+      start debugging.</p><p>You can now resume the process of debugging as demonstrated in the
+      local debugging tutorial. The process is the same, except that instead
+      of the output being displayed in the console it is displayed in the
+      browser where you loaded your script.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ar04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ar04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ar04s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Debugging a Project On a Web Server Using PHPEclipse and
+  XDebug </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Conclusion</td></tr></table></div></body></html>

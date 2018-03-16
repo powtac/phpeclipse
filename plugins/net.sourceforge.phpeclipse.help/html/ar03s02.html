@@ -1,0 +1,12 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating a Simple Script</title><meta name="generator" content="DocBook XSL Stylesheets V1.71.0"><link rel="start" href="index.html" title="Debugging in PHP Eclipse"><link rel="up" href="ar03.html" title="Debugging a Project Locally Using PHPEclipse and XDebug"><link rel="prev" href="ar03.html" title="Debugging a Project Locally Using PHPEclipse and XDebug"><link rel="next" href="ar03s03.html" title="Setting up the Debugger"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating a Simple Script</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ar03.html">Prev</a> </td><th width="60%" align="center">Debugging a Project Locally Using PHPEclipse and XDebug</th><td width="20%" align="right"> <a accesskey="n" href="ar03s03.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="phpeclipse.debugginglocal.simplescript"></a>Creating a Simple Script</h2></div></div></div><p>To begin, open up an existing PHP file in an existing project. For
+    this tutorial, we will be using the project created in the tutorial
+    'Creating a Project Using PHPEclipse' but you can use any PHP project you
+    like.</p><p>To start, we will create a simple script that has some variables and
+    a control structure. This will give us something interesting to view with
+    the debugger. We'll start with the code below:</p><pre class="programlisting">$output = '';
+
+for ($i=0;$i&lt;10;$i++) {
+    $output .= 'Loop'.$i.' ';
+    echo $output;
+}</pre><p>This program is very simple, but it will allow us to watch
+    variables and step through a program.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ar03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ar03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ar03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Debugging a Project Locally Using PHPEclipse and XDebug </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Setting up the Debugger</td></tr></table></div></body></html>

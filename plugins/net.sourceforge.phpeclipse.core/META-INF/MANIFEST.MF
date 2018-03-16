@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPeclipse Web Development Tools Core
+Bundle-SymbolicName: net.sourceforge.phpeclipse.core
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: webcore.jar
+Bundle-Activator: net.sourceforge.phpeclipse.core.WebCore
+Bundle-Vendor: PHPEclipse project team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpeclipse.core,
+ net.sourceforge.phpeclipse.core.model
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.text
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4

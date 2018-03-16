@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension id="phpBreakpointMarker" point="org.eclipse.core.resources.markers">
+      <super type="org.eclipse.debug.core.breakpointMarker"/>
+   </extension>
+
+   <extension id="commonPHPLineBreakpointMarker" point="org.eclipse.core.resources.markers">
+      <super type="net.sourceforge.phpeclipse.debug.core.phpBreakpointMarker"/>
+      <super type="org.eclipse.debug.core.lineBreakpointMarker"/>
+      <persistent value="true"/>
+   </extension>
+
+   <extension id="phpLineBreakpointMarker" point="org.eclipse.core.resources.markers">
+      <super type="net.sourceforge.phpeclipse.debug.core.commonPHPLineBreakpointMarker"/>
+      <persistent value="true"/>
+   </extension>
+
+   <extension point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            markerType="net.sourceforge.phpeclipse.debug.core.phpLineBreakpointMarker"
+            class="net.sourceforge.phpdt.internal.debug.core.breakpoints.PHPLineBreakpoint"
+            id="phpLineBreakpoint">
+      </breakpoint>
+   </extension>
+   
+   <extension point="org.eclipse.debug.core.watchExpressionDelegates">
+     <watchExpressionDelegate
+       debugModel="net.sourceforge.phpeclipse.debug.core"
+       delegateClass="net.sourceforge.phpdt.internal.debug.core.watch.PHPWatchExpressionDelegate"/>
+   </extension>
+</plugin>

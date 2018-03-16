@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter>
+  <title>Project</title>
+  <para>
+    So, when finished with setting up a workspace, we can go for our first PHP project. This is a necessary step, because a workspace alone will not help. We also need to set up a project within a workspace. As we want to work with PHP we will create a PHP project.
+  </para>
+
+  <sect1 id="sec.project_creation">
+    <title>Create a project</title>
+    <para>
+      For creating a project klick on
+      <menuchoice>
+        <guimenu>File</guimenu>
+        <guisubmenu>New</guisubmenu>
+        <guisubmenu>Project...</guisubmenu>
+      </menuchoice> (see <xref linkend="fig.create_new_project"/>). This will open a project creation wizard dialog (see <xref linkend="fig.select_a_wizard"/>). Now click on <quote>PHP Project</quote> under the PHP tree entry as you can see in <xref linkend="fig.php_project_name"/>. When you click on <guibutton>Next &gt;</guibutton> the PHP Project dialog will be shown, where you can input a name for your new PHP Project. In our example we choose the name <quote>MyFirstPHPProject</quote>. Now, just click on <guibutton>Finish</guibutton>, and your project will be created. Now you should see your project within the Navigator pane (see x
+    </para>
+
+    <figure id="fig.create_new_project">
+      <title>Create a new projec</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_1.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_1.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+
+    <figure id="fig.select_a_wizard">
+      <title>Select a wizard</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_2.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_2.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+
+    <figure id="fig.php_project_name">
+      <title>Name your PHP Project</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_3.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_3.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+
+    <figure id="fig.php_project">
+      <title>The new PHP Project within the Navigator pane</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_4.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/create_new_project_4.png" format="PNG" width="8cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+
+  <sect1 id="sec.add_files_to_projects">
+    <title>Adding files to the project</title>
+    <para>
+      Now, as we have created a PHP project we need some PHP files in it. The following sections will explain the different aspects about adding a file to your project.
+    </para>
+
+    <sect2 id="sec.add_file_simple">
+      <title>Adding a simple file</title>
+      <para>
+        Per se, there are two different methods of adding a file to your project. Both are available through the <quote>File</quote> menu.
+      </para>
+
+      <para>
+        The first method is to add a <quote>simple</quote> file to your project by clicking on <menuchoice>
+          <guimenu>File</guimenu>
+          <guisubmenu>New</guisubmenu>
+          <guisubmenu>File</guisubmenu>
+        </menuchoice> (see <xref linkend="fig.add_file_menu_file"/>). This will open the appropriate <quote>New File</quote> dialog. Input the name for that file (with the extension <quote>php</quote>), and click on <guibutton>Finish</guibutton>. This will add the new file to the <quote>Navigator</quote> pane, and opens an editor view.
+      </para>
+
+
+      <figure id="fig.add_file_menu_file">
+        <title>Adding a simple file to the project</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_1.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_1.png" format="PNG" width="10cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_file_dialog">
+        <title>The <emphasis>New File</emphasis> Dialog</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_2.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_2.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_file_in_navigator">
+        <title>The new file in the <emphasis>Navigator</emphasis> view</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_3.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_3.png" format="PNG" width="6cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_file_in_editor">
+        <title>The new file opened in PHP editor</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_4.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_file_to_project_4.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
+
+    <sect2 id="sec.add_file_php">
+      <title>Add a PHP file to the project</title>
+      <para>
+        The second method of adding a PHP file to your project is through
+        <menuchoice>
+          <guimenu>File</guimenu>
+          <guisubmenu>New</guisubmenu>
+          <guisubmenu>PHP File</guisubmenu>
+        </menuchoice> (see <xref linkend="fig.add_file_menu_phpfile"/>). This will open a <quote>New PHP file</quote> dialog with a default File name entry of <quote>file.php</quote> (see <xref linkend="fig.new_phpfile_dialog"/>). We change the file name to <filename>mySecondFile.php</filename> (see <xref linkend="fig.new_phpfile_dialog_change_name"/>) and click on <guibutton>Finish</guibutton>.
+      </para>
+
+
+      <para>
+        This also will add a PHP file to your project as you can see in the <emphasis>Navigator</emphasis> view (see <xref linkend="fig.new_phpfile_in_navigator"/>), and it also opens this new file within the PHP editor (see <xref linkend="fig.new_phpfile_in_navigator"/>) as it was done in <xref linkend="sec.add_file_simple"/>.
+      </para>
+
+      <para>
+        But there is obviously a difference. In opposite to <filename>myFirstFile.php</filename> which is a real empty file, <filename>mySecondFile.php</filename> has some text in it (see <xref linkend="fig.new_phpfile_in_editor"/>). The file we just created is filled with a <quote>template</quote>. <!-- todo: link to the template config section once this is written -->
+      </para>
+
+      <para>
+        The difference is only at creation time. The files themselfs, when created, do not differ in any sense.
+      </para>
+
+      <para id="para.absolute_file_path">
+        When we look at file system level, the absolute path of the files we just created are in respect of the current workspace, in general: <filename>workspace_path/project/file.php</filename>. For example if you have accepted the default workspace when you started eclipse (and your username is Robert):
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>myFirstFile.php</emphasis>: <filename>C:/Dokuments&nbsp;and&nbsp;Settings/Robert/workspace/MyFirstPHPProject/myFirstFile.php</filename>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>mySecondFile.php</emphasis>: <filename>C:/Dokuments&nbsp;and&nbsp;Settings/Robert/workspace/MyFirstPHPProject/mySecondFile.php</filename>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+      <note>
+      <para>
+        The importance of knowing the absolute path is when the web server comes into account. As you want to test the program you have written, the web server needs access to your PHP files. This could be accomplished either when you set your web server's document root to point at your current workspace, or set your workspace to the currect web server's document root. <!-- todo point to the xammp installation section -->
+      </para>
+
+      <para>
+        But there is a third way, which will make things easier, as you can leave the workspace wherever you want, and also do not need to change the web server's document root.
+      </para>
+      </note>
+
+      <figure id="fig.add_file_menu_phpfile">
+        <title>Adding a PHP file to the project</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_1.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_1.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_phpfile_dialog">
+        <title>The <emphasis>New PHP file</emphasis>dialog</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_2.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_2.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_phpfile_dialog_change_name">
+        <title>Change the name to what you like</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_3.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_3.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_phpfile_in_navigator">
+        <title>The new PHP file in the &navview;</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_4.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_4.png" format="PNG" width="6cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+      <figure id="fig.new_phpfile_in_editor">
+        <title>The new PHP file opened in PHP editor</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_5.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/add_phpfile_to_project_5.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
+
+    <sect2 id="sec.add_file_existing">
+      <title>Add existing files to the project</title>
+      <para>
+        There are generally two ways to add files, which already exists anywhere on your file system, to a project<footnote><para>Every file which you want to open and handle with &phpeclipse; needs to be within a project.</para></footnote>.
+      </para>
+
+      <sect3 id="sec.add_file_by_import">
+        <title>Import Files</title>
+        <para>
+          You can import files from anywhere on your local machine by eclipse itself via      <menuchoice>
+            <guimenu>File</guimenu>
+            <guisubmenu>Import...</guisubmenu>
+          </menuchoice> (see <xref linkend="fig.file_import_1"/>) or by manually copying the files via the file system into your project folder (see <xref linkend="para.absolute_file_path"/>). In fact the way via <emphasis>Import...</emphasis> is more convenient.
+        </para>
+
+        <para>
+          But this method only makes a copy of existing files, and doesn't disburden you from changing the web server's &docroot;. Especially if the files you have currently imported to your workspace are located on your current web server's &docroot;.
+        </para>
+
+        <para>
+          In this case it would be easier to set the workspace to the current web server's &docroot;, or do as described in the following section <xref linkend="sec.add_file_by_linking"/>.
+        </para>
+
+
+        <figure id="fig.file_import_1">
+          <title>Import Files into Project</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/file_import_1.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/file_import_1.png" format="PNG" width="10cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+      </sect3>
+
+
+      <sect3 id="sec.add_file_by_linking">
+        <title>Link Folders</title>
+        <para>
+          Indeed, this should be the best option if you want to have independence between a eclipse workspace and the web server's &docroot;.
+        </para>
+
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Create a new project (e.g. <quote>MyLinkedPHPProject</quote>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Right click on this project within the <quote>Navigator View</quote> to open the context menu and click on.
+                <menuchoice>
+                  <guimenu>New</guimenu>
+                  <guisubmenu>Folder</guisubmenu>
+                </menuchoice> (see <xref linkend="fig.linked_project_1"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Click on <guibutton>Advanced &gt;&gt;</guibutton> and enable <guibutton>Link to folder in the file system</guibutton> (see <xref linkend="fig.linked_project_2"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Now you can either manually enter the path or browse to the folder which is to link. In the example we input <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp\htdocs</filename>, and click on <guibutton>Finish</guibutton>. The &navview; should now look like (see <xref linkend="fig.linked_project_3"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                At last we have to set the correct &docroot; (which is <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp\htdocs</filename>) within the project properties as shown in <xref linkend="fig.linked_project_4"/>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+
+        <figure id="fig.linked_project_1">
+          <title>Add a Folder to Project</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_1.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_1.png" format="PNG" width="8cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+
+        <figure id="fig.linked_project_2">
+          <title>Create a Link Folder</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_2.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_2.png" format="PNG" width="12cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+
+        <figure id="fig.linked_project_3">
+          <title>The &navview; with the new Project</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_3.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_3.png" format="PNG" width="4cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+
+        <figure id="fig.linked_project_4">
+          <title>Change the Project's DocumentRoot Setting</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_4.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/linked_project_4.png" format="PNG" width="12cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+      </sect3>
+    </sect2>
+  </sect1>
+</chapter>

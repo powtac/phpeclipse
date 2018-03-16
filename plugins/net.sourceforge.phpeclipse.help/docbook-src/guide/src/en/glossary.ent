@@ -1,0 +1,15 @@
+<!ENTITY eclipse '<emphasis role="bold">eclipse</emphasis>'>
+<!ENTITY eclipsesdk '<emphasis role="bold">eclipse SDK</emphasis>'>
+<!ENTITY phpeclipse '<emphasis role="bold">PHPeclipse</emphasis>'>
+<!ENTITY phpini '<filename>php.ini</filename>'>
+<!ENTITY mar '-&gt;'>
+<!ENTITY sforge 'SourceForge.net'>
+<!ENTITY docroot '<quote>document root</quote>'>
+<!ENTITY navview '<quote>Navigator View</quote>'>
+<!ENTITY dbg '<application>dbg</application>'>
+<!ENTITY varview '<quote>Variables View</quote>'>
+<!ENTITY expview '<quote>Expressions View</quote>'>
+<!ENTITY bpview '<quote>Breakpoints View</quote>'>
+<!ENTITY editview '<quote>Editor View</quote>'>
+<!ENTITY remso '<quote>Remote Sourcepath</quote>'>
+

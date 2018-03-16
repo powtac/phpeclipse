@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHP ExternalTools Plug-in
+Bundle-SymbolicName: net.sourceforge.phpeclipse.externaltools; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: externaltools.jar
+Bundle-Activator: net.sourceforge.phpeclipse.externaltools.ExternalToolsPlugin
+Bundle-Vendor: PHPEclipse project team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpdt.externaltools.actions,
+ net.sourceforge.phpdt.externaltools.group,
+ net.sourceforge.phpdt.externaltools.internal.dialog;x-internal:=true,
+ net.sourceforge.phpdt.externaltools.internal.model;x-internal:=true,
+ net.sourceforge.phpdt.externaltools.internal.program.launchConfigurations;x-internal:=true,
+ net.sourceforge.phpdt.externaltools.internal.registry;x-internal:=true,
+ net.sourceforge.phpdt.externaltools.internal.ui;x-internal:=true,
+ net.sourceforge.phpdt.externaltools.launchConfigurations,
+ net.sourceforge.phpdt.externaltools.model,
+ net.sourceforge.phpdt.externaltools.preferences,
+ net.sourceforge.phpdt.externaltools.util,
+ net.sourceforge.phpdt.externaltools.variable,
+ net.sourceforge.phpeclipse.externaltools
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.console,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.editors,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.debug.ui,
+ org.eclipse.ui.externaltools,
+ net.sourceforge.phpeclipse.ui
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Eclipse-LazyStart: true

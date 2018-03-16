@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="net.sourceforge.phpeclipse.xdebug.php.launching.PHPLaunchConfigurationDelegate"
+            id="net.sourceforge.phpeclipse.xdebug.php.launch"
+            modes="run, debug"
+            name="PHP XDebug Script"
+            sourceLocatorId="net.sourceforge.phpeclipse.xdebug.core.sourceLookupDirector.php"
+            sourcePathComputerId="net.sourceforge.phpeclipse.xdebug.core.sourcePathComputer.php"/>
+      <launchConfigurationType
+            delegate="net.sourceforge.phpeclipse.xdebug.php.launching.PHPRemoteLaunchConfigurationDelegate"
+            id="net.sourceforge.phpeclipse.xdebug.php.remotelaunch"
+            modes="debug"
+            name="PHP XDebug Remote Script"
+            sourceLocatorId="net.sourceforge.phpeclipse.xdebug.core.sourceLookupDirector.php"
+            sourcePathComputerId="net.sourceforge.phpeclipse.xdebug.core.sourcePathComputer.php"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+            class="net.sourceforge.phpeclipse.xdebug.php.launching.PHPSourceLookupDirector"
+            id="net.sourceforge.phpeclipse.xdebug.core.sourceLookupDirector.php"
+            name="PHP Source Lookup Director"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourcePathComputers">
+      <sourcePathComputer
+            class="net.sourceforge.phpeclipse.xdebug.php.launching.PHPSourcePathComputerDelegate"
+            id="net.sourceforge.phpeclipse.xdebug.core.sourcePathComputer.php"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+            class="net.sourceforge.phpeclipse.xdebug.php.model.XDebugLineBreakpoint"
+            id="XDebugLineBreakpoint"
+            markerType="net.sourceforge.phpeclipse.xdebug.core.XDebugLineBreakpoint"/>
+   </extension>
+   <extension
+         id="XDebugLineBreakpoint"
+         point="org.eclipse.core.resources.markers">
+      <persistent value="true"/>
+      <super type="org.eclipse.debug.core.lineBreakpointMarker"/>
+   
+   </extension>
+   <extension 
+   	point="org.eclipse.debug.core.watchExpressionDelegates">
+     <watchExpressionDelegate
+       debugModel="net.sourceforge.phpeclipse.xdebug.php"
+       delegateClass="net.sourceforge.phpeclipse.xdebug.php.model.XDebugWatchExpressionDelegate"/>
+   </extension>
+</plugin>

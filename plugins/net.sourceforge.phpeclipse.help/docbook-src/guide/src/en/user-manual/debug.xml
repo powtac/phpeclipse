@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter id="cpt.debug">
+  <title>Debugging</title>
+  <para>
+    The following section (<xref linkend="sec.debug_php"/>) describes one of the most interesting aspects when developing software: Debugging.
+  </para>
+
+  <para>
+    The second section (<xref linkend="sec.debug_php"/>) within this chapter will describe how you can debug &phpeclipse; itself. In case you want to find out how things work, or you found a bug in &phpeclipse; and want to help the &phpeclipse; developers.
+  </para>
+
+  &debug_php;
+  &debug_phpeclipse;
+
+</chapter>

@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse XML UI
+Bundle-SymbolicName: net.sourceforge.phpeclipse.xml.ui; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: xmlui.jar
+Bundle-Activator: net.sourceforge.phpeclipse.xml.ui.XMLPlugin
+Bundle-Vendor: PHPEclipse project team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpeclipse.xml.ui,
+ net.sourceforge.phpeclipse.xml.ui.internal.compare;x-internal:=true,
+ net.sourceforge.phpeclipse.xml.ui.internal.editor;x-internal:=true,
+ net.sourceforge.phpeclipse.xml.ui.internal.outline;x-internal:=true,
+ net.sourceforge.phpeclipse.xml.ui.internal.preferences;x-internal:=true,
+ net.sourceforge.phpeclipse.xml.ui.internal.text;x-internal:=true,
+ net.sourceforge.phpeclipse.xml.ui.text
+Require-Bundle: net.sourceforge.phpeclipse.core,
+ net.sourceforge.phpeclipse.xml.core,
+ net.sourceforge.phpeclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ org.eclipse.ui.views,
+ org.eclipse.ui.workbench.texteditor
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Eclipse-LazyStart: true

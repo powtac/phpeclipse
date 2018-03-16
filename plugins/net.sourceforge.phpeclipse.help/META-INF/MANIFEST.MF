@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse  Help Plug-in
+Bundle-SymbolicName: net.sourceforge.phpeclipse.help; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-Vendor: PHPEclipse Team

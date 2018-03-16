@@ -1,0 +1,19 @@
+<?php 
+/**
+ * This is about <code>ClassName</code>.
+ * 
+ * @author author
+ */
+class ClassName extends SuperClass {
+	/* This comment may span multiple lines. */
+	private $integer = 0;
+	// This comment may span only this line
+	private $string = "zero";
+
+	public function info() {
+		# call a predefined php function
+		phpinfo();
+		return "test";
+	}
+}
+?>

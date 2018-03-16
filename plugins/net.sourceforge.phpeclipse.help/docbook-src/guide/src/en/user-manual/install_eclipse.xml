@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.install_eclipse">
+  <title>Installing <application>&eclipse;</application></title>
+  <para>
+    <indexterm><primary>install</primary><secondary>&eclipse;</secondary></indexterm>
+    With Java installed, the Eclipse Platform can now be downloaded and installed. In order to use PHP Eclipse, Eclipse version 3.0 or greater is required. You can download eclipse from the Eclipse Download Page (http://download.eclipse.org/downloads/). You will want to install the Latest Release, which at the time of writing is 3.1.1. This will install the Eclipse SDK. Eclipse is also available as a Platform Runtime Binary, but this will not let you use the debugging features.
+  </para>
+
+  <para>
+    Although in general Java applications are platform independent, &eclipse; uses the SWT (Standard Widget Toolkit (<ulink url="http://www.eclipse.org/articles/Article-SWT-Design-1/SWT-Design-1.html"></ulink>)), which provides native look and feel on a range of platforms. This allows much better integration into your desktop than the normal generic Java widgets. This means, however, that you need to select the correct release of &eclipse; for your operating system. A range of different downloads are provided on the download page for your selected release version. Windows and Mac users can simply select the only version for their platform. Linux users need to select the appropriate download for their architecture and desktop environement.
+  </para>
+
+  <para>
+    Under Linux, &eclipse; is available for both the Motif and GTK graphical toolkits. GTK is ideal for making &eclipse; look like your other Gnome applications. No &eclipse; version is available for QT (the KDE graphical toolkit) due to the way in which QT is licenced. KDE users will probably want to grab the GTK version. Additionally, you may find it easier to install the Eclipse SDK using your distribution's package management system. For example, under Gentoo Linux, the package dev-util/eclipse-sdk works fine with &phpeclipse;.
+  </para>
+
+  <para>
+    To install the &eclipsesdk; zip file downloaded from <ulink url="http://www.eclipse.org">eclipse.org</ulink>, simple extract the file to the desired location (eg: C:\Program Files). The file contains a single directory called eclipse. To run eclipse, simple execute the eclipse file in this directory. For example, under MS Windows (if installed to the location above), you would execute "C:\Program Files\eclipse\eclipse.exe". A shortcut could be created for this location.
+  </para>
+</sect1>
+

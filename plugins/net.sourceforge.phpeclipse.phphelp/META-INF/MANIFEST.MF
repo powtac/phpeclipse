@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse Help Manual
+Bundle-SymbolicName: net.sourceforge.phpeclipse.phphelp; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: phphelp.jar
+Bundle-Activator: net.sourceforge.phpdt.phphelp.PHPHelpPlugin
+Bundle-Vendor: PHPEclipse Development Team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpdt.httpquery,
+ net.sourceforge.phpdt.httpquery.config,
+ net.sourceforge.phpdt.httpquery.preferences,
+ net.sourceforge.phpdt.phphelp,
+ net.sourceforge.phpdt.phphelp.actions
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.help,
+ org.eclipse.jface.text,
+ net.sourceforge.phpeclipse,
+ net.sourceforge.phpeclipse.webbrowser,
+ org.eclipse.ui.workbench.texteditor
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.4

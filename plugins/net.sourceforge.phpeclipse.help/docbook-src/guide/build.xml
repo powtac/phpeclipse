@@ -1,0 +1,354 @@
+<?xml version='1.0'?>
+<!-- This is the first version of the ant build file              -->
+<!-- The build process isn't yet optimized and don't work         -->
+<!-- perfect for every situation (i.e. when xsl files are changed -->
+<!-- Nevertheless, it works for the every day build)              -->
+
+<project default="all" name="phpeclipsedoc" basedir=".">
+  <description>Build the phpeclipse documents</description>
+
+
+  <taskdef resource="net/sf/antcontrib/antcontrib.properties" />
+
+
+  <property environment="env"/>
+  <property name="user_docs" value="xo-002"></property>
+  <property name="doc_langs" value="en,de,fr,es"></property>
+
+
+  <!-- This is the setting for calling saxon (for making fo) -->
+  <path id="project.class.path.saxon">
+    <pathelement location="c:/docbook/docbook-xsl/extensions/saxon651.jar"/>
+    <pathelement location="c:/docbook/saxon/saxon.jar"/>
+    <pathelement location="c:/docbook/saxon/saxon_fop.jar"/>
+    <pathelement location="c:/docbook/saxon/saxon_jdom.jar"/>
+    <pathelement location="c:/docbook/docbook-xsl/extensions/resolver.jar"/>
+    <pathelement location="c:/docbook/docbook-xsl/extensions"/>
+  </path>
+
+
+  <!-- This is the setting for calling fop (for making pdf) -->
+  <path id="project.class.path.fop">
+    <pathelement location="c:/docbook/fop/build/fop.jar"/>
+    <pathelement location="c:/docbook/fop/lib/xml-apis.jar"/>
+    <pathelement location="c:/docbook/fop/lib/xercesImpl-2.2.1.jar"/>
+    <pathelement location="c:/docbook/fop/lib/xalan-2.4.1.jar"/>
+    <pathelement location="c:/docbook/fop/lib/batik.jar"/>
+    <pathelement location="c:/docbook/fop/lib/avalon-framework-cvs-20020806.jar"/>
+    <pathelement location="c:/docbook/jimi/jimiProClasses.zip"/>
+    <pathelement location="c:/docbook/jai/jai_core.jar"/>
+    <pathelement location="c:/docbook/jai/jai_codec.jar"/>
+  </path>
+
+
+  <target name="all" depends="docs"/>
+
+<!-- the outer loop (for every document, which is in the list)             -->
+
+  <target name="docs" description="target1">
+    <echo message="for every document" />
+
+    <foreach list="${user_docs}" target="target_lang" param="param_doc">
+    </foreach>
+  </target>
+
+<!-- the inner loop (for every language, which is in the list)             -->
+
+  <target name="target_lang" description="language loop">
+    <echo message="for every language we have" />
+
+    <foreach list="${doc_langs}" target="build_the_doc" param="param_lang">
+    </foreach>
+  </target>
+
+<!-- builds every output (with doc and language as parameter)              -->
+
+  <target name="build_the_doc" depends="fop, htmlhelp_compile, htmlchunk_compile">
+    <echo message="prop is ${param_doc} ${param_lang}" />
+  </target>
+
+<!-- isavail checks whether a document (source) is available               -->
+
+  <target name="isavail">
+    <available file="docmaster.xml" filepath="src/${param_lang}/${param_doc}" property="source_is_available"></available>
+  </target>
+
+<!-- ===================================================================== -->
+<!-- isrequired checks whether an update/compile is necessarry             -->
+<!-- ===================================================================== -->
+
+  <target name="isrequired" depends="isavail">
+    <uptodate property="docBuild.PDFnotRequired" targetfile="out/${param_lang}/pdf/${param_doc}.pdf">
+      <srcfiles dir="src/${param_lang}/${param_doc}" includes="**/*.xml"/>
+      <srcfiles dir="xsl" includes="phpeclipse_pdf.xsl"/>
+      <srcfiles dir="xsl" includes="phpeclipse_pagemaster.xsl"/>
+      <srcfiles dir="xsl" includes="userconfig.xsl"/>
+    </uptodate>
+
+   <uptodate property="docBuild.CHMnotRequired" targetfile="out/${param_lang}/chm/${param_doc}.chm">
+      <srcfiles dir="src/${param_lang}/${param_doc}" includes="**/*.xml"/>
+      <srcfiles dir="xsl" includes="phpeclipse_htmlhelpprofile.xsl"/>
+      <srcfiles dir="xsl" includes="phpeclipse_htmlhelp.xsl"/>
+      <srcfiles dir="xsl" includes="userconfig.xsl"/>
+    </uptodate>
+
+   <uptodate property="docBuild.XHTMLnotRequired" targetfile="out/${param_lang}/xhtml_dm/${param_doc}_dm.tar.gz">
+      <srcfiles dir="src/${param_lang}/${param_doc}" includes="**/*.xml"/>
+      <srcfiles dir="xsl" includes="phpeclipse_xhtmlprofile.xsl"/>
+      <srcfiles dir="xsl" includes="phpeclipse_htmlchunk.xsl"/>
+      <srcfiles dir="xsl" includes="userconfig.xsl"/>
+    </uptodate>
+
+   <uptodate property="docBuild.xmllintNotRequired" targetfile="${param_lang}_${param_doc}.xml">
+      <srcfiles dir="src/${param_lang}/${param_doc}" includes="**/*.xml"/>
+    </uptodate>
+
+   <condition property="docBuild.RecodeNotRequired">
+     <equals arg1="${env.INPUT_ENCODING}" arg2="${env.OUTPUT_ENCODING}" />
+   </condition>
+
+<!--
+   <condition property="docBuild.RecodeNotRequired">
+     <or>
+       <and>
+         <equals arg1="${env.INPUT_ENCODING}" arg2="UTF-8" />
+         <equals arg1="${env.OUTPUT_ENCODING}" arg2="UTF-8" />
+       </and>
+       <and>
+         <not>
+           <and>
+             <equals arg1="${env.INPUT_ENCODING}" arg2="UTF-8" />
+             <equals arg1="${env.OUTPUT_ENCODING}" arg2="UTF-8" />
+           </and>
+         </not>
+         <isset property="docBuild.XHTMLnotRequired"/>
+       </and>
+     </or>
+   </condition>
+-->
+  </target>
+
+<!-- ===================================================================== -->
+<!-- xmllint generates a single xml file from the splitted source files    -->
+<!-- ===================================================================== -->
+
+  <target name="xmllint" depends="isrequired" if="source_is_available" unless="docBuild.xmllintNotRequired">
+    <exec executable="xmllint" output="xmllint.log">
+      <arg value="--noent"/>
+      <arg value="--valid"/>
+      <arg value="src/${param_lang}/${param_doc}/docmaster.xml"/>
+      <arg value="-o"/>
+      <arg value="${param_lang}_${param_doc}.xml"/>
+    </exec>
+  </target>
+
+<!-- ===================================================================== -->
+<!-- Generate the output for PDF                                           -->
+<!-- ===================================================================== -->
+
+  <target name="saxon" depends="xmllint" if="source_is_available"  unless="docBuild.PDFnotRequired">
+    <java classname="com.icl.saxon.StyleSheet" classpathref="project.class.path.saxon" output="saxon.log">
+      <arg line="-x org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+      <arg line="-y org.apache.xml.resolver.tools.ResolvingXMLReader"/>
+      <arg line="-u"/>
+      <arg line="-o ${param_lang}_${param_doc}.fo"/>
+      <arg line="${param_lang}_${param_doc}.xml xsl/phpeclipse_pdf.xsl" />
+    </java>
+  </target>
+
+
+  <target name="fop" depends="saxon" if="source_is_available" unless="docBuild.PDFnotRequired">
+    <mkdir dir="out/${param_lang}/pdf"/>
+
+    <java classname="org.apache.fop.apps.Fop" classpathref="project.class.path.fop" output="fop.log">
+      <arg line="-fo ${param_lang}_${param_doc}.fo"/>
+      <arg line="-pdf out/${param_lang}/pdf/${param_doc}.pdf"/>
+      <arg line="-c c:/docbook/fop/conf/userconfig.xml"/>
+    </java>
+  </target>
+
+<!-- ===================================================================== -->
+<!-- Generate the XHML output for the htmlhelp compiler                    -->
+<!-- ===================================================================== -->
+
+  <target name="htmlhelp_compile" depends="htmlhelp_build_xml" if="source_is_available" unless="docBuild.CHMnotRequired">
+    <exec executable="${env.HTMLHELP_HOME}/hhc">
+      <arg value="htmlhelp.hhp"/>
+    </exec>
+
+    <copy file="htmlhelp.chm" overwrite="true" tofile="out/${param_lang}/chm/${param_doc}.chm"/>
+  </target>
+
+
+  <target name="htmlhelp_build_xml" depends="htmlhelp_profile" if="source_is_available" unless="docBuild.CHMnotRequired">
+    <!-- Delete all the old stuff within the document directory -->
+    <delete>
+      <fileset dir="." includes="*.html"></fileset>
+      <fileset dir="." includes="*.hhp"></fileset>
+      <fileset dir="." includes="*.hhc"></fileset>
+      <fileset dir="." includes="*.hhk"></fileset>
+      <fileset dir="." includes="*.chm"></fileset>
+    </delete>
+
+
+    <exec executable="xsltproc">
+      <arg value="--output"/>
+      <arg value="${param_doc}.xhtml"/>
+      <arg value="xsl/phpeclipse_htmlhelp.xsl"/>
+      <arg value="pro_${param_lang}_${param_doc}.xml"/>
+    </exec>
+  </target>
+
+
+  <target name="htmlhelp_profile" depends="isrequired" if="source_is_available" unless="docBuild.CHMnotRequired">
+    <exec executable="xsltproc">
+      <arg value="--output"/>
+      <arg value="pro_${param_lang}_${param_doc}.xml"/>
+      <arg value="xsl/phpeclipse_htmlhelpprofile.xsl"/>
+      <arg value="${param_lang}_${param_doc}.xml"/>
+    </exec>
+  </target>
+
+<!-- ===================================================================== -->
+<!-- Generate the XHTML output for user and docman module                  -->
+<!-- ===================================================================== -->
+<!-- Doesn't work correctly
+  <target name="recode_file" depends="isrequired" unless="docBuild.RecodeNotRequired">
+    <echo>recoding: ${param_file}</echo>
+    <exec executable="${env.RECODE_HOME}/recode" output="recode.log">
+      <arg value="${env.INPUT_ENCODING}..${env.OUTPUT_ENCODING}"/>
+      <arg value="${param_file}"/>
+    </exec>
+  </target>
+-->
+
+  <target name="recode_file" depends="isrequired" unless="docBuild.RecodeNotRequired">
+    <echo>recoding: ${param_file}</echo>
+
+    <move file="${param_file}" overwrite="true" tofile="${param_file}.tmp"/>
+
+    <exec executable="${env.RECODE_HOME}/iconv" output="${param_file}" error="iconv_error.log">
+      <arg value="-c" />
+      <arg value="-f" />
+      <arg value="${env.INPUT_ENCODING}"/>
+      <arg value="-t"/>
+      <arg value="${env.OUTPUT_ENCODING}"/>
+      <arg value="${param_file}.tmp"/>
+    </exec>
+
+    <delete file="${param_file}.tmp" />
+
+  </target>
+
+
+  <target name="htmlchunk_compile" depends="htmlchunk_build_xml" if="source_is_available" unless="docBuild.XHTMLnotRequired">
+    <!-- Delete all the old stuff within the tmp directory -->
+    <delete dir="tmp/img">
+      <fileset dir="tmp" includes="**/*.html"></fileset>
+      <fileset dir="tmp" includes="**/*.css"></fileset>
+      <fileset dir="tmp" includes="**/*.xml"></fileset>
+      <fileset dir="." includes="*.tar"></fileset>
+      <fileset dir="." includes="*.tar.gz"></fileset>
+      <fileset dir="." includes="*.zip"></fileset>
+    </delete>
+
+    <!-- Parse the sources, copy all the needed images into tmp/img and convert the html files for docman -->
+    <exec executable="${env.PHP4_HOME}/phpcli" output="parse.log">
+      <arg value="parse.php"/>
+      <arg value="${param_lang}"/>
+      <arg value="${param_doc}"/>
+      <arg value="${env.INPUT_ENCODING}"/>
+      <arg value="${env.OUTPUT_ENCODING}"/>
+    </exec>
+
+    <foreach target="recode_file" param="param_file">
+      <fileset dir="tmp" includes="*.html"></fileset>
+      <fileset dir="tmp" includes="*.xml"></fileset>
+    </foreach>
+
+    <tar basedir="tmp" tarfile="${param_doc}.tar"></tar>
+    <gzip src="${param_doc}.tar" zipfile="${param_doc}.tar.gz"/>
+    <copy file="${param_doc}.tar.gz" overwrite="true" tofile="out/${param_lang}/xhtml_dm/${param_doc}_dm.tar.gz"/>
+
+    <!-- Now make a tar.gz file with the original xhtml files  -->
+    <!-- Delete first all the converted xhtml files -->
+    <delete>
+      <fileset dir="tmp" includes="**/*.html"></fileset>
+      <fileset dir="tmp" includes="**/*.xml"></fileset>
+      <fileset dir="tmp/img" includes="*.jpg"></fileset>
+      <fileset dir="tmp/img" includes="*.png"></fileset>
+      <fileset dir="." includes="*.tar"></fileset>
+      <fileset dir="." includes="*.tar.gz"></fileset>
+      <fileset dir="." includes="*.zip"></fileset>
+    </delete>
+
+    <!-- Copy all the original xhtml files to the tmp dir -->
+    <copy todir="tmp">
+      <fileset dir="." includes="*.html"></fileset>
+    </copy>
+
+    <!-- Now check for the images we need, and copy them into tmp/img/   -->
+    <exec executable="${env.PHP4_HOME}/phpcli" output="parseimages.log">
+      <arg value="parseimages.php"/>
+      <arg value="${param_doc}"/>
+    </exec>
+
+    <!-- Tar and gzip the original xhmtl files including the images, and copy to destination -->
+    <tar basedir="tmp" tarfile="${param_doc}.tar"></tar>
+    <gzip src="${param_doc}.tar" zipfile="${param_doc}.tar.gz"/>
+    <copy file="${param_doc}.tar.gz" overwrite="true" tofile="out/${param_lang}/xhtml/${param_doc}.tar.gz"/>
+
+    <!-- Generate also an zip file, for those which feel uncomfortable with the tar.gz -->
+    <zip basedir="tmp" zipfile="${param_doc}.zip"></zip>
+    <copy file="${param_doc}.zip" overwrite="true" tofile="out/${param_lang}/xhtml/${param_doc}.zip"/>
+
+    <!-- Delete all the old stuff within the tmp directory -->
+    <delete dir="tmp/img">
+      <fileset dir="tmp" includes="**/*.html"></fileset>
+      <fileset dir="tmp" includes="**/*.css"></fileset>
+      <fileset dir="tmp" includes="**/*.xml"></fileset>
+      <fileset dir="." includes="*.tar"></fileset>
+      <fileset dir="." includes="*.tar.gz"></fileset>
+      <fileset dir="." includes="*.zip"></fileset>
+      <fileset dir="." includes="*.html"></fileset>
+    </delete>
+  </target>
+
+
+  <target name="htmlchunk_build_xml" depends="htmlchunk_profile" if="source_is_available" unless="docBuild.XHTMLnotRequired">
+    <!-- Delete all the old html files within the root directory -->
+    <delete>
+      <fileset dir="." includes="*.html"></fileset>
+    </delete>
+
+    <exec executable="xsltproc">
+      <arg value="--output"/>
+      <arg value="${param_doc}.xhtml"/>
+      <arg value="xsl/phpeclipse_htmlchunk.xsl"/>
+      <arg value="xpro_${param_lang}_${param_doc}.xml"/>
+    </exec>
+  </target>
+
+
+  <target name="htmlchunk_recode" depends="htmlchunk_profile" if="source_is_available" unless="docBuild.RecodeNotRequired">
+    <exec executable="${env.RECODE_HOME}/recode" output="recode.log">
+      <arg value="${env.INPUT_ENCODING}..${env.OUTPUT_ENCODING}"/>
+      <arg value="xpro_${param_lang}_${param_doc}.xml"/>
+    </exec>
+
+    <!-- and here add the encoding to <?xml version="1.0"?> -->
+
+  </target>
+
+
+  <target name="htmlchunk_profile" depends="xmllint" if="source_is_available" unless="docBuild.XHTMLnotRequired">
+    <exec executable="xsltproc" output="xsltproc.log">
+      <arg value="--output"/>
+      <arg value="xpro_${param_lang}_${param_doc}.xml"/>
+      <arg value="xsl/phpeclipse_xhtmlprofile.xsl"/>
+      <arg value="${param_lang}_${param_doc}.xml"/>
+    </exec>
+  </target>
+
+
+</project>

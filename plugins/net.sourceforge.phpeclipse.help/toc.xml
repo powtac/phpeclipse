@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<toc label="Debugging in PHP Eclipse with Xdebug" topic="html/index.html">
+  <topic label="Getting Started with PHPEclipse" href="html/pt01.html">
+    <topic label="Installing PHPEclipse" href="html/ar01.html">
+      <topic label="Introduction" href="html/ar01.html#phpeclipse.installing.introduction"/>
+      <topic label="Installing the PHPEclipse Plugin" href="html/ar01s02.html"/>
+      <topic label="Conclusion" href="html/ar01s03.html"/>
+    </topic>
+    <topic label="Creating a Project Using PHPEclipse" href="html/ar02.html">
+      <topic label="Introduction" href="html/ar02.html#phpeclipse.creatingproject.introduction"/>
+      <topic label="Creating the Project" href="html/ar02s02.html"/>
+      <topic label="Adding a Source File to the Project" href="html/ar02s03.html"/>
+      <topic label="Conclusion" href="html/ar02s04.html"/>
+    </topic>
+    <topic label="Debugging a Project Locally Using PHPEclipse and XDebug" href="html/ar03.html">
+      <topic label="Introduction" href="html/ar03.html#phpeclipse.debugginglocal.introduction"/>
+      <topic label="Creating a Simple Script" href="html/ar03s02.html"/>
+      <topic label="Setting up the Debugger" href="html/ar03s03.html">
+        <topic label="Specifying the PHP Interpreter Path" href="html/ar03s03.html#phpeclipse.debugginglocal.setupdebugger.interpreterpath"/>
+        <topic label="Creating the Debug Configuration" href="html/ar03s03.html#phpeclipse.debugginglocal.setupdebugger.debugconfiguration"/>
+      </topic>
+      <topic label="Adding a Breakpoint" href="html/ar03s04.html"/>
+      <topic label="Watching our Script Run" href="html/ar03s05.html"/>
+      <topic label="Conclusion" href="html/ar03s06.html"/>
+    </topic>
+    <topic label="Debugging a Project On a Web Server Using PHPEclipse and&#10;  XDebug" href="html/ar04.html">
+      <topic label="Introduction" href="html/ar04.html#phpeclipse.debuggingremote.introduction"/>
+      <topic label="Setting up the Debugger" href="html/ar04s02.html">
+        <topic label="Specifying the PHP Interpreter Path" href="html/ar04s02.html#phpeclipse.debuggingremote.setupdebugger.interpreterpath"/>
+        <topic label="Creating the Debug Configuration" href="html/ar04s02.html#phpeclipse.debuggingremote.setupdebugger.debugconfiguration"/>
+      </topic>
+      <topic label="Conclusion" href="html/ar04s03.html"/>
+    </topic>
+  </topic>
+</toc>

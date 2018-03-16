@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PHPEclipse WebBrowser
+Bundle-SymbolicName: net.sourceforge.phpeclipse.webbrowser; singleton:=true
+Bundle-Version: 1.2.3.200910091456PRD
+Bundle-ClassPath: webbrowser.jar
+Bundle-Activator: net.sourceforge.phpeclipse.webbrowser.internal.WebBrowserUIPlugin
+Bundle-Vendor: PHPEclipse Development Team
+Bundle-Localization: plugin
+Export-Package: net.sourceforge.phpeclipse.webbrowser,
+ net.sourceforge.phpeclipse.webbrowser.internal;x-internal:=true,
+ net.sourceforge.phpeclipse.webbrowser.views
+Require-Bundle: org.eclipse.core.resources;bundle-version="3.0.0",
+ org.eclipse.core.runtime;bundle-version="3.0.0",
+ org.eclipse.ui;bundle-version="3.0.0",
+ org.eclipse.ui.ide;bundle-version="3.0.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Eclipse-LazyStart: true

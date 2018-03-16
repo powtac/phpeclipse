@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter id="cpt.work_with">
+  <title>Working with &phpeclipse;</title>
+  <para>
+   How to work with &phpeclipse;
+  </para>
+
+  &workspace;
+  &project;
+
+</chapter>

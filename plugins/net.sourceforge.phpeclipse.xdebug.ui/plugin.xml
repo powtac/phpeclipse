@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="net.sourceforge.phpeclipse.xdebug.php.launch"
+            icon="icons/xdebug.gif"
+            id="net.sourceforge.phpeclipse.xdebug.ui.php.launchConfigurationTypeImage"/>
+      <launchConfigurationTypeImage
+            configTypeID="net.sourceforge.phpeclipse.xdebug.php.remotelaunch"
+            icon="icons/xdebug.gif"
+            id="net.sourceforge.phpeclipse.xdebug.ui.php.remoteLaunchConfigurationTypeImage"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="net.sourceforge.phpeclipse.xdebug.ui.php.launching.PHPTabGroup"
+            id="net.sourceforge.phpeclipse.xdebug.ui.php.launchTabGroup"
+            type="net.sourceforge.phpeclipse.xdebug.php.launch"/>
+      <launchConfigurationTabGroup
+            class="net.sourceforge.phpeclipse.xdebug.ui.php.launching.PHPRemoteTabGroup"
+            id="net.sourceforge.phpeclipse.xdebug.ui.php.remoteLaunchTabGroup"
+            type="net.sourceforge.phpeclipse.xdebug.php.remotelaunch"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+            class="net.sourceforge.phpeclipse.xdebug.ui.php.launching.PHPDebugModelPresentation"
+            id="net.sourceforge.phpeclipse.xdebug.php"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="net.sourceforge.phpeclipse.phpeditor.PHPUnitEditor"
+            class="net.sourceforge.phpeclipse.xdebug.ui.php.model.PHPBreakpointAdapterFactory">
+         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="net.sourceforge.phpeclipse.PHPUnitEditor.BreakpointRulerActions"
+            targetID="net.sourceforge.phpeclipse.PHPUnitEditor">
+         <action
+               actionID="RulerDoubleClick"
+               class="net.sourceforge.phpeclipse.xdebug.ui.actions.BreakpointRulerActionDelegate"
+                  id="net.sourceforge.phpeclipse.xdebug.ui.ManageBreakpointRulerActions"
+               label="Toggle Breakpoint"
+               />
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="net.sourceforge.phpeclipse.xdebug.ui"
+            class="net.sourceforge.phpeclipse.xdebug.ui.views.logview.LogView"
+            icon="icons/eview16/error_log.gif"
+            id="net.sourceforge.phpeclipse.xdebug.ui.Logview"
+            name="PHP Debug Log"/>
+      <category
+            id="net.sourceforge.phpeclipse.xdebug.ui"
+            name="PHPeclipse Debug Core"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id=".sourceforge.phpeclipse.debug.ui.debugging"
+            name="XDebug Context"
+            parentId="org.eclipse.debug.ui.debugging"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="net.sourceforge.phpeclipse.xdebug.PHPUnitEditorPopupActions"
+            targetID="#PHPRulerContext">
+		<action
+               class="net.sourceforge.phpeclipse.xdebug.ui.actions.RulerEnableDisableXDebugBreakpointActionDelegate"
+               helpContextId="enable_disable_breakpoint_action_context"
+               label="Toggle XDebug Enablement"
+               menubarPath="debug"
+               id="net.sourceforge.phpeclipse.xdebug.ui.actions.EnableDisableBreakpointRulerActionDelegate">
+         </action>
+         <action
+               class="net.sourceforge.phpeclipse.xdebug.ui.actions.BreakpointRulerActionDelegate"
+               helpContextId="manage_breakpoint_action_context"
+               id="net.sourceforge.phpeclipse.xdebug.ui.action1"
+               label="Toggle XDebug Breakpoint"
+               menubarPath="debug"/>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="net.sourceforge.phpeclipse.ui.preferencePage"
+            class="net.sourceforge.phpeclipse.xdebug.ui.preference.XDebugPreferencePage"
+            id="net.sourceforge.phpeclipse.xdebug.ui.XDebugPreferencePages"
+            name="XDebug"/>
+   </extension>
+   
+
+
+</plugin>

@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension
+		 id="phpnature"
+		 name="%naturePHP.name"
+		 point="org.eclipse.core.resources.natures">
+	  <runtime>
+		 <run
+		  class="net.sourceforge.phpdt.internal.core.JavaProject">
+		 </run>
+	  </runtime>
+   </extension>
+
+   <extension
+		 id="parserbuilder"
+		 name="PHP Builder"
+		 point="org.eclipse.core.resources.builders">
+	  <builder>
+		 <run
+		   class="net.sourceforge.phpdt.internal.core.builder.PHPBuilder">
+		 </run>
+	  </builder>
+   </extension>
+   <!-- =================================================================================== -->
+<!-- Extension: Java Markers                                                             -->
+<!-- =================================================================================== -->
+
+<!-- Java problems -->
+
+<extension id="problem" point="org.eclipse.core.resources.markers" name="%phpProblemName">
+	<super type="org.eclipse.core.resources.problemmarker"/>
+	<super type="org.eclipse.core.resources.textmarker"/>
+	<persistent value="true"/>
+	<attribute name="id"/>
+	<attribute name="flags"/>
+	<attribute name="arguments"/>
+</extension>
+
+<!-- Java transient problems -->
+
+<extension id="transient_problem" point="org.eclipse.core.resources.markers" name="%transientPHPProblemName">
+	<super type="org.eclipse.core.resources.textmarker"/>
+	<persistent value="false"/>
+	<attribute name="id"/>
+	<attribute name="flags"/>
+	<attribute name="arguments"/>
+</extension>
+
+<!-- PHP tasks -->
+
+<extension id="task" name="%phpTaskName" point="org.eclipse.core.resources.markers">
+	<super type="org.eclipse.core.resources.taskmarker"/>
+	<persistent value="true"/>
+</extension>
+
+<extension-point id="phpElementFilters" name="%elementFiltersName" schema="schema/phpElementFilters.exsd"/>
+<extension-point id="phpEditorTextHovers" name="%phpEditorTextHoversName" schema="schema/phpEditorTextHovers.exsd"/>
+<extension-point id="foldingStructureProviders" name="%foldingStructureProvidersExtensionPoint" schema="schema/foldingStructureProviders.exsd"/>
+
+  <extension
+	point="org.eclipse.ui.decorators">
+	<decorator
+		label="%ProblemsLabelDecorator.label"
+		state="true"
+		lightweight="true"
+		location="BOTTOM_LEFT"
+		class="net.sourceforge.phpdt.ui.ProblemsLabelDecorator"
+		id="net.sourceforge.phpdt.ui.problem.decorator">
+		<description>
+			%ProblemsLabelDecorator.description
+		</description>
+		<enablement>
+			<or>
+				<objectClass
+					name="org.eclipse.core.resources.IResource">
+				</objectClass>
+				<objectClass
+					name="net.sourceforge.phpdt.core.IJavaElement">
+				</objectClass>
+			</or>
+		</enablement>
+	</decorator>
+	<decorator
+		label="%OverrideIndicatorLabelDecorator.label"
+		lightweight="true"
+		location="BOTTOM_RIGHT"
+		state="true"
+		class="net.sourceforge.phpdt.ui.OverrideIndicatorLabelDecorator"
+		id="net.sourceforge.phpdt.ui.override.decorator">
+		<description>
+			%OverrideIndicatorLabelDecorator.description
+		</description>
+		<enablement>
+			<objectClass
+				name="net.sourceforge.phpdt.core.IMethod">
+			</objectClass>
+		</enablement>
+	</decorator>
+  </extension>
+
+   <extension
+		 point="org.eclipse.team.core.fileTypes">
+	  <fileTypes type="text" extension="php" />
+	  <fileTypes type="text" extension="phpc" />
+	  <fileTypes type="text" extension="php3" />
+	  <fileTypes type="text" extension="php4" />
+	  <fileTypes type="text" extension="php5" />
+	  <fileTypes type="text" extension="phtml" />
+	  <fileTypes type="text" extension="inc" />
+	  <fileTypes type="text" extension="module" />
+	  <fileTypes type="text" extension="phpt" />
+	  <fileTypes type="text" extension="ctp" />
+   </extension>
+
+<!-- declares a content type for PHP Source files -->
+
+   <extension point="org.eclipse.core.runtime.contentTypes">
+	<content-type id="phpSource" name="%phpSourceName"
+		base-type="org.eclipse.core.runtime.text"
+		priority="high"
+		file-extensions="php,phpc,php3,php4,php5,phtml,inc,module,phpt,ctp"/>
+   </extension>
+
+   <extension
+	  point="net.sourceforge.phpeclipse.phpEditorTextHovers">
+   <hover
+		 class="net.sourceforge.phpdt.internal.ui.text.java.hover.BestMatchHover"
+		 id="net.sourceforge.phpdt.ui.BestMatchHover"
+		 label="%sequentialHover"
+		 description="%sequentialHoverDescription">
+   </hover>
+   </extension>
+
+<extension
+	  point="net.sourceforge.phpeclipse.phpEditorTextHovers">
+   <hover
+		 class="net.sourceforge.phpdt.internal.ui.text.java.hover.JavaSourceHover"
+		 id="net.sourceforge.phpdt.ui.JavaSourceHover"
+		 label="%sourceHover"
+		 description="%sourceHoverDescription">
+   </hover>
+   <hover
+			label="%problemHover"
+			description="%problemHoverDescription"
+			class="net.sourceforge.phpdt.internal.ui.text.java.hover.ProblemHover"
+			id="net.sourceforge.phpdt.ui.ProblemHover">
+   </hover>
+   <hover
+		 class="net.sourceforge.phpdt.internal.ui.text.java.hover.AnnotationHover"
+		 id="net.sourceforge.phpdt.ui.AnnotationHover"
+		 label="%annotationHover"
+		 description="%annotationHoverDescription">
+   </hover>
+   </extension>
+
+   <extension
+		 point="org.eclipse.ui.perspectives">
+	  <perspective
+			name="%perspectivePHP.name"
+			icon="icons/obj16/php.png"
+			class="net.sourceforge.phpeclipse.PHPPerspectiveFactory"
+			id="net.sourceforge.phpeclipse.PHPPerspective">
+	  </perspective>
+   </extension>
+
+   <extension
+		 point="org.eclipse.ui.perspectiveExtensions">
+	  <perspectiveExtension
+			targetID="net.sourceforge.phpeclipse.PHPPerspective">
+			   <showInPart id="net.sourceforge.phpeclipse.webbrowser.view" />
+			   <showInPart id="org.eclipse.ui.views.ResourceNavigator" />
+	  </perspectiveExtension>
+   </extension>
+
+   <extension
+		 point="org.eclipse.ui.newWizards">
+	  <category
+			name="%newWizardCategory.name"
+			id="net.sourceforge.phpeclipse.wizards.NewWizardCategoryPHP">
+	  </category>
+	  <wizard
+			name="%newWizardPHPProject.name"
+			icon="icons/obj16/php.png"
+			category="net.sourceforge.phpeclipse.wizards.NewWizardCategoryPHP"
+			class="net.sourceforge.phpeclipse.wizards.NewProjectCreationWizard"
+			project="true"
+			id="net.sourceforge.phpeclipse.wizards.NewWizardProjectCreation">
+		 <description>
+			Create a new PHP project.
+		 </description>
+	  </wizard>
+
+	  <wizard
+			name="%newWizardPHPFile.name"
+			icon="icons/obj16/phpedit.gif"
+			category="net.sourceforge.phpeclipse.wizards.NewWizardCategoryPHP"
+			class="net.sourceforge.phpeclipse.wizards.PHPFileWizard"
+			id="net.sourceforge.phpeclipse.wizards.PHPFileWizard">
+		 <description>
+			Create a basic PHP file.
+		 </description>
+	  </wizard>
+	  <wizard
+			name="%newWizardHTMLFile.name"
+			icon="icons/obj16/htmledit.gif"
+			category="net.sourceforge.phpeclipse.wizards.NewWizardCategoryPHP"
+			class="net.sourceforge.phpeclipse.wizards.HTMLFileWizard"
+			id="net.sourceforge.phpeclipse.wizards.HTMLFileWizard">
+		 <description>
+			Create a basic HTML file.
+		 </description>
+	  </wizard>
+   </extension>
+   <extension point="org.eclipse.ui.exportWizards">
+	 <wizard name="%ExportWizards.Obfuscator"
+			 icon="icons/ctool16/exportdir_wiz.gif"
+			 class="net.sourceforge.phpeclipse.obfuscator.export.ObfuscatorExportWizard"
+			 id="net.sourceforge.phpeclipse.obfuscator.export.ObfuscatorExportWizard">
+	 <description>%ExportWizards.ObfuscatorDescription</description>
+	 <selection class="org.eclipse.core.resources.IResource" />
+	 </wizard>
+  </extension>
+   <extension
+		 point="org.eclipse.ui.ide.projectNatureImages">
+	  <image
+			icon="icons/ovr16/php_ovr2.gif"
+			natureId="net.sourceforge.phpeclipse.phpnature"
+			id="net.sourceforge.phpeclipse.ProjectNatureImagePHP">
+	  </image>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.propertyPages">
+	  <page
+         class="net.sourceforge.phpdt.internal.ui.preferences.TodoTaskPropertyPage"
+         icon="icons/obj16/php.png"
+         id="net.sourceforge.phpdt.ui.propertyPages.TodoTaskPropertyPage"
+         name="%todoPageName"
+         objectClass="org.eclipse.core.resources.IProject">
+		 <filter
+			   name="nature"
+			   value="net.sourceforge.phpeclipse.phpnature">
+		 </filter>
+	  </page>
+	  <page
+         class="net.sourceforge.phpdt.internal.ui.preferences.TodoTaskPropertyPage"
+         icon="icons/obj16/php.png"
+         id="net.sourceforge.phpdt.ui.propertyPages.TodoTaskPropertyPage"
+         name="%todoPageName"
+         objectClass="net.sourceforge.phpdt.core.IJavaProject">
+		 <filter
+			   name="nature"
+			   value="net.sourceforge.phpeclipse.phpnature">
+		 </filter>
+	  </page>
+			<page
+         class="net.sourceforge.phpdt.internal.ui.preferences.CompilerPropertyPage"
+         icon="icons/obj16/php.png"
+         id="net.sourceforge.phpdt.ui.propertyPages.CompilerPropertyPage"
+         name="%compilerPageName"
+         objectClass="org.eclipse.core.resources.IProject">
+		 <filter
+			   name="nature"
+			   value="net.sourceforge.phpeclipse.phpnature">
+		 </filter>
+	  </page>
+	  <page
+         class="net.sourceforge.phpdt.internal.ui.preferences.CompilerPropertyPage"
+         icon="icons/obj16/php.png"
+         id="net.sourceforge.phpdt.ui.propertyPages.CompilerPropertyPage"
+         name="%compilerPageName"
+         objectClass="net.sourceforge.phpdt.core.IJavaProject">
+		 <filter
+			   name="nature"
+			   value="net.sourceforge.phpeclipse.phpnature">
+		 </filter>
+	  </page>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.editors">
+	  <editor
+			name="%phpEditorName"
+			default="true"
+			icon="icons/obj16/phpedit.gif"
+			contributorClass="net.sourceforge.phpeclipse.phpeditor.CompilationUnitEditorActionContributor"
+			class="net.sourceforge.phpeclipse.phpeditor.PHPUnitEditor"
+			symbolicFontName="net.sourceforge.phpdt.ui.editors.textfont"
+			id="net.sourceforge.phpeclipse.PHPUnitEditor">
+			<contentTypeBinding
+			   contentTypeId="net.sourceforge.phpeclipse.phpSource"
+			/>
+	  </editor>
+   </extension>
+	  <extension
+		 point="org.eclipse.ui.fontDefinitions">
+	  <fontDefinition
+			label="%phpEditorFontDefiniton.label"
+			defaultsTo="org.eclipse.jface.textfont"
+			id="net.sourceforge.phpdt.ui.editors.textfont">
+		 <description>
+			%phpEditorFontDefintion.description
+		 </description>
+	  </fontDefinition>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.editors.annotationTypes">
+	  <type
+		 name="net.sourceforge.phpdt.ui.error"
+		 super="org.eclipse.ui.workbench.texteditor.error"
+		 markerType="net.sourceforge.phpeclipse.problem"
+		 markerSeverity="2">
+	  </type>
+	  <type
+		 name="net.sourceforge.phpdt.ui.warning"
+		 super="org.eclipse.ui.workbench.texteditor.warning"
+		 markerType="net.sourceforge.phpeclipse.problem"
+		 markerSeverity="1">
+	  </type>
+	  <type
+		 name="net.sourceforge.phpdt.ui.info"
+		 super="org.eclipse.ui.workbench.texteditor.info"
+		 markerType="net.sourceforge.phpeclipse.problem"
+		 markerSeverity="0">
+	  </type>
+	  <type
+		 name="net.sourceforge.phpdt.ui.occurrences">
+	  </type>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.editors.markerAnnotationSpecification">
+	  <specification
+			annotationType="net.sourceforge.phpdt.ui.error"
+			annotationImageProvider="net.sourceforge.phpeclipse.phpeditor.JavaAnnotationImageProvider">
+	  </specification>
+	  <specification
+			annotationType="net.sourceforge.phpdt.ui.warning"
+			annotationImageProvider="net.sourceforge.phpeclipse.phpeditor.JavaAnnotationImageProvider">
+	  </specification>
+	  <specification
+			annotationType="net.sourceforge.phpdt.ui.info"
+			annotationImageProvider="net.sourceforge.phpeclipse.phpeditor.JavaAnnotationImageProvider">
+	  </specification>
+	  <specification
+			annotationType="org.eclipse.debug.core.breakpoint"
+			icon="icons/full/obj16/brkp_obj.gif"
+			annotationImageProvider="net.sourceforge.phpeclipse.phpeditor.BreakpointImageProvider">
+	  </specification>
+	  <specification
+			annotationType="net.sourceforge.phpdt.ui.occurrences"
+			label="%OccurrenceAnnotation.label"
+			icon="icons/obj16/searchm_obj.gif"
+			textPreferenceKey="occurrenceIndication"
+			textPreferenceValue="false"
+			highlightPreferenceKey="occurrenceHighlighting"
+			highlightPreferenceValue="true"
+			overviewRulerPreferenceKey="occurrenceIndicationInOverviewRuler"
+			overviewRulerPreferenceValue="true"
+			verticalRulerPreferenceKey="occurrenceIndicationInVerticalRuler"
+			verticalRulerPreferenceValue="false"
+			colorPreferenceKey="occurrenceIndicationColor"
+			colorPreferenceValue="180,207,205"
+			presentationLayer="3"
+			showInNextPrevDropdownToolbarActionKey="showOccurrenceInNextPrevDropdownToolbarAction"
+			showInNextPrevDropdownToolbarAction="true"
+			isGoToNextNavigationTargetKey="isOccurrenceGoToNextNavigationTarget"
+			isGoToNextNavigationTarget="false"
+			isGoToPreviousNavigationTargetKey="isOccurrenceGoToPreviousNavigationTarget"
+			isGoToPreviousNavigationTarget="false">
+	  </specification>
+	</extension>
+
+   <extension
+		 point="org.eclipse.ui.actionSets">
+	  <actionSet
+			label="%CodingActionSet.label"
+			description="%CodingActionSet.description"
+			visible="false"
+			id="net.sourceforge.phpeclipse.ui.CodingActionSet">
+<!-- =========================================================================== -->
+<!-- Source Menu                                                                 -->
+<!-- =========================================================================== -->
+		 <menu
+			   label="%SourceMenu.label"
+			   path="edit/editEnd"
+			   id="net.sourceforge.phpeclipse.ui.source.menu">
+			 <separator
+				   name="editGroup">
+			 </separator>
+		 </menu>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.format"
+			   label="%FormatAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.phpeditor.Format">
+		 </action>
+		 <action
+			   label="%ShiftLeftAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.phpeditor.ShiftLeft">
+		 </action>
+		 <action
+			   label="%ShiftRightAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.phpeditor.ShiftRight">
+		 </action>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.remove.block.comment"
+			   label="%RemoveBlockCommentAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.ui.actions.RemoveBlockComment">
+		 </action>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.add.block.comment"
+			   label="%AddBlockCommentAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.ui.actions.AddBlockComment">
+		 </action>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			   label="%ToggleCommentAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.ui.actions.ToggleComment">
+		 </action>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.uncomment"
+			   label="%UncommentAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.phpeditor.Uncomment">
+		 </action>
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.phpeditor.comment"
+			   label="%CommentAction.label"
+			   retarget="true"
+			   menubarPath="edit/net.sourceforge.phpeclipse.ui.source.menu/editGroup"
+			   id="net.sourceforge.phpeclipse.phpeditor.Comment">
+		 </action>
+	  </actionSet>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.actionSetPartAssociations">
+	  <actionSetPartAssociation
+			targetID="net.sourceforge.phpeclipse.ui.CodingActionSet">
+		 <part id="net.sourceforge.phpeclipse.PHPUnitEditor" />
+	  </actionSetPartAssociation>
+   </extension>
+
+<!-- =========================================================================== -->
+<!-- PHP Editor Action Definition IDs -->
+<!-- =========================================================================== -->
+
+	<!-- FIXME: there is too much duplication of contributions pointing to the same action. we should find a better way-->
+   <extension
+		 point="org.eclipse.ui.popupMenus">
+	  <!-- php, phpc,php3,php4,php5,phpt-->
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.php*"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.phpS">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+
+	  <!-- cake PHP support -->
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.ctp"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.ctp">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.module"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.module">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.inc"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.inc">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.phtml"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.phtml">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.htm*"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.html">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.xml"
+			id="net.sourceforge.phpeclipse.actions.popupShowAction.xml">
+		 <action
+			   label="Open PHP Browser"
+			   class="net.sourceforge.phpeclipse.actions.PHPEclipseShowAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.showAction">
+		 </action>
+	  </objectContribution>
+
+	  <!-- Viewers -->
+	  <viewerContribution
+			targetID="#PHPEditorContext"
+			id="net.sourceforge.phpeclipse.actions.popupHTMLWizard">
+		 <action
+			   label="Insert HTML (dl,ul,ol,table)"
+			   class="net.sourceforge.phpeclipse.wizards.html.InsertHTMLElementAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.wizards.html">
+		 </action>
+	  </viewerContribution>
+	  <viewerContribution
+			targetID="#PHPEditorContext"
+			id="net.sourceforge.phpeclipse.actions.popupOpenAllIncludes">
+		 <action
+			   label="Open Included Files List"
+			   class="net.sourceforge.phpeclipse.actions.PHPOpenAllIncludesEditorAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.actions.openallincludes">
+		 </action>
+	  </viewerContribution>
+	  <viewerContribution
+			targetID="#PHPEditorContext"
+			id="net.sourceforge.phpeclipse.actions.popupOpenDeclaration">
+		 <action
+			   label="%OpenDeclaration"
+			   class="net.sourceforge.phpeclipse.actions.PHPOpenDeclarationEditorAction"
+			   menubarPath="additions"
+			   definitionId="net.sourceforge.phpeclipse.actions.opendeclaration"
+			   id="net.sourceforge.phpeclipse.actions.PHPOpenDeclarationEditorAction">
+		 </action>
+	  </viewerContribution>
+	 <viewerContribution
+		targetID="#PHPEditorContext"
+		id="net.sourceforge.phpdt.ltk.renameLocalVariable">
+		<action label="Rename Local Variable in Functions/Methods"
+				class="net.sourceforge.phpdt.ltk.ui.actions.RenameLocalVariable"
+				menubarPath="additions"
+				id="net.sourceforge.phpdt.ltk.ui.actions.RenameLocalVariable"/>
+	  </viewerContribution>
+	  <viewerContribution
+			targetID="#PHPRulerContext"
+			id="net.sourceforge.phpdt.ui.PHPEditorPopupActions">
+		 <action
+			   label="%AddTask.label"
+			   helpContextId="org.eclipse.ui.AddTask_action_context"
+			   class="org.eclipse.ui.texteditor.TaskRulerAction"
+			   menubarPath="add"
+			   id="org.eclipse.ui.texteditor.TaskRulerAction">
+		 </action>
+		 <action
+			   label="%AddBookmark.label"
+			   helpContextId="org.eclipse.ui.bookmark_action_context"
+			   class="org.eclipse.ui.texteditor.BookmarkRulerAction"
+			   menubarPath="add"
+			   id="org.eclipse.ui.texteditor.BookmarkRulerAction">
+		 </action>
+	  </viewerContribution>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.actionSets">
+	  <actionSet
+			label="%OpenActionSet.label"
+			description="%OpenActionSet.description"
+			visible="false"
+			id="net.sourceforge.phpeclipse.ui.A_OpenActionSet">
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.ui.edit.text.java.open.editor"
+			   label="%OpenDeclaration"
+			   tooltip="%OpenDeclaration"
+			   retarget="true"
+			   menubarPath="navigate/open.ext"
+			   allowLabelUpdate="true"
+			   id="net.sourceforge.phpeclipse.ui.actions.Open">
+		 </action>
+	  </actionSet>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.editorActions">
+	  <editorContribution
+			id="org.eclipse.ui.texteditor.ruler.actions"
+			targetID="net.sourceforge.phpeclipse.PHPUnitEditor">
+		<action
+			id="org.eclipse.ui.texteditor.BookmarkRulerAction"
+			actionID="RulerDoubleClick"
+			label="%Dummy.label"
+			helpContextId="org.eclipse.ui.bookmark_action_context"
+			class="org.eclipse.ui.texteditor.BookmarkRulerAction">
+		</action>
+		<action
+			label="%Dummy.label"
+			class="net.sourceforge.phpeclipse.phpeditor.JavaSelectRulerAction"
+			actionID="RulerClick"
+			id="net.sourceforge.phpeclipse.phpeditor.JavaSelectRulerAction">
+		</action>
+	  </editorContribution>
+	  <editorContribution
+			id="net.sourceforge.phpdt.editor.actions"
+			targetID="net.sourceforge.phpeclipse.PHPUnitEditor">
+		 <action
+			   definitionId="net.sourceforge.phpeclipse.actions.opendeclaration"
+			   label="%OpenDeclaration"
+			   class="net.sourceforge.phpeclipse.actions.PHPOpenDeclarationEditorAction"
+			   id="net.sourceforge.phpeclipse.actions.PHPOpenDeclarationEditorAction">
+		 </action>
+	  </editorContribution>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.popupMenus">
+	  <viewerContribution
+			targetID="#CompilationUnitRulerContext"
+			id="net.sourceforge.phpeclipse.phpeditor.QuickFixRulerMenuAction">
+		 <action
+			   label="%Dummy.label"
+			   helpContextId="net.sourceforge.phpeclipse.quick_fix_action"
+			   class="net.sourceforge.phpeclipse.phpeditor.JavaSelectRulerAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpeclipse.phpeditor.JavaSelectRulerMenuAction">
+		 </action>
+	  </viewerContribution>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.popupMenus">
+	  <viewerContribution
+			targetID="#CompilationUnitRulerContext"
+			id="net.sourceforge.phpdt.ui.CompilationUnitEditorPopupActions">
+		 <action
+			   label="%AddTask.label"
+			   helpContextId="org.eclipse.ui.AddTask_action_context"
+			   tooltip="%AddTask.tooltip"
+			   class="org.eclipse.ui.texteditor.TaskRulerAction"
+			   menubarPath="add"
+			   id="org.eclipse.ui.texteditor.TaskRulerAction">
+		 </action>
+		 <action
+			   label="%AddBookmark.label"
+			   helpContextId="org.eclipse.ui.bookmark_action_context"
+			   tooltip="%AddBookmark.tooltip"
+			   class="org.eclipse.ui.texteditor.BookmarkRulerAction"
+			   menubarPath="add"
+			   id="org.eclipse.ui.texteditor.BookmarkRulerAction">
+		 </action>
+		 <menu
+			id="projection"
+			label="%Folding.label"
+			path="rest">
+		 </menu>
+		 <action
+			   label="%Dummy.label"
+			   tooltip="%Dummy.label"
+			   class="net.sourceforge.phpdt.internal.ui.actions.FoldingExpandAllRulerAction"
+			   menubarPath="projection/additions"
+			   definitionId="org.eclipse.ui.edit.text.folding.expand_all"
+			   id="net.sourceforge.phpdt.ui.folding.expandAll">
+		 </action>
+		 <action
+			   label="%Dummy.label"
+			   tooltip="%Dummy.label"
+			   class="net.sourceforge.phpdt.internal.ui.actions.FoldingToggleRulerAction"
+			   menubarPath="projection/additions"
+			   definitionId="org.eclipse.ui.edit.text.folding.toggle"
+			   id="net.sourceforge.phpdt.ui.folding.toggle">
+		 </action>
+	  </viewerContribution>
+   </extension>
+ <!-- =========================================================================== -->
+<!-- PHPDT/UI command definitions                                                   -->
+<!-- =========================================================================== -->
+   <extension point="org.eclipse.ui.contexts">
+	  <context name="%context.editingPHPSource.name"
+	   description="%context.editingPHPSource.description"
+	   parentId="org.eclipse.ui.textEditorScope"
+	   id="net.sourceforge.phpdt.ui.phpEditorScope" />
+   </extension>
+   <extension
+		 point="org.eclipse.ui.commands">
+	  <category
+			name="%category.source.name"
+			description="%category.source.description"
+			id="net.sourceforge.phpeclipse.ui.category.source">
+	  </category>
+
+ <!-- source -->
+	  <command
+			name="%ActionDefinition.comment.name"
+			description="%ActionDefinition.comment.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.comment">
+	  </command>
+	  <command
+			name="%ActionDefinition.uncomment.name"
+			description="%ActionDefinition.uncomment.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.uncomment">
+	  </command>
+	  <command
+			name="%ActionDefinition.toggleComment.name"
+			description="%ActionDefinition.toggleComment.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.toggle.comment">
+	  </command>
+
+	  <command
+			name="%ActionDefinition.addBlockComment.name"
+			description="%ActionDefinition.addBlockComment.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.add.block.comment">
+	  </command>
+	  <command
+			name="%ActionDefinition.removeBlockComment.name"
+			description="%ActionDefinition.removeBlockComment.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.remove.block.comment">
+	  </command>
+	  <command
+			name="%ActionDefinition.indent.name"
+			description="%ActionDefinition.indent.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.indent">
+	  </command>
+	  <command
+			name="%ActionDefinition.format.name"
+			description="%ActionDefinition.format.description"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.phpeditor.format">
+	  </command>
+
+	  <!-- navigate -->
+	  <command
+			name="%ActionDefinition.gotoNextMember.name"
+			description="%ActionDefinition.gotoNextMember.description"
+			categoryId="org.eclipse.ui.category.navigate"
+			id="net.sourceforge.phpeclipse.ui.edit.text.php.goto.next.member">
+	  </command>
+	  <command
+			name="%ActionDefinition.gotoPreviousMember.name"
+			description="%ActionDefinition.gotoPreviousMember.description"
+			categoryId="org.eclipse.ui.category.navigate"
+			id="net.sourceforge.phpeclipse.ui.edit.text.php.goto.previous.member">
+	  </command>
+	  <command
+			name="%ActionDefinition.gotoMatchingBracket.name"
+			description="%ActionDefinition.gotoMatchingBracket.description"
+			categoryId="org.eclipse.ui.category.navigate"
+			id="net.sourceforge.phpeclipse.ui.edit.text.php.goto.matching.bracket">
+	  </command>
+	  <command
+			name="%OpenDeclaration"
+			description="%OpenDeclaration"
+			categoryId="net.sourceforge.phpeclipse.ui.category.source"
+			id="net.sourceforge.phpeclipse.actions.opendeclaration">
+	  </command>
+   </extension>
+   <extension
+		 id="net.sourceforge.phpeclipse.JavaDocumentSetupParticipant"
+		 name="%javaDocumentSetupParticipant"
+		 point="org.eclipse.core.filebuffers.documentSetup">
+	  <participant
+			contentTypeId="net.sourceforge.phpeclipse.phpSource"
+			class="net.sourceforge.phpeclipse.phpeditor.JavaDocumentSetupParticipant">
+	  </participant>
+   </extension>
+   <extension
+		 id="net.sourceforge.phpeclipse.JavaDocumentFactory"
+		 name="%javaDocumentFactory"
+		 point="org.eclipse.core.filebuffers.documentCreation">
+	  <factory
+			contentTypeId="net.sourceforge.phpeclipse.phpSource"
+			class="net.sourceforge.phpeclipse.phpeditor.JavaDocumentFactory">
+	  </factory>
+   </extension>
+
+   <extension
+		 point="org.eclipse.ui.preferencePages">
+	  <page name="PHP"
+			category="net.sourceforge.phpeclipse.ui.preferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.JavaEditorPreferencePage"
+			id="net.sourceforge.phpeclipse.preferences.PHPPreferencePage">
+	  </page>
+	  <page
+			name="Code Templates"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.CodeTemplatePreferencePage"
+			id="net.sourceforge.phpeclipse.preference.CodeTemplatePreferencePage">
+	  </page>
+	  <page
+			name="%compilerOptionsPrefName"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.CompilerPreferencePage"
+			id="net.sourceforge.phpeclipse.preference.CompilerPreferencePage">
+	  </page>
+	  <page
+			name="%todoTaskPrefName"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.TodoTaskPreferencePage"
+			id="net.sourceforge.phpeclipse.preference.TodoTaskPreferencePage">
+	  </page>
+	  <page
+			name="Formatter"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.CodeFormatterPreferencePage"
+			id="net.sourceforge.phpeclipse.preference.CodeFormatterPreferencePage">
+	  </page>
+	  <page name="%codeAssistPageName"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.CodeAssistPreferencePage"
+			id="net.sourceforge.phpdt.internal.ui.preferences.CodeAssistPreferencePage">
+	  </page>
+      <page name="%editorPageName"
+            category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+            class="net.sourceforge.phpdt.internal.ui.preferences.EditorPreferencePage"
+            id="net.sourceforge.phpdt.internal.ui.preferences.EditorPreferencePage">
+      </page>
+      <page
+			name="%templatePageName"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.JavaTemplatePreferencePage"
+			id="net.sourceforge.phpeclipse.preference.TemplatePreferencePage">
+	  </page>
+	  <page
+			name="%spellingPrefName"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.SpellingPreferencePage"
+			id = "net.sourceforge.phpdt.internal.ui.preferences.SpellingPreferencePage">
+	  </page>
+	  <page
+			name="%editorMarkOccurrencesPage"
+			category="net.sourceforge.phpeclipse.preferences.PHPPreferencePage"
+			class="net.sourceforge.phpdt.internal.ui.preferences.MarkOccurrencesPreferencePage"
+			id="net.sourceforge.phpdt.internal.ui.preferences.MarkOccurrencesPreferencePage">
+	  </page>
+   </extension>
+
+<!-- external tools -->
+<!-- extension point definitions -->
+	<extension-point id="configurationDuplicationMaps" name="%ExtPoint.configurationDuplicationMaps"/>
+	<extension-point id="argumentVariables" name="%ExtPoint.argumentVariables"/>
+	<extension-point id="directoryVariables" name="%ExtPoint.directoryVariables"/>
+	<extension-point id="fileVariables" name="%ExtPoint.fileVariables"/>
+	<extension-point id="refreshVariables" name="%ExtPoint.refreshVariables"/>
+
+<!-- Extensions -->
+
+	<extension
+		point= "net.sourceforge.phpeclipse.foldingStructureProviders">
+		<provider
+			id="net.sourceforge.phpdt.ui.text.defaultFoldingProvider"
+			name= "%defaultFoldingStructureProviderName"
+			class="net.sourceforge.phpdt.internal.ui.text.folding.DefaultJavaFoldingStructureProvider"
+			preferencesClass="net.sourceforge.phpdt.internal.ui.text.folding.DefaultJavaFoldingPreferenceBlock">
+		</provider>
+	</extension>
+
+<!-- =========================================================================== -->
+<!-- Filter Support                                                              -->
+<!-- =========================================================================== -->
+   <extension
+		 point="net.sourceforge.phpeclipse.phpElementFilters">
+<!-- Outline Page -->
+	  <filter
+			targetId="net.sourceforge.phpeclipse.JavaOutlinePage"
+			name="%HideImportDeclaration.label"
+			enabled="false"
+			description="%HideImportDeclaration.description"
+			class="net.sourceforge.phpdt.internal.ui.filters.ImportDeclarationFilter"
+			id="net.sourceforge.phpeclipse.JavaOutlinePage.ImportDeclarationFilter">
+	  </filter>
+   </extension>
+
+<!-- =========================================================================== -->
+<!-- Templates                                                                   -->
+<!-- =========================================================================== -->
+   <extension
+		 point="org.eclipse.ui.editors.templates">
+	  <contextType
+			name="%templates.php.contextType.name"
+			class="net.sourceforge.phpdt.internal.corext.template.php.JavaContextType"
+			id="java">
+	  </contextType>
+	  <contextType
+			name="%templates.phpdoc.contextType.name"
+			class="net.sourceforge.phpdt.internal.corext.template.php.JavaDocContextType"
+			id="javadoc">
+	  </contextType>
+	  <contextType
+			name="%templates.html.contextType.name"
+			class="net.sourceforge.phpdt.internal.corext.template.php.HTMLContextType"
+			id="javadoc">
+	  </contextType>
+	  <include
+			  file="templates/default-templates.xml"
+			  translations="templates/default-templates.properties">
+	  </include>
+	  <include
+			  file="templates/default-codetemplates.xml"
+			  translations="templates/default-templates.properties">
+	  </include>
+   </extension>
+   <extension
+		 point="org.eclipse.ui.bindings">
+	  <key
+			sequence="Ctrl+Shift+C"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			   sequence="Ctrl+7"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+C"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+C"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+7"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+7"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="gtk"
+			sequence="Ctrl+Shift+C"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="gtk"
+			sequence="Esc Ctrl+C"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.toggle.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.add.block.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+/"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.add.block.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+\"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.remove.block.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+\"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+\"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.remove.block.comment"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+I"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.indent"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+F"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.format"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+F"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+F"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.format"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="gtk"
+			sequence="Ctrl+Shift+F"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="gtk"
+			sequence="Esc Ctrl+F"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.phpeditor.format"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+ARROW_DOWN"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.next.member"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+ARROW_DOWN"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+ARROW_DOWN"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.next.member"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+ARROW_UP"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.previous.member"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+ARROW_UP"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+ARROW_UP"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.previous.member"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="Ctrl+Shift+P"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.matching.bracket"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Ctrl+Shift+P"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId=""
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			platform="carbon"
+			sequence="Command+Shift+P"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.ui.edit.text.php.goto.matching.bracket"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+	  <key
+			sequence="F3"
+			contextId="net.sourceforge.phpdt.ui.phpEditorScope"
+			commandId="net.sourceforge.phpeclipse.actions.opendeclaration"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+	  </key>
+   </extension>
+</plugin>

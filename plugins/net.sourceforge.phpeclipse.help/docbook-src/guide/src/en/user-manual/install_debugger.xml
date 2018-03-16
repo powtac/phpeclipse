@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.install_debugger">
+  <title>Installing Debugger</title>
+  <para>
+    At the moment only DBG is supported by the standard &phpeclipse; release. <application>XDEBUG</application> is only supported by loading the appropriate sources via CVS.
+  </para>
+
+
+  <sect2 id="sec.install_dbg">
+    <title>Installing <application>DBG</application></title>
+    <para><indexterm><primary>install</primary><secondary>DBG</secondary></indexterm>
+      DBG is a full-featured php debugger engine, an interactive tool that helps you debug PHP scripts. It works with a production and/or development web server and allows you to debug your scripts locally or remotely, from an IDE or the console. &phpeclipse; has a built-in, pure Java debugging client that operates the DBG debugging engine.
+    </para>
+
+    <para>
+      To get the debugger to work you need to install the debugger engine to run in the PHP interpreter, and configure the debugger client to communicate with the engine.
+    </para>
+
+    <para>
+      Make sure you download the appropriate DBG binaries for your OS and your release of PHP (from 4.0.6 up to 4.3.10 and from 5.0.0 up to 5.0.3) (Note that the 5.0.3 debugger binary seems to work for the 5.0.4 and 5.05 interpreters.) If you are using Mac OS X you will have to build the debugger from source.
+    </para>
+
+
+    <sect3 id="sec.find_dbg_dll">
+      <title>Getting the right php_dbg.dll</title>
+      <para>
+        DBG can be downloaded from <ulink url="http://dd.cron.ru/dbg/downloads.php">DBG&nbsp;Downloads</ulink>. You need to download the dbg modules packet for the appropriate operating system. Unpack the zipped packet and  take the dll (or so) file which matches the PHP version you have currently running. E.g. for PHP 5.1.2 the correct file is <filename>php_dbg.dll-5.1.2</filename>. Rename the appropriate file to <filename>php_dbg.dll</filename> and read <xref linkend="sec.find_extension_dir"/> to find out the right destination location for the file.
+      </para>
+    </sect3>
+
+
+    <sect3 id="sec.find_extension_dir">
+      <title>Find the extension directory</title>
+
+      <para>
+        The best way to find out is via the <quote>phpinfo()</quote> command. Create a PHP-file called <filename>phpinfo.php</filename> with the following content:
+        <programlisting><![CDATA[<?php phpinfo(); ?>]]></programlisting> and start it via your web browser. Then search for <quote>extension_dir</quote>. The right column shows the path to the directory where you have to place the <filename>php_dbg.dll</filename> (see <xref linkend="fig.extension_dir"/>).
+      </para>
+
+      <figure id="fig.extension_dir">
+        <title>The information about the extension directory</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/extension_dir_1.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/extension_dir_1.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect3>
+
+
+    <sect3 id="sec.install_dbg_php_ini">
+      <title>Setup &phpini;</title>
+      <para>
+        Where is the &phpini; which needs to be set up?
+      </para>
+
+      <para>
+        The simplest way to find out the path of the &phpini; is again with the help of the phpinfo function as described in <xref linkend="sec.find_extension_dir"/>
+      </para>
+
+      <tip>
+        <para>
+          Another possibility to find out where an application searches specific files is by using a tool called <application>Filemon</application> which you can get from <ulink url="http://www.sysinternals.com">Sysinternals</ulink>.
+        </para>
+      </tip>
+
+      <para>
+        The resulting output shows the path of the &phpini; file within the topmost header. See <xref linkend="fig.php_ini_path"/>
+      </para>
+
+      <para>
+        Now open <filename>php.ini</filename> and search for <quote>implicit_flush</quote>, and set it to <quote>On</quote>.
+        <programlisting><![CDATA[; this is to see output while debugging
+implicit_flush = On]]> </programlisting>
+      </para>
+
+      <para>
+        copy the following lines into <filename>php.ini</filename> (they can go at the end of the file). For linux it is a php_dbg.so instead of php.dbg.dll.
+        <programlisting><![CDATA[
+[debugger]
+extension=php_dbg.dll
+debugger.enabled=on
+debugger.profiler_enabled=on
+debugger.hosts_allow=localhost
+debugger.hosts_deny=ALL
+debugger.ports=7869, 10000/16
+]]></programlisting>
+      </para>
+
+      <para>
+        Disable <ulink url="http://eaccelerator.net">eAccelerator</ulink> if it is installed and enabled:
+        <programlisting><![CDATA[eaccelerator.enable="0"]]></programlisting>
+      </para>
+
+      <para>
+        Disable the <ulink url="http://xdebug.org/">Xdebug</ulink> extension if installed (usually via pear) by commenting out
+        <programlisting><![CDATA[;zend_extension=/usr/lib/php4/20020429/xdebug.so]]></programlisting>
+      </para>
+      <para>
+        Also if you have Zend Extension Manager installed (You should find a [Zend] section) make sure you add this line before any other zend_extension_ts (windows) or zend_extension (linux) lines: For Windows:
+        <programlisting><![CDATA[zend_extension_ts = "C:\path\to\php_dbg.dll"]]></programlisting>
+        For linux:
+        <programlisting><![CDATA[zend_extension=/var/lib/php4/dbg.so]]></programlisting>
+      </para>
+
+      <para>
+        Restart web server
+      </para>
+
+      <figure id="fig.php_ini_path">
+        <title>Get the &phpini; path</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/phpinfo_php_ini.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/phpinfo_php_ini.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect3>
+
+
+    <sect3 id="sec.install_dbg_test">
+      <title>Test the DBG Installation</title>
+      <para>
+        When you have done all steps, restart your web server and again submit the <function>phpinfo</function> function as described in <xref linkend="sec.find_extension_dir"/>. Search the browser output for <quote>dbg</quote> and you should find a section like you can see in <xref linkend="fig.test_dbg"/>
+      </para>
+
+      <figure id="fig.test_dbg">
+        <title>phpinfo showing the DBG section</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/phpinfo_dbg_section.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/phpinfo_dbg_section.png" format="PNG" width="12cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        In addition you can submit the following URL within your browser: <ulink url="http://localhost/index.php?DBGSESSID=1@localhost:10001"></ulink>. Now, as there is no client running listening to dbg, you should see the following error message
+      </para>
+
+      <figure id="fig.dbg_error">
+        <title>DBG Error Message</title>
+        <mediaobject>
+          <imageobject role="html">
+            <imagedata align="center" fileref="img/en/xo-002/dbg_error.png" format="PNG"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata align="center" fileref="img/en/xo-002/dbg_error.png" format="PNG" width="8cm"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <note>
+      <para>
+        For setting up a debug configuration and doing real debugging with &phpeclipse;, see <xref linkend="sec.debug_php" />.
+      </para>
+      </note>
+
+
+    </sect3>
+  </sect2>
+
+
+  <sect2 id="sec.install_xdebug">
+    <title>Installing <application>XDEBUG</application></title>
+    <para><indexterm><primary>install</primary><secondary>XDEBUG</secondary></indexterm>
+      The XDebug support is only available through direct checkout of the &phpeclipse; CVS repository.
+    </para>
+
+    <para> <!-- todo: Get info from wiki -->
+      More to come.
+    </para>
+  </sect2>
+</sect1>

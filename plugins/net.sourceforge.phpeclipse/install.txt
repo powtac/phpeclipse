@@ -1,0 +1,138 @@
+PHPEclipse  Version 1.1.0
+Copyright 2003-2004 net.sourceforge.phpeclipse
+http://www.phpeclipse.org
+Contributors:
+    Axel Kramer (http://www.phpeclipse.de)
+    Fernando Vicente
+    Christian Perkonig
+    Matthieu Casanova
+           Le Borgne C�dric
+    David Cummings
+    Thomas Geiger
+    Rusell Wilson
+    Philippe Lachaise
+    Stefan Langer
+    Bastien Durel
+
+    and others...
+
+This Plugin is released under the Common Public License v1.0 which is included
+in this distribution or can be viewed at http://www.eclipse.org/legal/cpl-v10.html.
+
+Look for updated versions of this plugin at http://www.phpeclipse.de -> Install/Downloads
+
+1. Requirements
+2. Recommended
+3. Installation
+4. Editing PHP
+5. Additional Help
+6. Additional Plugins
+7. Contributing
+    7.1 Reporting Bugs
+
+
+
+ 1. Requirements
+------------------------------------------
+Java Runtime 1.4.x or higher ( downloadable at http://java.sun.com )
+Eclipse 3.0 or higher ( downloadable at http://www.eclipse.org )
+
+
+
+ 2. Recommended
+------------------------------------------
+PHP Enviroment for running PHP code.
+PHP can be downloaded at http://www.php.net
+Server can be found at http://httpd.apache.org
+MySQL can be found at http://www.mysql.org
+
+
+
+ 3. Installation
+------------------------------------------
+Simply unzip the files to your eclipse plugins directory and (re)start eclipse.
+(<eclipse-install>/plugins/)
+
+If you copy the files manually make sure all files are located in the
+net.sourceforge.phpeclipse folder in the plugins directory in your eclipse installation.
+
+After installation the directorystructure should look as follows (example):
+
+|--<eclipse install>
+|     |
+.     plugins
+.           |
+.           |
+            |- net.sourceforge.phpeclipse_x.x.x     // plugin folder
+            |               |
+            .               |
+            .               |-- phpeclipse.jar      // the plugin jar file
+            .               |
+                            |-- plugin.xml          // plugin manifest
+                            |
+                            |-- plugin.properties   // manifest properties
+                            |
+                            |-- phpeclipsesrc.zip   // sources for phpeclipse (if you don't need the sources you can safly delete this file)
+                            |
+                            |-- install.txt         // this textfile
+                            |
+                            |-- cpl-v10.html        // common public licence
+                            |
+                            |-- icons               // Icons directory
+
+
+ 4. Editing PHP
+------------------------------------------
+To start coding your php code. Simply create a new project.
+(File -> New... -> Project) And choose PHP from the left list.
+Choose PHP Project from the right and press "Next >".
+Specify a name for your project and press "Finish".
+
+To open the PHP Perspective click Windows -> Open Perspective -> Other... and
+choose PHP from the list.
+
+
+ 5. Additional Help
+------------------------------------------
+There is a help forum at http://www.phpeclipse.de.
+Just follow the "Forums" link.
+
+
+
+ 6. Additional Plugins for PHPEclipse
+------------------------------------------
+
+- PHPEclipse SQL Plugin : Helps create SQL statements
+
+Both can be found at: http://sourceforge.net/projects/phpeclipse/
+
+
+
+ 7. Contributing
+------------------------------------------
+To make PHPEclipse a useful tool for developing PHP we need your help.
+No contribution is too small or too big!
+We need:
+    Developers
+    Documentation
+    Translation
+    Bundling
+    ...
+
+
+BUT MOST IMPORTANT we need your help to find and fix those little bugs that
+seem to creep into the code.
+
+
+ 7.1 Bug Reporting
+------------------------------------------
+Before reporting a bug make sure that you are using the latest release of
+PHPEclipse.
+
+If you find a bug see if it is allready listed in the bug database
+at http://sourceforge.net/projects/phpeclipse/ -> Bugs
+If it is not listed create a new bug report. Be sure to include your system
+information (e.g. W2K Pentium 4 512 MB RAM), your Eclipse version
+(e.g. Eclipse 3.0), the version of phpeclipse you are using and a detailed
+description of the bug and how it can be reproduced.
+

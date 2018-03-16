@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+<template name="class" description="php4 class template with constructor" id="net.sourceforge.phpdt.php.class1" context="php" enabled="true"
+>class ${class_name} {
+	function ${class_name}() {
+		${cursor}
+	}
+}</template>
+<template name="class" description="php4 class with attribute" id="net.sourceforge.phpdt.php.class2" context="php" enabled="true"
+>class ${class_name} {
+	var $$${attribute};
+	
+	function ${class_name}() {
+		${cursor}
+	}
+	
+	function set_${attribute}( $$${attr} ) {
+		$$this->${attribute} = $$${attr};
+	}
+	
+	function get_${attribute}() {
+		return $$this->${attribute};
+	}
+}</template>
+<template name="class" description="php5 class template with constructor" id="net.sourceforge.phpdt.php.class3" context="php" enabled="true"
+>class ${class_name} {
+	public function __construct() {
+		${cursor}
+	}
+}</template>
+<template name="class" description="php5 class template with constructor and destructor" id="net.sourceforge.phpdt.php.class4" context="php" enabled="true"
+>class ${class_name} {
+	public function __construct() {
+		${cursor}
+	}
+	
+	public function __destruct() {
+	}
+}</template>
+<template name="class" description="php5 class with protected attribute" id="net.sourceforge.phpdt.php.class5" context="php" enabled="true"
+>class ${class_name} {
+	protected $$${attribute};
+	
+	public function __construct() {
+		${cursor}
+	}
+	
+	public function __destruct() {
+	}
+	
+	public function set${Attribute}( $$${attr} ) {
+		$$this->${attribute} = $$${attr};
+	}
+	
+	public function get${Attribute}() {
+		return $$this->${attribute};
+	}
+}</template>
+<template name="class" description="php5 class with private attribute" id="net.sourceforge.phpdt.php.class6" context="php" enabled="true"
+>class ${class_name} {
+	private $$${attribute};
+	
+	public function __construct() {
+		${cursor}
+	}
+	
+	public function __destruct() {
+	}
+	
+	public function set${Attribute}( $$${attr} ) {
+		$$this->${attribute} = $$${attr};
+	}
+	
+	public function get${Attribute}() {
+		return $$this->${attribute};
+	}
+}</template>
+<template name="for" description="iterate over array" id="net.sourceforge.phpdt.php.for1" context="php" enabled="true"
+>for ( $$${index} = 0, $$${max_count} = sizeof( $$${array} ); $$${index} &lt; $$${max_count}; $$${index}++ ) {
+	${cursor}
+}</template>
+<template name="for" description="iterate over array w/ temporary variable" id="net.sourceforge.phpdt.php.for2" context="php" enabled="true"
+>for ($$${index} = 0, $$${max_count} = sizeof( $$${array} ); $$${index} &lt; $$${max_count}; $$${index}++) {
+	$$${array_element} = $$${array}[ $$${index} ];
+	${cursor}
+}</template>
+<template name="foreach" description="iterate over array - value" id="net.sourceforge.phpdt.php.foreach1" context="php" enabled="true"
+>foreach ( $$${array} as $$${value} ) {
+       ${cursor}
+}</template>
+<template name="foreach" description="iterate over array - key/value" id="net.sourceforge.phpdt.php.foreach2" context="php" enabled="true"
+>foreach ( $$${array} as $$${key} =&gt; $$${value} ) {
+       ${cursor}
+}</template>
+<template name="try-catch" description="try-catch block - default" id="net.sourceforge.phpdt.php.try1" context="php" enabled="true"
+>try {
+       ${try}
+}</template>
+<template name="try-catch" description="try-catch block - default" id="net.sourceforge.phpdt.php.try1" context="php" enabled="true"
+>try {
+	${try}
+}
+catch( Exception $$${e} ) {
+	${catch}
+}</template>
+<template name="try-catch" description="try-catch block - custom Exception" id="net.sourceforge.phpdt.php.try2" context="php" enabled="true"
+>try {
+	${try}
+}
+catch( ${Exception} $$${e} ) {
+	${catch}
+}</template>
+<template name="function" description="function template" id="net.sourceforge.phpdt.php.function1" context="php" enabled="true"
+>function ${function_name}() {
+	${cursor}
+}</template>
+<template name="function" description="function template with return" id="net.sourceforge.phpdt.php.function2" context="php" enabled="true"
+>function ${function_name}() {
+	return ${cursor} ;
+}</template>
+<template name="function" description="function template with parameter" id="net.sourceforge.phpdt.php.function3" context="php" enabled="true"
+>function ${function_name}( $$${param} ) {
+	${cursor}
+}</template>
+<template name="function" description="function template with parameter and return" id="net.sourceforge.phpdt.php.function4" context="php" enabled="true"
+>function ${function_name}( $$${param} ) {
+	return ${cursor} ;
+}</template>
+<template name="while" description="while iteration" id="net.sourceforge.phpdt.php.while" context="php" enabled="true"
+>while ( ${condition} ) {
+	${cursor}
+}</template>
+<template name="do" description="do iteration" id="net.sourceforge.phpdt.php.do" context="php" enabled="true"
+>do {
+	${line_selection}
+} while ( ${condition} );</template>
+<template name="switch" description="switch case statement" id="net.sourceforge.phpdt.php.switch" context="php" enabled="true"
+>switch ( ${key} ) {
+	case ${value}:
+		${cursor}
+		break;
+		
+	default:
+		break;
+}</template>
+<template name="if" description="if statement" id="net.sourceforge.phpdt.php.if" context="php" enabled="true"
+>if ( ${condition} ) {
+	${cursor}
+}</template>
+<template name="ifelse" description="if else statement" id="net.sourceforge.phpdt.php.ifelse" context="php" enabled="true"
+>if ( ${condition} ) {
+	${cursor}
+}
+else {
+	
+}</template>
+<template name="elseif" description="else if block" id="net.sourceforge.phpdt.php.elseif" context="php" enabled="true"
+>elseif ( ${condition} ) {
+	${cursor}
+}</template>
+<template name="else" description="else block" id="net.sourceforge.phpdt.php.else" context="php" enabled="true"
+>else {
+	${cursor}
+}</template>
+<template name="filecomment" description="file comment used by the class and interface wizards" id="net.sourceforge.phpdt.php.filecomment" context="php" enabled="true"
+>/**
+ *	Created on ${date} by ${user}
+ *
+ */</template>
+<template name="functioncomment" description="function comment" id="net.sourceforge.phpdt.php.functioncomment" context="php" enabled="true"
+>/**
+ *	@author ${user}
+ *
+ */</template>
+ <template name="echo" description="echo a string" id="net.sourceforge.phpdt.php.echo" context="php" enabled="true"
+ >echo '${string}';</template>
+
+  <!-- phpdoc -->
+
+  <template description="&lt;code&gt;&lt;/code&gt;" name="&lt;code&gt;" id="net.sourceforge.phpdt.phpdoc.code1" context="phpdoc"
+  >&lt;code&gt;${cursor}&lt;/code&gt;</template>
+
+  <template description="&lt;code&gt;null&lt;/code&gt;" name="&lt;code&gt;" id="net.sourceforge.phpdt.phpdoc.code2" context="phpdoc"
+  >&lt;code&gt;null&lt;/code&gt;</template>
+
+  <template description="&lt;pre&gt;&lt;/pre&gt;" name="&lt;pre&gt;" id="net.sourceforge.phpdt.phpdoc.pre" context="phpdoc"
+  >&lt;pre&gt;${cursor}&lt;/pre&gt;</template>
+
+  <template description="&lt;b&gt;&lt;/b&gt;" name="&lt;b&gt;" id="net.sourceforge.phpdt.phpdoc.b" context="phpdoc"
+  >&lt;b&gt;${cursor}&lt;/b&gt;</template>
+
+  <template description="&lt;i&gt;&lt;/i&gt;" name="&lt;i&gt;" id="net.sourceforge.phpdt.phpdoc.i" context="phpdoc"
+  >&lt;i&gt;${cursor}&lt;/i&gt;</template>
+
+  <template name="@abstract" description="abstract" id="net.sourceforge.phpdt.phpdoc.abstract" context="phpdoc" enabled="true">@abstract</template>
+  <template name="@access" description="access private" id="net.sourceforge.phpdt.phpdoc.access1" context="phpdoc" enabled="true">@access private</template>
+  <template name="@access" description="access protected" id="net.sourceforge.phpdt.phpdoc.access2" context="phpdoc" enabled="true">@access protected</template>
+  <template name="@access" description="access public" id="net.sourceforge.phpdt.phpdoc.access3" context="phpdoc" enabled="true">@access public</template>
+  <template name="@author" description="author name" id="net.sourceforge.phpdt.phpdoc.author" context="phpdoc">@author ${user}</template>
+  <template name="@author" description="author name email" id="net.sourceforge.phpdt.phpdoc.author" context="phpdoc" enabled="true">@author ${user} &lt;${email}&gt;</template>
+  <template name="@category" description="category" id="net.sourceforge.phpdt.phpdoc.category" context="phpdoc" enabled="true">@category ${categoryname}</template>
+  <template name="@copyright" description="copyright" id="net.sourceforge.phpdt.phpdoc.copyright" context="phpdoc" enabled="true">@copyright Copyright &amp;copy; ${year}, ${user}</template>
+  <template name="@deprecated" description="deprecated version date" id="net.sourceforge.phpdt.phpdoc.deprected" context="phpdoc" enabled="true">@deprecated ${version} - ${date}</template>
+  <template name="@example" description="example path description" id="net.sourceforge.phpdt.phpdoc.example1" context="phpdoc" enabled="true">@example ${path} ${description}</template>
+  <template name="@final" description="final" id="net.sourceforge.phpdt.phpdoc.final" context="phpdoc" enabled="true">@final</template>
+  <template name="@filesource" description="filesource" id="net.sourceforge.phpdt.phpdoc.filesource" context="phpdoc" enabled="true">@filesource</template>
+  <template name="@global" description="global datatype globalvariable" id="net.sourceforge.phpdt.phpdoc.global1" context="phpdoc" enabled="true">@global ${datatype} $$GLOBALS['${globalvariable}']</template>
+  <template name="@global" description="global datatype description" id="net.sourceforge.phpdt.phpdoc.global2" context="phpdoc" enabled="true">@global ${datatype} ${description}</template>
+  <template name="@ignore" description="ignore" id="net.sourceforge.phpdt.phpdoc.ignore" context="phpdoc" enabled="true">@ignore</template>
+  <template name="@internal " description="internal comment" id="net.sourceforge.phpdt.phpdoc.internal" context="phpdoc" enabled="true">@internal ${comment}</template>
+  <template name="@license" description="license url name" id="net.sourceforge.phpdt.phpdoc.license" context="phpdoc" enabled="true">@license ${url} ${nameoflicense}</template>
+  <template name="@link" description="link url description" id="net.sourceforge.phpdt.phpdoc.link1" context="phpdoc" enabled="true">@link ${url} ${description}</template>
+  <template name="@method" description="method returntype description" id="net.sourceforge.phpdt.phpdoc.method" context="phpdoc" enabled="true">@method ${returntype} ${description}</template>
+  <template name="@name" description="name globalvariable" id="net.sourceforge.phpdt.phpdoc.name" context="phpdoc" enabled="true">@name ${globalvariable}</template>
+  <template name="@package" description="package packagename" id="net.sourceforge.phpdt.phpdoc.package" context="phpdoc" enabled="true">@package ${packagename}</template>
+  <template name="@param" description="param datatype paramname description" id="net.sourceforge.phpdt.phpdoc.param1" context="phpdoc" enabled="true">@param ${datatype} ${paramname} ${description}</template>
+  <template name="@param" description="param datatype paramname" id="net.sourceforge.phpdt.phpdoc.param2" context="phpdoc" enabled="true">@param ${datatype} ${paramname}</template>
+  <template name="@param" description="param datatype1|datatype2 paramname description" id="net.sourceforge.phpdt.phpdoc.param3" context="phpdoc" enabled="true">@param ${datatype1}|${datatype2} ${paramname} ${description}</template>
+  <template name="@property" description="property datatype description" id="net.sourceforge.phpdt.phpdoc.property1" context="phpdoc" enabled="true">@property ${datatype} ${paramname} ${description}</template>
+  <template name="@property-read" description="property-read datatype description" id="net.sourceforge.phpdt.phpdoc.property2" context="phpdoc" enabled="true">@property-read ${datatype} ${paramname} ${description}</template>
+  <template name="@property-write" description="property-write datatype description" id="net.sourceforge.phpdt.phpdoc.property3" context="phpdoc" enabled="true">@property-write ${datatype} ${paramname} ${description}</template>
+  <template name="@return" description="return datatype description" id="net.sourceforge.phpdt.phpdoc.return" context="phpdoc" enabled="true">@return ${datatype} ${description}</template>
+  <template name="@see" description="see element" id="net.sourceforge.phpdt.phpdoc" context="phpdoc.see" enabled="true">@see ${element}</template><template name="@since" description="since version date" id="net.sourceforge.phpdt.phpdoc" context="phpdoc" enabled="true">@since ${version} - ${date}</template>
+  <template name="@since" description="since version/info string [unspecified format]" id="net.sourceforge.phpdt.phpdoc.since" context="phpdoc" enabled="true">@since ${version}</template>
+  <template name="@static" description="static" id="net.sourceforge.phpdt.phpdoc.static" context="phpdoc" enabled="true">@static</template>
+  <template name="@staticvar" description="staticvar datatype description" id="net.sourceforge.phpdt.phpdoc.staticvar" context="phpdoc" enabled="true">@staticvar ${datatype} ${description}</template>
+  <template name="@subpackage" description="subpackage subpackagename" id="net.sourceforge.phpdt.phpdoc.subpackage" context="phpdoc" enabled="true">@subpackage ${subpackagename}</template>
+  <template name="@todo" description="@todo information_string" id="net.sourceforge.phpdt.phpdoc.todo" context="phpdoc" enabled="true">@todo ${information_string}</template>
+  <template name="@tutorial" description="tutorial string description" id="net.sourceforge.phpdt.phpdoc.tutorial" context="phpdoc" enabled="true">@tutorial ${string} ${description}</template>
+  <template name="@uses" description="uses element description" id="net.sourceforge.phpdt.phpdoc.uses" context="phpdoc" enabled="true">@uses ${element} ${description}</template>
+  <template name="@var" description="var datatype description" id="net.sourceforge.phpdt.phpdoc.var" context="phpdoc" enabled="true">@var ${datatype} ${description}</template>
+  <template name="@version" description="version versionstring" id="net.sourceforge.phpdt.phpdoc.version" context="phpdoc" enabled="true">@version ${versionstring}</template>
+
+  <template name="@example" description="inline {@example uri_or_path_to_file startline number_of_lines}" id="net.sourceforge.phpdt.phpdoc.example2" context="phpdoc" enabled="true"
+  >{@example ${uri_or_path_to_file} ${startline} ${number_of_lines}}</template>
+  <template name="@id" description="inline {@id sectionname}" id="net.sourceforge.phpdt.phpdoc.id" context="phpdoc" enabled="true">{@id ${sectionname}}</template>
+  <template name="@internal" description="inline {@internal any_text}}" id="net.sourceforge.phpdt.phpdoc.internal2" context="phpdoc" enabled="true">{@internal ${any_text}}}</template>
+  <template name="@inheritdoc" description="inline {@inheritdoc}" id="net.sourceforge.phpdt.phpdoc.inheritdoc" context="phpdoc" enabled="true">{@inheritdoc}</template>
+  <template name="@link" description="inline {@link URL description}" id="net.sourceforge.phpdt.phpdoc.link2" context="phpdoc" enabled="true">{@link ${URL} ${description}}</template>
+  <template name="@link" description="inline {@link element description}" id="net.sourceforge.phpdt.phpdoc.link3" context="phpdoc" enabled="true">{@link ${element} ${description}}</template>
+  <template name="@source" description="inline {@source}" id="net.sourceforge.phpdt.phpdoc.source1" context="phpdoc" enabled="true">{@source}</template>
+  <template name="@source" description="inline {@source startline}" id="net.sourceforge.phpdt.phpdoc.source2" context="phpdoc" enabled="true">{@source ${startline}}</template>
+  <template name="@source" description="inline {@source startline number_of_lines}" id="net.sourceforge.phpdt.phpdoc.source3" context="phpdoc" enabled="true">{@source ${startline} ${number_of_lines}}</template>
+</templates>

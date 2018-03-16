@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<sect1 id="sec.install_java">
+  <title>Installing <application>Java</application></title>
+  <para>
+    <indexterm><primary>Java</primary></indexterm>
+    <indexterm><primary>install</primary><secondary>Java</secondary></indexterm>
+    The Java Runtime Environment (JRE) is used to run all programs written in the Java programming language. Java 2 is required to run both &eclipse; and &phpeclipse;. Chances are that you will already have this installed. If not, or if you are not sure, visit Sun's <ulink url="http://java.com/en/download">Java Download Site</ulink>, which will provide you with what you need (or inform you if you already have Java 2) for any operating system.
+  </para>
+
+  <para>
+    If you are using a platform with it's own software management system (such as many linux distributions), you may wish to use your package management system to install Java rather than the Sun download site.
+  </para>
+
+  <para>
+    Third party Java Runtime Environments (such as <ulink url="http://www.blackdown.org">Blackdown</ulink>) are also available, and may well run this software. Feedback on this is welcome. Our current experience is that Blackdown will not successfully run Eclipse (under Gentoo Linux, Nov 2004).
+  </para>
+
+</sect1>

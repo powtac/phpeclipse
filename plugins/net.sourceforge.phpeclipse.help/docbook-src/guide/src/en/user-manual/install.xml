@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter id="cpt.install">
+  <title>Installations</title>
+  <para>
+    Here it goes.
+  </para>
+
+  &install_java;
+  &install_eclipse;
+  &install_phpeclipse;
+  &install_xampp;
+  &install_debugger;
+
+</chapter>

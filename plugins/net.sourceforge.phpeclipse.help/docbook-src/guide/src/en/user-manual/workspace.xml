@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter id="sec.workspace">
+  <title>Workspace</title>
+  <para>
+    Once you have installed &eclipse; and start it the first time &eclipse; asks you about selecting a workspace. The  (see <xref linkend="fig.select_workspace"/>. The default path for the workspace on a Windows system is <filename class="directory">C:\Documents and Settings\your_username\workspace</filename>. Even if you don't know what the workspace is good for, and even if you don't know whether this is a good place for a workspace you can safely accept this path with clicking <quote>OK</quote>.
+  </para>
+
+  <para>
+    It is also no problem to activate the <guibutton>Use this as default and do not ask again</guibutton>. You can always change your workspace and/or can activate to be asked again for a workspace when &eclipse; is starting.
+  </para>
+
+  <figure id="fig.select_workspace">
+    <title>Select a workspace</title>
+    <mediaobject>
+      <imageobject role="html">
+        <imagedata align="center" fileref="img/en/xo-002/select_a_workspace.png" format="PNG"/>
+      </imageobject>
+      <imageobject role="fo">
+        <imagedata align="center" fileref="img/en/xo-002/select_a_workspace.png" format="PNG" width="12cm"/>
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+
+  <sect1 id="sec.change_workspace">
+    <title>Changing the workspace</title>
+    <para>
+      You can change the workspace after &eclipse; has started by clicking on
+      <menuchoice>
+        <guimenu>File</guimenu>
+        <guisubmenu>Switch Workspace...</guisubmenu>
+      </menuchoice> (see <xref linkend="fig.switch_workspace"/>
+      This opens a dialog (see <xref linkend="fig.workspace_dialog"/> where you can select an already existing workspace, or a new folder which should be used as a workspace.
+    </para>
+
+
+    <figure id="fig.switch_workspace">
+      <title>Switch a workspace</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/switch_workspace.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/switch_workspace.png" format="PNG" width="6cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig.workspace_dialog">
+      <title>Select a workspace</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/workspace_dialog.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/workspace_dialog.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+
+  <sect1 id="sec.activate_prompt_for_workspace">
+    <title>Activate the <quote>Select a workspace</quote> dialog</title>
+    <para>
+      In case you have deactivated the prompting for a workspace setting, you can activate it again by clicking on
+      <menuchoice>
+        <guimenu>Window</guimenu>
+        <guisubmenu>Preferences</guisubmenu>
+        <guimenuitem>General</guimenuitem>
+        <guimenuitem>Startup and Shutdown</guimenuitem>
+      </menuchoice> and then activating <guibutton>Prompt for workspace on startup</guibutton> (see <xref linkend="fig.activate_prompt_for_workspace"/>)
+    </para>
+
+
+    <figure id="fig.activate_prompt_for_workspace">
+      <title>Activate prompt for workspace</title>
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata align="center" fileref="img/en/xo-002/activate_prompt_for_workspace.png" format="PNG"/>
+        </imageobject>
+        <imageobject role="fo">
+          <imagedata align="center" fileref="img/en/xo-002/activate_prompt_for_workspace.png" format="PNG" width="12cm"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+
+  <sect1 id="sec.choose_workspace">
+    <title>What workspace to choose for PHP</title>
+    <para>
+      So now I know how to select a workspace, but what is a good place for a workspace. I have different projects and/or have already existing files, have a already running webserver. So how does this all match?
+    </para>
+
+    <para>
+      So, as all roads lead to Rome there are several different methods which will be discussed in the following sections. But first, let us explain how the workspace directory will look like, as the structure of a workspace will always be the same (independent of where it is located).
+    </para>
+
+    <para>
+      Within the workspace folder there is a folder named <filename class="directory">.metadata</filename>, which we will, for simplicity, not discuss here. Besides this folder, &eclipse; will create additional folders for every project, independently whether the project is a PHP, Java or anything else project.
+    </para>
+
+
+    <sect2 id="sec.workspace_method_1">
+      <title>Workspace Method 1</title>
+      <para>
+        The workspace is set to be in the <filename class="directory">Documents and Settings</filename> folder and also the PHP-files are located within the workspace.
+      </para>
+
+      <para>
+        In this case we would have the following path: <filename class="directory">C:\Documents and Settings\Robert\workspace</filename>. When we have created a project (e.g. MyFirstPHPProject) through &eclipse; and create a PHP-file (e.g. index.php) we would see the file as: <filename class="directory">C:\Documents&nbsp;and&nbsp;Settings\Robert\workspace\MyFirstPHPProject\index.php</filename>.
+      </para>
+
+
+      <sect3 id="sec.swm_1_change_docroot">
+        <title>Configure Web Server by changing Document Root</title>
+        <para>
+          Given that our webserver is installed in a different directory and also the &docroot; points to a different directory, we have to change the &docroot; path to our <filename class="directory">workspace</filename> folder (see <xref linkend="sec.xampp_change_doc_root"/>), which would be the following in our example:<filename class="directory">C:\Documents&nbsp;and&nbsp;Settings\Robert\workspace</filename>
+        </para>
+
+        <para>
+          As the project's default &docroot; is set to the current workspace, we do not need to change anything.
+        </para>
+
+        <para>
+          In this case the file <filename>myFirstFile.php</filename> can be called by the web browser with the following URL: <ulink url="http://localhost/MyFirstPHPProject/myFirstFile.php"></ulink>
+        </para>
+
+<!--
+        <para>
+          You also have to set <quote>DocumentRoot</quote> within the <quote>PHP Project Settings</quote>. Open the context menu by right clicking on <quote>MyFirstPHPProjecty</quote> within the <quote>Navigator View</quote>and click on <quote>Properties</quote>, which opens the properties dialog for the project. Click on <quote>PHP Project Settings</quote> and set the <quote>DocumentRoot</quote> according <xref linkend="fig.set_document_root_1"/>.
+        </para>
+
+        <figure id="fig.set_document_root_1">
+          <title>Change Document Root</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/set_document_root_for_project_1.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/set_document_root_for_project_1.png" format="PNG" width="12cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+-->
+      </sect3>
+
+      <sect3 id="sec.swm_1_add_alias">
+        <title>Configure Web Server by adding Alias</title>
+        <para>
+          As an alternative to changing the &docroot; we can add an alias (see <xref linkend="sec.xampp_add_alias"/>) to the web server's configuration file. In this case we also would have to change the localhost setting within our project properties.
+        </para>
+
+        <figure id="fig.set_localhost">
+          <title>Set localhost when using Alias</title>
+          <mediaobject>
+            <imageobject role="html">
+              <imagedata align="center" fileref="img/en/xo-002/set_document_root_for_project_2.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+              <imagedata align="center" fileref="img/en/xo-002/set_document_root_for_project_2.png" format="PNG" width="12cm"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect3>
+    </sect2>
+
+
+    <sect2 id="sec.workspace_method_2">
+      <title>Workspace Method 2</title>
+      <para>
+        The workspace path is the same as the &docroot; path.
+      </para>
+
+      <para>
+        In some cases (or maybe in many?) people which tries to work with &phpeclipse; have already set up a working Apache and PHP environment. Which means, they have already a htdocs directory anywhere on their local machine, and they have already some PHP-files within the existing htdocs folder. And they don't want to move all their files into the &eclipse; workspace folder. One way to accomplish this would be to set the &eclipse; workspace to the  already existing htdocs folder.
+      </para>
+
+      <para>
+        For example you have set up XAMPP and your &docroot; path is the XAMPP default: <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp\htdocs</filename>, then your appropriate workspace path should be one level less: <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp</filename>. Now you create a new PHP project and name it <quote>htdocs</quote>. &phpeclipse; will automatically add all files within the <filename>htdocs</filename> folder to the project. Just adjust the project's <quote>DocumentRoot</quote> setting as described in <xref linkend="sec.swm_1_change_docroot"/>.
+      </para>
+    </sect2>
+
+
+    <sect2 id="sec.workspace_method_3">
+      <title>Workspace Method 3</title>
+      <para>
+        The workspace is set to be in the <filename class="directory">Documents and Settings</filename> folder and the PHP-files are in a different folder.
+      </para>
+
+      <para>
+        As we have seen how we can work with method 1 and method 2, there is another method of setting up your workspace and project which also allows you to hold the &eclipse; workspace and your PHP-files separated.
+      </para>
+
+      <para>
+        For example your workspace path is <filename class="directory">C:\Documents and Settings\Robert\workspace</filename> and your current &docroot; is <filename class="directory">C:\Program&nbsp;Files\apachefriends\xampp\htdocs</filename>. See <xref linkend="sec.add_file_by_linking"/> how to set up a project for this case.
+      </para>
+    </sect2>
+
+<!--
+    <sect2 id="sec.create_new_workspace">
+      <title>Create a New Workspace</title>
+      <para>
+
+      </para>
+    </sect2>
+-->
+  </sect1>
+</chapter>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<!-- extension point definitions -->
+	<extension-point id="configurationDuplicationMaps" name="%ExtPoint.configurationDuplicationMaps"/>
+	<extension-point id="argumentVariables" name="%ExtPoint.argumentVariables"/>
+	<extension-point id="directoryVariables" name="%ExtPoint.directoryVariables"/>
+	<extension-point id="fileVariables" name="%ExtPoint.fileVariables"/>
+	<extension-point id="refreshVariables" name="%ExtPoint.refreshVariables"/>
+
+<!-- Extensions -->
+
+	<!-- Launch Configuration Extensions -->
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType
+			id = "net.sourceforge.phpeclipse.externaltools.ProgramLaunchConfigurationType"
+			name = "%Program.externalTools"
+			delegate = "net.sourceforge.phpdt.externaltools.internal.program.launchConfigurations.ProgramLaunchDelegate"
+			modes = "run"
+			category = "org.eclipse.ui.externaltools">
+		</launchConfigurationType>
+		<launchConfigurationType
+			id = "net.sourceforge.phpeclipse.externaltools.ProgramBuilderLaunchConfigurationType"
+			name = "%Program.externalTools"
+			delegate = "net.sourceforge.phpdt.externaltools.internal.program.launchConfigurations.ProgramLaunchDelegate"
+			modes = "run"
+			category = "org.eclipse.ui.externaltools.builder">
+		</launchConfigurationType>
+	</extension>
+
+	<extension point = "net.sourceforge.phpeclipse.externaltools.configurationDuplicationMaps">
+		<configurationMap
+			sourceType="net.sourceforge.phpeclipse.externaltools.ProgramLaunchConfigurationType"
+			builderType="net.sourceforge.phpeclipse.externaltools.ProgramBuilderLaunchConfigurationType">
+		</configurationMap>
+	</extension>
+
+	<extension point = "org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup
+			id="net.sourceforge.phpdt.externaltools.launchConfigurationTabGroup.program"
+			type ="net.sourceforge.phpeclipse.externaltools.ProgramLaunchConfigurationType"
+			class="net.sourceforge.phpdt.externaltools.internal.program.launchConfigurations.ProgramTabGroup">
+		</launchConfigurationTabGroup>
+		<launchConfigurationTabGroup
+			id="net.sourceforge.phpdt.externaltools.launchConfigurationTabGroup.program.builder"
+			type ="net.sourceforge.phpeclipse.externaltools.ProgramBuilderLaunchConfigurationType"
+			class="net.sourceforge.phpdt.externaltools.internal.program.launchConfigurations.ProgramBuilderTabGroup">
+		</launchConfigurationTabGroup>
+	</extension>
+
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage
+			id="net.sourceforge.phpdt.externaltools.launchConfigurationTypeImage.program"
+			configTypeID="net.sourceforge.phpeclipse.externaltools.ProgramLaunchConfigurationType"
+			icon="icons/full/obj16/external_tools.gif">
+		</launchConfigurationTypeImage>
+		<launchConfigurationTypeImage
+			id="net.sourceforge.phpdt.externaltools.launchConfigurationTypeImage.program.builder"
+			configTypeID="net.sourceforge.phpeclipse.externaltools.ProgramBuilderLaunchConfigurationType"
+			icon="icons/full/obj16/external_tools.gif">
+		</launchConfigurationTypeImage>
+	</extension>
+
+	<!-- Variable Extensions -->
+	<extension point="net.sourceforge.phpeclipse.externaltools.fileVariables">
+		<variable
+			tag="workspace_loc"
+			description="Expands to the workspace root's absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.WorkspaceExpander">
+		</variable>
+		<variable
+			tag="resource_loc"
+			description="Expands to the resource's absolute file system path."
+			componentClass="net.sourceforge.phpdt.externaltools.variable.SpecificFileResourceComponent"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceExpander">
+		</variable>
+	</extension>
+
+	<extension point="net.sourceforge.phpeclipse.externaltools.argumentVariables">
+		<variable
+			tag="workspace_loc"
+			description="Expands to the workspace root's absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.WorkspaceExpander">
+		</variable>
+		<variable
+			tag="file_loc"
+			description="Expands to the full file name"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.FileExpander">
+		</variable>
+		<variable
+			tag="file_url"
+			description="Expands to an URL with the localhost preference settings"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.UrlExpander">
+		</variable>
+		<variable
+			tag="localhost_url"
+			description="Expands to the localhost preference settings."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.LocalhostExpander">
+		</variable>
+		<variable
+			tag="project_loc"
+			description="Expands to the selected resource's project absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceProjectExpander">
+		</variable>
+		<variable
+			tag="project_path"
+			description="Expands to the full path, relative to the workspace root, of the selected project"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ProjectExpander">
+		</variable>
+		<variable
+			tag="project_name"
+			description="Expands to the name of the selected project"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ProjectNameExpander">
+		</variable>
+		<variable
+			tag="resource_loc"
+			description="Expands to the resource's absolute file system path."
+			componentClass="net.sourceforge.phpdt.externaltools.variable.SpecificFileResourceComponent"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceExpander">
+		</variable>
+		<variable
+			tag="container_loc"
+			description="Expands to the selected resource's containing folder absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceContainerExpander">
+		</variable>
+		<variable
+			tag="build_type"
+			description="Expands to the type of build"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.BuildTypeExpander">
+		</variable>
+	</extension>
+
+	<extension point="net.sourceforge.phpeclipse.externaltools.directoryVariables">
+		<variable
+			tag="workspace_loc"
+			description="Expands to the workspace root's absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.WorkspaceExpander">
+		</variable>
+		<variable
+			tag="project_loc"
+			description="Expands to the selected resource's project absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceProjectExpander">
+		</variable>
+		<variable
+			tag="container_loc"
+			description="Expands to the selected resource's containing folder absolute file system path."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceContainerExpander">
+		</variable>
+		<variable
+			tag="resource_loc"
+			description="Expands to a resource's absolute file system path."
+			componentClass="net.sourceforge.phpdt.externaltools.variable.SpecificFolderResourceComponent"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceExpander">
+		</variable>
+	</extension>
+
+	<extension point="net.sourceforge.phpeclipse.externaltools.refreshVariables">
+		<variable
+			tag="workspace"
+			description="Expands to the workspace root."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.WorkspaceExpander">
+		</variable>
+		<variable
+			tag="project"
+			description="Expands to the project of the selected resource."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceProjectExpander">
+		</variable>
+		<variable
+			tag="container"
+			description="Expands to the folder containing the selected resource."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceContainerExpander">
+		</variable>
+		<variable
+			tag="resource"
+			description="Expands to a resource."
+			componentClass="net.sourceforge.phpdt.externaltools.variable.ResourceComponent"
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.ResourceExpander">
+		</variable>
+		<variable
+			tag="working_set"
+			description="Expands to the group of resources in a working set."
+			expanderClass="net.sourceforge.phpdt.externaltools.variable.WorkingSetExpander">
+		</variable>
+	</extension>
+	<extension
+		 point="org.eclipse.ui.preferencePages">
+	  <page
+			name="PHP External Tools"
+			category="net.sourceforge.phpeclipse.ui.preferencePage"
+			class="net.sourceforge.phpdt.externaltools.preferences.PHPExternalToolsPreferencePage"
+			id="net.sourceforge.phpdt.externaltools.preferences">
+	  </page>
+	  <page
+			category="net.sourceforge.phpdt.externaltools.preferences"
+			class="net.sourceforge.phpdt.externaltools.preferences.XamppPrefencePage"
+			id="net.sourceforge.phpeclipse.externaltools.xampp.preferences"
+			name="XAMPP"/>
+	  <page
+			category="net.sourceforge.phpdt.externaltools.preferences"
+			class="net.sourceforge.phpdt.externaltools.preferences.MySQLPreferencePage"
+			id="net.sourceforge.phpeclipse.externaltools.mysql.preferences"
+			name="MySQL"/>
+	  <page
+			category="net.sourceforge.phpdt.externaltools.preferences"
+			class="net.sourceforge.phpdt.externaltools.preferences.ApachePrefencePage"
+			id="net.sourceforge.phpeclipse.externaltools.apache.preferences"
+			name="Apache"/>
+	</extension>
+
+	<extension
+		 point="org.eclipse.ui.perspectiveExtensions">
+	  <perspectiveExtension
+			targetID="net.sourceforge.phpeclipse.PHPPerspective">
+		 <actionSet id="net.sourceforge.phpeclipse.PHPActionSet"/>
+	  </perspectiveExtension>
+	  <perspectiveExtension
+		   targetID="net.sourceforge.phpeclipse.PHPPerspective">
+			  <actionSet id="net.sf.eclipsetidy.ActionSet"/>
+		  </perspectiveExtension>
+   </extension>
+
+   <extension
+		 point="org.eclipse.ui.actionSets">
+	  <actionSet
+			label="PHP/Apache"
+			visible="false"
+			id="net.sourceforge.phpeclipse.PHPActionSet">
+		 <menu
+			   label="PHP/Apache"
+			   id="net.sourceforge.phpeclipse.PHPMenu">
+			<separator
+				  name="phpeclipse">
+			</separator>
+		 </menu>
+		 <action
+			   label="Restart Apache"
+			   icon="icons/obj16/apache_restart.gif"
+			   tooltip="Restart Apache"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPRestartApacheAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPRestartApacheAction">
+		 </action>
+		 <action
+			   label="Stop Apache"
+			   icon="icons/obj16/apache_stop.gif"
+			   tooltip="Stop Apache"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPStopApacheAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPStopApacheAction">
+		 </action>
+		 <action
+			   label="Start Apache"
+			   icon="icons/obj16/apache.gif"
+			   tooltip="Start Apache"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPStartApacheAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPStartApacheAction">
+		 </action>
+		 <action
+			   label="Start MySQL"
+			   icon="icons/obj16/sql.gif"
+			   tooltip="Start MySQL"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPStartMySQLAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPStartMySQLAction">
+		 </action>
+		 <action
+			   label="Stop XAMPP"
+			   icon="icons/obj16/xampp_stop.gif"
+			   tooltip="Stop XAMPP"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPStopXAMPPAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPStopXAMPPAction">
+		 </action>
+		 <action
+			   label="Start XAMPP"
+			   icon="icons/obj16/xampp_start.gif"
+			   tooltip="Start XAMPP"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPStartXAMPPAction"
+			   menubarPath="net.sourceforge.phpeclipse.PHPMenu/phpeclipse"
+			   toolbarPath="Normal"
+			   id="net.sourceforge.phpdt.externaltools.actions.PHPStartXAMPPAction">
+		 </action>
+	  </actionSet>
+	</extension>
+
+	<!-- FIXME: there is too much duplication of contributions pointing to the same action. we should find a better way-->
+	  <!-- php, phpc,php3,php4,php5,phpt-->
+	<extension
+		 point="org.eclipse.ui.popupMenus">
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.php*"
+			id="net.sourceforge.phpdt.externaltools.actions.externalParserAction.phpS">
+		 <action
+			   label="Run External PHP Parser"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPExternalParserAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpdt.externaltools.actions.externalParserAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.ctp"
+			id="net.sourceforge.phpdt.externaltools.actions.externalParserAction.ctp">
+		 <action
+			   label="Run External PHP Parser"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPExternalParserAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpdt.externaltools.actions.externalParserAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.phtml"
+			id="net.sourceforge.phpdt.externaltools.actions.externalParserAction.phtml">
+		 <action
+			   label="Run External PHP Parser"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPExternalParserAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpdt.externaltools.actions.externalParserAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.module"
+			id="net.sourceforge.phpdt.externaltools.actions.externalParserAction.module">
+		 <action
+			   label="Run External PHP Parser"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPExternalParserAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpdt.externaltools.actions.externalParserAction">
+		 </action>
+	  </objectContribution>
+	  <objectContribution
+			objectClass="org.eclipse.core.resources.IFile"
+			nameFilter="*.inc"
+			id="net.sourceforge.phpdt.externaltools.actions.externalParserAction.inc">
+		 <action
+			   label="Run External PHP Parser"
+			   class="net.sourceforge.phpdt.externaltools.actions.PHPExternalParserAction"
+			   menubarPath="additions"
+			   id="net.sourceforge.phpdt.externaltools.actions.externalParserAction">
+		 </action>
+	  </objectContribution>
+	</extension>
+</plugin>

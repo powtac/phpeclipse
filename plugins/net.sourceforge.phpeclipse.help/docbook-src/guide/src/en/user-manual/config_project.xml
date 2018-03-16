@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- jEdit buffer-local properties: -->
+<!-- :indentSize=2:noTabs=true: -->
+<!-- :xml.root=docmaster.xml: -->
+
+<chapter id="cpt.installation">
+  <title>Installation</title>
+  <para>
+    Here it goes.
+  </para>
+</chapter>
